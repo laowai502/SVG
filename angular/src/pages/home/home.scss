@@ -1,0 +1,192 @@
+page-home {
+    .scroll-content {
+        .grid {
+            padding: 0px;
+            .first-row {
+                min-height: 7.6rem;
+                padding: 0 18px 2.6rem 18px;
+                background-color: $base-nav-bgcolor;
+                .col {
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 0;
+                }
+                .col:after {
+                    position: relative;
+                    color: #FFFFFF;
+                    font-size: 14px;
+                    top: 4.8rem;
+                }
+                .col:first-child {
+                    background: url(../assets/images/home_01.png) no-repeat center;
+                    background-size: 3rem;
+                    .badge{
+                        top: 5px;
+                        right: 10px;
+                        @media screen and (min-width:321px) and (max-width:375px) {
+                            right: 15px;
+                        }
+                        @media screen and (min-width:376px) and (max-width:414px) {
+                            right: 20px;
+                        }
+                    }
+                }
+                .col:nth-child(2) {
+                    background: url(../assets/images/home_02.png) no-repeat center;
+                    background-size: 3rem;
+                }
+                .col:nth-child(3) {
+                    background: url(../assets/images/home_03.png) no-repeat center;
+                    background-size: 3rem;
+                }
+                .col:nth-child(4) {
+                    background: url(../assets/images/home_04.png) no-repeat center;
+                    background-size: 3rem;
+                }
+                .col:first-child:after {
+                    content: '待接收工单';
+                }
+                .col:nth-child(2):after {
+                    content: '扫一扫';
+                }
+                .col:nth-child(3):after {
+                    content: '附近车辆';
+                }
+                .col:nth-child(4):after {
+                    content: '故障码查询';
+                }
+            }
+            .second-row{
+                
+            }
+            .third-row{
+                border-top: solid 1px #e4e4e4;
+                padding-bottom: 0.5rem !important; 
+                .col:first-child{
+                    background: url(../assets/images/home_06.png) no-repeat !important;
+                    background-size: 2.5rem !important;
+                    background-position: 1rem !important;
+                }
+                .col:nth-child(2){
+                    display: none;
+                }
+            }
+            .home-list {
+                padding: 5px 0 0 0;
+                min-height: 11rem;
+                background-color: #FFFFFF;
+                .col {
+                    padding: 0;
+                    text-align: center;
+                    height: 7.4rem;
+                }
+                .col:after {
+                    position: relative;
+                    color: #999999;
+                    font-size: 14px;
+                    top: 4.6rem;
+                }
+                .col:first-child {
+                    text-align: left;
+                    height: 3.6rem;
+                    color: #666666;
+                    background: url(../assets/images/home_05.png) no-repeat;
+                    background-size: 2.5rem;
+                    background-position: 1rem;
+                    padding: 1rem 0 0 4rem;
+                    font-size: 15px;
+                }
+                .col:nth-child(2) {
+                    background: url(../assets/images/home_07.png) no-repeat center;
+                    background-size: 3rem;
+                    background-position-y: 0.5rem;
+                }
+                .col:nth-child(3) {
+                    background: url(../assets/images/home_08.png) no-repeat center;
+                    background-size: 3rem;
+                    background-position-y: 0.5rem;
+                }
+                .col:nth-child(4) {
+                    background: url(../assets/images/home_09.png) no-repeat center;
+                    background-size: 3rem;
+                    background-position-y: 0.5rem;
+                }
+                .col:nth-child(5) {
+                    background: url(../assets/images/home_10.png) no-repeat center;
+                    background-size: 3rem;
+                    background-position-y: 0.5rem;
+                }
+                .col:nth-child(2):after {
+                    content: '待出发';
+                }
+                .col:nth-child(3):after {
+                    content: '待接车';
+                }
+                .col:nth-child(4):after {
+                    content: '检查中';
+                }
+                .col:nth-child(5):after {
+                    content: '维修中';
+                }
+                
+            }
+            .fourth-row{
+                margin-top: 1rem;
+                background-color: #FFFFFF;
+                .col{
+                    padding-bottom: 2rem;
+                    height: 11rem;
+                    border-bottom: solid 1px #e4e4e4;
+                    border-right: solid 1px #e4e4e4;
+                    font-size: 17px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .col:first-child {
+                    display: inline-block;
+                    font-size: 14px;
+                    height: 3.6rem;
+                    padding: 1rem;
+                    color: #999999;
+                    border-bottom: solid 1px #e4e4e4;
+                    .select-ios{
+                        color: #666666;
+                        position: absolute;
+                        padding: 0;
+                        top: 1rem;
+                        right: 1rem;
+                        .select-icon{
+                            right: 3px;
+                        }
+                    }
+                }
+                .col:nth-child(2){
+                    color: #ff8534;
+                }
+                .col:nth-child(3){
+                    color: #4df2ff;
+                }
+                .col:nth-child(4){
+                    color: #34b996;
+                }
+                .col:after{
+                    display: flex;
+                    position: absolute;
+                    font-size: 13px;
+                    color: #999999;
+                    margin-top: 1.8rem;
+                }
+                .col:nth-child(2):after{
+                    content: '进出站';
+                }
+                .col:nth-child(3):after{
+                    content: '外出救援';
+                }
+                .col:nth-child(4):after{
+                    content: '总量';
+                }
+            }
+        }
+    }
+}

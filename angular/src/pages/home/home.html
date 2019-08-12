@@ -1,0 +1,40 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>首页</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-grid>
+		<ion-row class="first-row">
+			<ion-col (click)="toOrder()">
+				<span class="badge" *ngIf="first != 0">{{first}}</span>
+			</ion-col>
+			<ion-col (tap)="toNewOrder()"></ion-col>
+			<ion-col (tap)="toNearbyCar()"></ion-col>
+			<ion-col (click)="toBreak()"></ion-col>
+		</ion-row>
+		<ion-row class="home-list second-row">
+			<ion-col col-12>外出救援</ion-col>
+			<ion-col *ngFor="let obj of outStat" (click)="toOrder(obj)">
+				<span class="badge" *ngIf="obj.count != 0">{{obj.count}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-row class="home-list third-row">
+			<ion-col col-12>进出站</ion-col>
+			<ion-col></ion-col>
+			<ion-col col-3 *ngFor="let obj of inStat" (click)="toOrder(obj)">
+				<span class="badge" *ngIf="obj.count != 0">{{obj.count}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-row class="fourth-row">
+			<ion-col col-12>工单量
+				<ion-select interface="action-sheet" [(ngModel)]="cycleType" cancelText="取消" (ngModelChange)="change()">
+					<ion-option value="1">周</ion-option>
+					<ion-option value="2">月</ion-option>
+					<ion-option value="3">年</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col col-4 *ngFor="let obj of cycle">{{obj.cnt}}<span></span></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

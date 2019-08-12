@@ -1,0 +1,202 @@
+<div id="safeDetail" class="row">
+	<div class="panel panel-primary mb10">
+		<div class="panel-heading">
+			<h3 class="panel-title ib ml15">{{ safeDetail.carInfo.carNumber }}（{{ safeDetail.carInfo.carCode }}） {{ safeDetail.carInfo.driverName }}</h3>
+			<!--<input we-date-range type="text" class="form-control" readonly
+				start="safe.query.startDate" end="safe.query.endDate" cancel-init="true"
+				picker-options="{{ safe.datePickerOptions }}">-->
+			<p class="ib ml45" ng-if="safeDetail.selectedTab == 0">{{ safeDetail.sDate }} 至 {{ safeDetail.eDate }}</p>
+		</div>
+		<div class="panel-body" style="padding-bottom: 5px;">
+			<uib-tabset active="safeDetail.flag">
+				<uib-tab index="'0'" heading="风险信息看板" ng-click="safeDetail.queryTabOne()">
+					<!-- 顶部card -->
+					<div class="row card-list">
+						<div class="col-sm-3 card-wrap">
+							<div class="card">
+								<div class="card-inner-icon">
+									<i class="fa fa-truck" aria-hidden="true"></i>
+								</div>
+								<div class="card-inner-text">
+									<p class="count text-center">{{ safeDetail.detail.mileageTotal }} KM</p>
+									<p class="text-center">里程</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 card-wrap">
+							<div class="card">
+								<div class="card-inner-icon">
+									<i class="fa fa-child" aria-hidden="true"></i>
+								</div>
+								<div class="card-inner-text">
+									<p class="count">区间安全评分 <span class="fr ib">{{ safeDetail.detail.score }} 分</span></p>
+									<p class="ib">
+										<span class="ib mr5">昨日排名</span>
+										<span class="ib mr5">{{ safeDetail.detail.ranking }}  名</span>
+									</p>
+									<span class="ib fr">
+										<i class="fa" style="font-size: 16px;"
+											ng-class="{true: 'fa-long-arrow-up red', false: 'fa-long-arrow-down blue'}[safeDetail.detail.changeNo >= 0]"
+											aria-hidden="true"></i>
+
+										<p class="ib ml5" ng-class="{true: 'red', false: 'blue'}[safeDetail.detail.changeNo >= 0]">
+											<span ng-if="safeDetail.detail.changeNo >= 0">{{ safeDetail.detail.changeNo }}</span>
+											<span ng-if="safeDetail.detail.changeNo < 0">{{ -safeDetail.detail.changeNo }}</span>名</p>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 card-wrap">
+							<div class="card">
+								<div class="card-inner-icon">
+									<i class="fa fa-exclamation red" style="margin-top: 2px;" aria-hidden="true"></i>
+								</div>
+								<div class="fl" style="line-height: 75px; margin: 0 25px 0 80px; font-size: 14px;">单日/月度</div>
+								<div class="fl" style="padding-top: 16px;">
+									<p class="count">
+										<p class="ib mr5 mb3 text-center" style="width: 56px; font-size: 14px;">{{ safeDetail.detail.eventTotal }}</p>
+										<p class="ib" style="width: 5px; font-size: 14px;">/</p>
+										<p class="ib mr5 mb3 text-center" style="width: 62px; font-size: 14px;">{{ safeDetail.detail.adasTotal }}</p>
+										<p class="ib" style="width: 5px; font-size: 14px;">/</p>
+										<p class="ib mr5 mb3 text-center" style="width: 60px; font-size: 14px;">{{ safeDetail.detail.dmsTotal }}</p>
+										<p class="ib" style="width: 5px; font-size: 14px;">/</p>
+										<p class="ib mb3 text-center" style="width: 73px; font-size: 14px;">{{ safeDetail.detail.drivingBehaviorTotal }}</p>
+									</p>
+									<p class="name">
+										<p class="ib mr5 text-center" style="width: 56px; font-size: 14px;">总计次数</p>
+										<p class="ib" style="width: 5px;"></p>
+										<p class="ib mr5 text-center" style="width: 62px; font-size: 14px;">ADAS事件</p>
+										<p class="ib" style="width: 5px;"></p>
+										<p class="ib mr5 text-center" style="width: 60px; font-size: 14px;">DMS事件</p>
+										<p class="ib" style="width: 5px;"></p>
+										<p class="ib text-center" style="width: 73px; font-size: 14px;">驾驶行为事件</p>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 事件面板 -->
+					<div class="panel panel-primary">
+						<div class="panel-body event-content">
+							<div class="row">
+								<h3 class="col-sm-12 text-center" style="margin: 0px;">ADAS事件</h3>
+								<p class="col-sm-12 text-center mb10" style="font-size: 14px;">百公里次数</p>
+								<div class="col-sm-12">
+									<p class="item-block">HMW 车距过近：{{ safeDetail.detail.hmwTotal }} 次</p>
+									<p class="item-block">FCW 前车碰撞：{{ safeDetail.detail.fcwTotal }} 次</p>
+									<p class="item-block">LDW-L 左车道偏离：{{ safeDetail.detail.ldwlTotal }} 次</p>
+									<p class="item-block">LDW-R 右车道偏离：{{ safeDetail.detail.ldwrTotal }} 次</p>
+									<p class="item-block">UFCW 城市前车碰撞：{{ safeDetail.detail.ufcwTotal }} 次</p>
+									<p class="item-block">PCW 行人碰撞：{{ safeDetail.detail.hmwTotal }} 次</p>
+								</div>
+							</div>
+							<!-- 面板card -->
+							<div class="row">
+								<h3 class="col-sm-12 text-center" style="margin-bottom: 0px;">DMS事件</h3>
+								<p class="col-sm-12 text-center mb10" style="font-size: 14px;">百公里次数</p>
+								<div class="col-sm-12">
+									<p class="item-block">闭眼：{{ safeDetail.detail.closeEyeTotal }} 次</p>
+									<p class="item-block">注意力分散(左顾右盼)：{{ safeDetail.detail.distractionAttentionTotal }} 次</p>
+									<!--<p class="item-block">低头：{{ safeDetail.detail.bowTotal }} 次</p>-->
+									<p class="item-block">打电话：{{ safeDetail.detail.answerPhoneTotal }} 次</p>
+									<p class="item-block">抽烟：{{ safeDetail.detail.smokingTotal }} 次</p>
+									<p class="item-block">打哈欠：{{ safeDetail.detail.yawnoTotal }} 次</p>
+									<p class="item-block">脱离监控(离岗)：{{ safeDetail.detail.departureMonitorTotal }} 次</p>
+									<p class="item-block">更换司机：{{ safeDetail.detail.identityRecognitionTotal }} 次</p>
+								</div>
+							</div>
+							<div class="row">
+								<h3 class="col-sm-12 text-center" style="margin-bottom: 0px;">驾驶行为事件</h3>
+								<p class="col-sm-12 text-center mb10" style="font-size: 14px;">百公里次数</p>
+								<div class="col-sm-12">
+									<p class="item-block">急刹车：{{ safeDetail.detail.sharpDecelerationTotal }} 次</p>
+									<p class="item-block">急加速：{{ safeDetail.detail.sharpAccelerationTotal }} 次</p>
+									<!--<p class="item-block">急转弯：{{ safeDetail.detail.bowTotal }}</p>-->
+									<p class="item-block">超速：{{ safeDetail.detail.vehicleOverSpeedTotal }} 次</p>
+									<p class="item-block">空档滑行：{{ safeDetail.detail.idlingSlideTotal }} 次</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 安全趋势(本车时段安全事件次数） -->
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<wd-date-picker class="wh200 ib ht24" hide-clear-btn=true ng-model="safeDetail.queryDayType" end-date="safeDetail.nowTime"></wd-date-picker>
+							<h3 class="panel-title ib ml15">安全趋势(本车时段安全事件次数）</h3>
+						</div>
+						<div class="panel-body" ng-if="safeDetail.selectedTab == 0" style="height: 350px;">
+							<div we-echarts option="safeDetail.firstChar" class="mlra" c-loading="safeDetail.firstCharLoading"></div>
+						</div>
+					</div>
+					<!-- 车辆风险趋势(全车次数） -->
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<wd-date-picker class="wh200 ib ht24" hide-clear-btn=true format="format"
+								min-view="month" min-view-mode="month" start-view="month" max-view-mode="month"
+								ng-model="safeDetail.queryMonthType" end-date="safeDetail.nowMonth">
+							</wd-date-picker>
+							<h3 class="panel-title ib ml15">车辆风险趋势（全车次数）</h3>
+						</div>
+						<div class="panel-body">
+							<uib-tabset active="activeJustified">
+								<uib-tab index="0" heading="道路事件走势" ng-click="safeDetail.type = 0"></uib-tab>
+								<uib-tab index="1" heading="驾驶状态走势" ng-click="safeDetail.type = 1"></uib-tab>
+								<uib-tab index="2" heading="保持车距习惯" ng-click="safeDetail.type = 2"></uib-tab>
+							</uib-tabset>
+							<div class="mt16" ng-if="safeDetail.type == 0 && safeDetail.selectedTab == 0" style="height: 360px;">
+								<div we-echarts option="safeDetail.charOne" class="mlra" c-loading="safeDetail.secondCharLoading"></div>
+							</div>
+							<div class="mt16" ng-if="safeDetail.type == 1" style="height: 360px;">
+								<div we-echarts option="safeDetail.charTwo" class="mlra" c-loading="safeDetail.secondCharLoading"></div>
+							</div>
+							<div class="mt16" ng-if="safeDetail.type == 2" style="height: 360px;">
+								<div we-echarts option="safeDetail.charThree" class="mlra" c-loading="safeDetail.secondCharLoading"></div>
+							</div>
+						</div>
+					</div>
+				</uib-tab>
+				<uib-tab index="'1'" heading="车辆告警地图" ng-click="safeDetail.queryTabTwo()">
+					<div class="mapbar ib" id="alarmMapContainer">
+						<div mapbar-map map-id="traceMap" level="11"></div>
+					</div>
+					<div class="right-form ib y-scroll-diy">
+						<div class="col-sm-12 date-query">
+							<h5>时间查询</h5>
+							<div class="form-group mt20 mb10">
+								<label>开始时间</label>
+								<input type="text" class="form-control" style="display: block;" placeholder="请选择开始时间" min-view="minute"
+									we-date-picker format="yyyy-mm-dd hh:ii:ss" picker-position="bottom-left"
+									ng-model="safeDetail.trace.sDate" end="safeDetail.trace.nowTime" readonly>
+							</div>
+							<div class="form-group">
+								<label>结束时间</label>
+								<input type="text" class="form-control" style="display: block;" placeholder="请选择结束时间" min-view="minute"
+									we-date-picker format="yyyy-mm-dd hh:ii:ss" picker-position="top-left"
+									ng-model="safeDetail.trace.eDate" end="safeDetail.trace.nowTime" readonly>
+							</div>
+							<div class="form-group mb10">
+								<button class="btn btn-default wh100p" ng-click="safeDetail.clickQueryTraceBtn()">查询轨迹</button>
+							</div>
+						</div>
+						<div class="col-sm-12 alarm-setting">
+							<h5>显示风险事件</h5>
+							<div class="col-sm-12" ng-repeat="obj in safeDetail.alarmCheckList track by $index" ng-init="outerIndex = $index">
+								<div class="col-sm-12 alarm-setting-title">
+									<input type="checkbox" ng-model="obj.checked" ng-change="safeDetail.checkAll(obj.checked, $index)">
+									<p class="ib">{{ obj.name }}</p>
+								</div>
+								<div class="col-sm-12 alarm-setting-list">
+									<div class="col-sm-6 alarm-setting-item" ng-repeat="item in obj.child track by $index">
+										<input type="checkbox" ng-model="item.checked" ng-change="safeDetail.check($index, outerIndex, item)">
+										<p class="ib" ng-style="item.color">{{ item.name }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+	</div>
+	<we-alarm-overlay overlay-bridge="safeDetail.overlayBridge" params="safeDetail.nowAlarmData"></we-alarm-overlay>
+</div>

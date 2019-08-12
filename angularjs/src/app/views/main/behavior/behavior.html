@@ -1,0 +1,119 @@
+<div id="behavior" style="height: 100%;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                 <div class="col-md-12">
+                    <label class="control-label org-text" for="organization">选择机构</label>
+                    <select id="organization" ng-model="behavior.curSetting.orgId" ng-change="behavior.onOrgChange()" class="wh200 form-control ht40 ml15">
+                        <option ng-repeat="opt in behavior.org" ng-value="opt.id">{{opt.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row setting-content" ng-show="behavior.isShowPanel==true">
+        <div class="col-md-4 pdr14" style="height: 100%">
+            <div class="panel panel-primary">
+                <div class="panel-body y-scroll-diy">
+                    <div class="col-md-12">
+                        <label class="control-label" style="font-size: 18px;left: 5%;position: relative;">实时提醒设置</label>
+                    </div>
+                    <!-- 开关设置 -->
+                    <div class="setting-list col-md-12" style="overflow-y: auto;">
+                        <div class="col-md-12 setting-items" ng-repeat="item in behavior.setting track by $index">
+                            <div class="col-md-12 set-btn" ng-class="{active:$index==active}" ng-click="behavior.onSwitchPanelClick($index,item.alarmType,item.alarmFlag)">
+                                <p class="ib">{{ item.name }}</p>
+                                <input class="bs-switch" switch-size="mini" bs-switch ng-true-value="'1'" ng-false-value="'0'" ng-model="item.setFlag" type="checkbox" switch-change="behavior.onChange($index)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" style="height: 100%;pointer-events: none;">
+            <div class="panel panel-primary y-scroll-diy">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" style="border-bottom: 1px solid;">
+                            <label style="font-size: 18px;">项目设置</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" style="border-bottom: 1px dashed; padding: 10px 0;">
+                            <label class="col-md-2" style="margin-top: 20px;margin-bottom: 20px;">定义： </label>
+                            <textarea style="width: 75%" class="form-control" rows="3">{{ behavior.panelInfo.definition }}</textarea>
+                            <!--<input type="text" class="col-md-8" style="height: 35px;margin-top: 10px;left: 10%;" ng-value="behavior.panelInfo.definition" placeholder="定义">-->
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" style="border-bottom: 1px dashed;">
+                            <label class="col-md-2" style="margin-top: 20px;margin-bottom: 20px;">风险等级：</label>
+                            <div class="col-md-9" style="height: 35px;margin-top: 20px;left: 10%;">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">高危  2级</label>
+                                    <div class="col-sm-3">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='risk' ng-model="behavior.panelInfo.riskLevel" value="2">
+                                            <i></i>
+                                        </label>                     
+                                    </div>
+                                    <label class="col-sm-3 control-label">一般  1级</label>
+                                    <div class="col-sm-3">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='risk' ng-model="behavior.panelInfo.riskLevel" value="1">
+                                                <i></i>
+                                        </label>                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" style="border-bottom: 1px dashed;">
+                            <label class="col-md-2" style="margin-top: 20px;margin-bottom: 20px;">上传信息：</label>
+                            <div class="col-md-9" style="height: 35px;margin-top: 20px;left: 10%;">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">不上传</label>
+                                    <div class="col-sm-1">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='photo' ng-model="behavior.panelInfo.uploadFlag" value="1">
+                                            <i></i>
+                                        </label>                     
+                                    </div>
+                                    <label class="col-sm-2 control-label">照片</label>
+                                    <div class="col-sm-1">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='photo' ng-model="behavior.panelInfo.uploadFlag" value="2">
+                                                <i></i>
+                                        </label>                     
+                                    </div>
+                                    <label class="col-sm-2 control-label">视频</label>
+                                    <div class="col-sm-1">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='photo' ng-model="behavior.panelInfo.uploadFlag" value="4">
+                                                <i></i>
+                                        </label>                     
+                                    </div>
+                                    <label class="col-sm-2 control-label">视频和照片</label>
+                                    <div class="col-sm-1">
+                                        <label class="i-switch  m-t-xs m-r">
+                                            <input type="radio" name='photo' ng-model="behavior.panelInfo.uploadFlag" value="3">
+                                                <i></i>
+                                        </label>                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+<div id="driverDetail" style="height: 100%;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="col-md-2 info">
+                        <label class="control-label">姓名：{{driverDetail.driverInfo.driverName}}</label>
+                    </div>
+                    <div class="col-md-4 info">
+                        <label class="control-label">身份证号：{{driverDetail.driverInfo.certNo}}</label>
+                    </div>
+                    <div class="col-md-2 info">
+                        <label class="control-label">当前绑定车辆：{{driverDetail.driverInfo.carNumber}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row setting-content">
+        <div class="col-md-4 pdr14" style="height: 100%;">
+            <div class="panel panel-primary y-scroll-diy" style="margin-bottom:0px">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <label class="control-label" style="font-size: 18px;left: 5%;font-weight:700; position: relative;">基本信息</label>
+                    </div>
+                    <div class="setting-list col-md-12" style="margin-left:15px">
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-5 text-items">所属企业：</label>
+                                <label class="col-md-5 text-items">{{driverDetail.driverInfo.carCompany}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-5 text-items">联系电话：</label>
+                                <label class="col-md-5 text-items">{{driverDetail.driverInfo.cnotackTel}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-5 text-items">车辆类型：</label>
+                                <label class="col-md-5 text-items">{{driverDetail.driverInfo.carType}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-5 text-items">驾驶证类型：</label>
+                                <label class="col-md-5 text-items"></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-5 text-items">驾驶证号码：</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-8" style="height: 100%;">
+                <div class="panel panel-primary y-scroll-diy" style="margin-bottom:0px">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label style="font-size: 18px;left: 5%;font-weight:700; position: relative;">图像信息</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <label class="col-md-2" style="margin-top: 20px;margin-bottom: 20px;">人脸照片：</label>
+                                <img ng-if="driverDetail.driverInfo.driverPhotoUrl" ng-src="{{driverDetail.driverInfo.driverPhotoUrl}}" style="height: 350px;width:350px;border: dashed 1px #000000;">
+                                <label ng-if="!driverDetail.driverInfo.driverPhotoUrl" class="col-md-2" style="margin-top: 20px;margin-bottom: 20px;">暂无</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

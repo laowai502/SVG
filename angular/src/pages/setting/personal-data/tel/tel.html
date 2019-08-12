@@ -1,0 +1,18 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修改联系方式</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-item>
+		<ion-input type="number" pattern="[0-9]*" placeholder="请填写预约人手机号" [(ngModel)]="tel"></ion-input>
+	</ion-item>
+	<div padding>
+		<button class="btn" ion-button color="primary" block (tap)="submit()">提 交</button>
+	</div>
+</ion-content>

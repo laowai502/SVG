@@ -1,0 +1,91 @@
+{
+	"name": "qingqi-motorcade-web",
+	"version": "0.0.0",
+	"dependencies": {
+		"angular-sanitize": "~1.4.2",
+		"jquery": "~2.1.4",
+		"angular-ui-router": "~0.4.2",
+		"bootstrap-sass": "~3.3.7",
+		"malarkey": "yuanqing/malarkey#~1.3.1",
+		"angular-toastr": "~1.5.0",
+		"moment": "^2.17.1",
+		"animate.css": "~3.4.0",
+		"angular": "~1.6.*",
+		"smalot-bootstrap-datetimepicker": "^2.4.4",
+		"echarts": "~4.1.*",
+		"zTree": "^3.5.*",
+		"angular-underscore-module": "^1.0.3",
+		"angular-animate": "^1.4.2",
+		"angular-moment": "^1.0.1",
+		"bootstrap-daterangepicker": "^2.1.25",
+		"angular-websocket": "2.0.0",
+		"angular-cookies": "1.6.6",
+		"angular-block-ui": "^0.2.2",
+		"angular-bootstrap": "^2.5.0",
+		"angular-daterangepicker": "^0.2.2",
+		"font-awesome": "fontawesome#^4.7.0",
+		"angular-bootstrap-slider": "^0.1.28",
+		"angular-moment-picker": "moment-picker#^0.10.2",
+		"angular-bootstrap-switch": "~0.5.2",
+		"angular-ui-swiper": "2.3.8"
+	},
+	"devDependencies": {
+		"angular-ui-router": "ui-router#^0.4.2"
+	},
+	"overrides": {
+		"bootstrap-sass": {
+			"main": [
+				"assets/stylesheets/_bootstrap.scss",
+				"assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
+				"assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
+				"assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
+				"assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
+				"assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+			]
+		},
+		"fontawesome": {
+			"main": [
+				"css/font-awesome.css",
+				"fonts/fontawesome-webfont.eot",
+				"fonts/fontawesome-webfont.woff2",
+				"fonts/fontawesome-webfont.woff",
+				"fonts/fontawesome-webfont.ttf",
+				"fonts/fontawesome-webfont.svg"
+			]
+		},
+		"smalot-bootstrap-datetimepicker": {
+			"main": [
+				"js/bootstrap-datetimepicker.js",
+				"js/locales/bootstrap-datetimepicker.zh-CN.js",
+				"css/bootstrap-datetimepicker.css"
+			]
+		},
+		"zTree": {
+			"main": [
+				"js/jquery.ztree.core.js",
+				"js/jquery.ztree.excheck.min.js",
+				"css/zTreeStyle/zTreeStyle.css"
+			]
+		},
+		"echarts": {
+			"main": [
+				"dist/echarts.js"
+			]
+		},
+		"angular-moment-picker": {
+			"main": [
+				"dist/angular-moment-picker.js",
+				"dist/angular-moment-picker.min.css"
+			]
+		},
+		"moment": {
+			"main": [
+				"min/moment-with-locales.min.js"
+			]
+		}
+	},
+	"resolutions": {
+		"jquery": "~2.1.4",
+		"angular": "~1.6.*"
+	}
+}

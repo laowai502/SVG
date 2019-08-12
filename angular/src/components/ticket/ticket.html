@@ -1,0 +1,33 @@
+<div class="component-ticket">
+	<div class="card-content">
+		<div class="card-header">
+			<p class="title">{{query.title}}</p>
+			<p class="intro">{{query.content}}</p>
+			<div class="outDate" *ngIf="query.outDate">剩余7天</div>
+		</div>
+		<div class="card-content">
+			<ul class="up">
+				<li>
+					<p>{{query.remainingQuota}}&nbsp;&nbsp;{{query.unit}}&nbsp;&nbsp;&nbsp;&nbsp;共享限额*</p>
+					<p>我的发放剩余限额</p>
+				</li>
+				<li>
+					<p>{{query.quota}}&nbsp;&nbsp;{{query.unit}}&nbsp;&nbsp;&nbsp;&nbsp;共享限额*</p>
+					<p>我的发放总限额</p>
+				</li>
+			</ul>
+			<ul class="down">
+				<li>
+					<p>活动名称：{{query.activityName}}</p>
+					<p *ngIf="query.endDate!='9999-01-01'">活动有效期：{{query.startDate}}至{{query.endDate}}</p>
+					<p *ngIf="query.endDate=='9999-01-01'">活动有效期：送完为止</p>
+					<p *ngIf="flag">单车发放数量：{{query.carCount}}&nbsp;&nbsp;{{query.unit}}</p>
+					<p *ngIf="flag">优惠券有效期：{{query.expirationDate}}</p>
+				</li>
+				<li class="arrow-right">
+					<img src="/assets/images/arrow-right.png" alt="" *ngIf="!flag">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

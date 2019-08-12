@@ -1,0 +1,38 @@
+#adas {
+    .org-text {
+        font-size: 18px;
+        margin-left: 16px;
+    }
+    .setting-content {
+        height: calc(100% - 85px);
+        .panel {
+            height: inherit;
+            margin-bottom: 10px !important;
+            .panel-body {
+                height: inherit;
+                .setting-list {
+                    padding: 8px 20px;
+                    .setting-items {
+                        p {
+                            font-size: 14px;
+                            line-height: 38px;
+                        }
+                        .bootstrap-switch-wrapper {
+                            float: right;
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .set-btn{
+        padding: 0 10px;
+        border-radius: 5px;
+    }
+    .set-btn:hover,.active {
+        background: rgba(204, 204, 204, 0.4);
+        padding: 0 10px;
+        border-radius: 5px;
+    }
+}

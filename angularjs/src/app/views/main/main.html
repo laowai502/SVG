@@ -1,0 +1,140 @@
+<!-- top -->
+<we-header ng-show="$root.state != 'default.databox'"></we-header>
+<!--<we-navbar class="weNavbar"></we-navbar>-->
+<!-- left-menu -->
+<aside class="frame-sidebar">
+	<div class="leftMenu y-scroll-diy">
+		<uib-accordion class="uib-accordion" close-others="true">
+			<ul class="sidebar-navi" wd-sections="">
+				<li wd-section-match="/main/dashboard" we-role="mainDashboard">
+					<a ui-sref="main.dashboard"><b class="mr10">·</b>精简看板</a>
+				</li>
+				<li we-role="defaultDatabox">
+					<a ui-sref="default.databox" target="_blank"><b class="mr10">·</b>大数据展示</a>
+				</li>
+				<li wd-section-match="/main/car" we-role="mainCar">
+					<a ui-sref="main.car"><b class="mr10">·</b>位置监控</a>
+				</li>
+				<li we-role="mainSnap">
+					<div uib-accordion-group class="panel-default" is-open="main.first">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>主动安全<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.first, 'fa-angle-right': !main.first }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/snap" we-role="mainSnap">
+								<a class="pl40" ui-sref="main.snap">变更驾驶员</a>
+							</li>
+							<!--<li wd-section-match="/main/alarm">
+								<a ui-sref="main.alarm"><b class="mr10">·</b>车辆实时报警列表</a>
+							</li>-->
+						</ul>
+					</div>
+				</li>
+				<li we-role="defaultOverload,mainRealOverload,mainHistoryOverload">
+					<div uib-accordion-group class="panel-default" is-open="main.sixth">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>载重监控<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.sixth, 'fa-angle-right': !main.sixth }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li we-role="defaultOverload">
+								<a class="pl40" href="./assets/overload/data.html" target="_blank">载重预警大屏</a>
+							</li>
+							<li wd-section-match="/main/realOverload" we-role="mainRealOverload">
+								<a class="pl40" ui-sref="main.realOverload">载重实时监控</a>
+							</li>
+							<li wd-section-match="/main/historyOverload" we-role="mainHistoryOverload">
+								<a ui-sref="main.historyOverload"><b class="mr10"></b>历史载重分析</a>
+							</li>
+
+						</ul>
+					</div>
+				</li>
+				<li we-role="mainSafe,mainDriver">
+					<div uib-accordion-group class="panel-default" is-open="main.second">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>基本信息<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.second, 'fa-angle-right': !main.second }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/safe" we-role="mainSafe">
+								<a class="pl40" ui-sref="main.safe">车辆安全列表</a>
+							</li>
+							<li wd-section-match="/main/driver" we-role="mainDriver">
+								<a ui-sref="main.driver"><b class="mr10"></b>驾驶员信息</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li we-role="mainSrank,mainHistory">
+					<div uib-accordion-group class="panel-default" is-open="main.third">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>报表管理<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.third, 'fa-angle-right': !main.third }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/safeRank" we-role="mainSrank">
+								<a style="padding-left: 35px;" ui-sref="main.srank">车辆安全排名</a>
+							</li>
+							<li wd-section-match="/main/alarmHistory" we-role="mainHistory">
+								<a style="padding-left: 35px;" ui-sref="main.history">车辆报警历史记录</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li we-role="mainAdas,mainDms,mainBehavior">
+					<div uib-accordion-group class="panel-default" is-open="main.fourth">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>报警中心<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.fourth, 'fa-angle-right': !main.fourth }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/adas" we-role="mainAdas">
+								<a style="padding-left: 35px;" ui-sref="main.adas">ADAS事件设置</a>
+							</li>
+							<li wd-section-match="/main/dms" we-role="mainDms">
+								<a style="padding-left: 35px;" ui-sref="main.dms">DMS事件设置</a>
+							</li>
+							<li wd-section-match="/main/behavior" we-role="mainBehavior">
+								<a style="padding-left: 35px;" ui-sref="main.behavior">驾驶行为事件设置</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li we-role="mainRole,mainUser">
+					<div uib-accordion-group class="panel-default" is-open="main.fifth">
+						<uib-accordion-heading>
+							<i><b class="mr10">·</b>平台管理<i class="pull-right fa"
+														   ng-class="{ 'fa-angle-down': main.fifth, 'fa-angle-right': !main.fifth }"></i>
+							</i>
+						</uib-accordion-heading>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/role" we-role="mainRole">
+								<a style="padding-left: 35px;" ui-sref="main.role">角色管理</a>
+							</li>
+						</ul>
+						<ul class="sidebar-navi" wd-sections="">
+							<li wd-section-match="/main/user" we-role="mainUser">
+								<a style="padding-left: 35px;" ui-sref="main.user">账号管理</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<!--<li wd-section-match="/main/infor">
+					<a ui-sref="main.infor"><b class="mr10">·</b>测试页</a>
+				</li>-->
+			</ul>
+		</uib-accordion>
+	</div>
+</aside>
+<div class="menu-address">
+	<we-crumbs></we-crumbs>
+</div>
+<!-- right-main -->
+<div class="frame-content" ui-view="" block-ui="whileBlocker"></div>

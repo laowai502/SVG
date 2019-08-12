@@ -1,0 +1,35 @@
+#driverDetail{
+    .info{
+      font-size:14px;
+      left: 2%;
+      margin: 10px 0;
+    }
+    .org-text {
+      font-size: 18px;
+      margin-left: 16px;
+    }
+    label{
+      font-weight: normal;
+    }
+    .setting-content {
+      height: calc(100% - 100px);
+      .panel {
+        height: inherit;
+        .panel-body {
+          height: inherit;
+          .setting-list {
+            padding: 8px 20px;
+            .text-items {
+              text-align: left;
+              font-size: 14px;
+              line-height: 38px;
+              .bootstrap-switch-wrapper {
+                float: right;
+                margin-top: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

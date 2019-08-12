@@ -1,0 +1,286 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './components.scss';
+@import './sidebar.scss';
+@import './app.scss';
+
+body {
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+    font-weight: 700;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#app {
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.padding-content {
+    padding: 4px 0;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+div:focus {
+    outline: none;
+}
+
+.wh {
+    width: 100%;
+}
+
+.wh80 {
+    width: 80px;
+}
+
+.wh180 {
+    width: 180px;
+}
+
+.wh220 {
+    width: 220px;
+}
+
+.wh280 {
+    width: 280px;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.p7 {
+    padding: 7px !important;
+}
+
+.p20 {
+    padding: 20px;
+}
+
+.pt10 {
+    padding-top: 10px !important;
+}
+
+.pt20 {
+    padding-top: 20px !important;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt16 {
+    margin-top: 16px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt25 {
+    margin-top: 25px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr6 {
+    margin-right: 6px;
+}
+
+.mr12 {
+    margin-right: 12px;
+}
+
+.mb5 {
+    margin-bottom: 5px !important;
+}
+
+.mb12 {
+    margin-bottom: 12px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.ml-45 {
+    margin-left: -45px !important;
+}
+
+.block {
+    display: block;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.il {
+    display: inline-block;
+}
+
+.tc {
+    text-align: center;
+}
+
+.h40 {
+    height: 40px;
+}
+
+.clearfix {
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+code {
+    background: #eef1f6;
+    padding: 15px 16px;
+    margin-bottom: 20px;
+    display: block;
+    line-height: 36px;
+    font-size: 15px;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    a {
+        color: #337ab7;
+        cursor: pointer;
+        &:hover {
+            color: rgb(32, 160, 255);
+        }
+    }
+}
+
+.warn-content {
+    background: rgba(66, 185, 131, .1);
+    border-radius: 2px;
+    padding: 16px;
+    padding: 1rem;
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+    a {
+        color: #42b983;
+        font-weight: 600;
+    }
+}
+
+
+//主体区样式布局
+#app {
+    .main-container {
+        padding-top: 50px;
+        min-height: 100%;
+        transition: margin-left .2s;
+        padding-left: $menu-width;
+        width: 100%;
+        .el-container {
+            height: auto;
+            min-height: 100%;
+            padding: 20px;
+        }
+    }
+    .hideSidebar {
+        .sidebar-container {
+            width: $hidden-width;
+            .top-logo {
+                width: $hidden-width !important;
+            }
+        }
+        .main-container {
+            padding-left: $hidden-width !important;
+        }
+        .el-header {
+            left: $hidden-width !important;
+        }
+    }
+    .mobile {
+        .main-container {
+            padding-left: 0px !important;
+        }
+        .el-header {
+            left: 0px !important;
+        }
+    }
+    .laptop { //笔记本
+        .sidebar-container {
+            width: $menu-width1366px;
+            .top-logo {
+                width: $menu-width1366px;
+            } 
+        }
+        .main-container {
+            padding-left: $menu-width1366px;
+        }
+        .el-header {
+            left: $menu-width1366px;   
+        }
+    }
+}

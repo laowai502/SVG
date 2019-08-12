@@ -1,0 +1,53 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>我的</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4>
+				<ion-img class="company-img" [src]="serviceData.stationPictureUrl || ''" alt="服务站" style="width: 100%; height: 100%;"></ion-img>
+			</ion-col>
+			<ion-col col-8 class="right-data">
+				<ion-item>
+					<p class="show-data">{{serviceData.stationName}}</p>
+				</ion-item>
+				<ion-item>
+					<ion-icon name="ios-call" color="primary" item-start></ion-icon>
+					<p class="show-data">{{serviceData.stationTel}}</p>
+				</ion-item>
+				<ion-item>
+					<ion-icon name="ios-pin" color="primary" item-start></ion-icon>
+					<p class="show-data">{{serviceData.stationAddr}}</p>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-list no-lines>
+		<button ion-item (tap)="editPersonalData(item)">
+			<i class="person" item-start></i>
+			<p>个人信息</p>
+		</button>
+		<button ion-item (tap)="myCoupon(item)">
+			<i class="coupon" item-start></i>
+			<p>我的优惠券</p>
+		</button>
+		<button ion-item (tap)="update()">
+			<i class="update" item-start></i>
+			<p>版本更新</p><p item-end>V1.0.0</p>
+		</button>
+		<ion-item>
+			<i class="clean" item-start></i>
+			<p>清除缓存</p>
+		</ion-item>
+		<ion-item (tap)="logout()">
+			<i class="log-out" item-start></i>
+			<p>退出登录</p>
+		</ion-item>
+	</ion-list>
+</ion-content>

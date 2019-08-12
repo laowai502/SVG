@@ -1,0 +1,45 @@
+.grey-color{
+  color: #999;
+}
+.app-common-result{
+  text-align: center;
+  p{
+    text-align: left;
+    padding: 0 5px;
+    margin-bottom: 5px;
+  }
+  .app-list-grid{
+    max-height: 300px!important;
+    overflow: auto!important;
+    th:last-child,td:last-child{
+      min-width:200px!important;
+    }
+    th:first-child,td:first-child{
+      min-width:50px!important;
+    }
+    .passbyPoints{
+      min-width:120px!important;
+    }
+    th,td{
+      min-width:100px!important;
+      white-space:normal;
+      word-break:break-all;
+    }
+  }
+}
+//.wh100p{
+//height: 30px;
+//padding-left: 12px;
+//border-radius:0px !important;
+//background-color: transparent;
+//}
+.fa-caret-down{
+  position: absolute;top:10px;right: 15px;
+}
+.import-excel{
+  .modal-dialog{
+    min-width: 600px!important;
+    max-width: 900px!important;
+    width: auto !important;
+  }
+}

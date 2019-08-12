@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list no-lines>
+		<ion-item>
+			<p item-start>账号：</p>
+			<p class="change">{{query.accountId}}</p>
+		</ion-item>
+		<button ion-item (tap)="editName()">
+			<p item-start>姓名：</p>
+			<p class="change">{{query.accountName}}</p>
+		</button>
+		<button ion-item (tap)="editTel()">
+			<p item-start>联系方式：</p>
+			<p class="change">{{query.phone}}</p>
+		</button>
+		<button ion-item (tap)="editPassword()">
+			<p>修改密码</p>
+		</button>
+	</ion-list>
+</ion-content>

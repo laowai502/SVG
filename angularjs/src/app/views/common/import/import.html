@@ -1,0 +1,57 @@
+<div class="app-common">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <span class="glyphicon glyphicon-cloud-upload"></span>
+      批量导入
+    </h5>
+    <button type="button" class="close closeButton" ng-click="vm.toCancel()"><span><img src="./assets/images/icon_30.png"></span></span></button>
+  </div>
+  <form name="import_form" class="form-horizontal"  ng-submit="vm.submit($event,form)">
+
+  <div class="modal-body">
+      <div>
+        <p class="fs14 mb4 grey-color">{{vm.massage.tip||'请上传车辆信息附件：（发票号和证件号一定要正确，否则车辆信息将不会导入到系统）'}}</p>
+        <div class="form-group files">
+          <a ng-href="{{vm.href}}"><button type="button" class="btn btn-default mt10" >点击下载模板</button></a>
+          <div class="importCover realFile">
+            <input file-model="vm.file" name="file" id="file" type="file" ng-required="true" ng-disabled="vm.resultShow">
+          </div>
+          <div class="importCover">
+            <button type="button" class="btn btn-primary" style="width: 120px;">选择上传文件</button>
+            <input type="text" ng-model="vm.file.name" placeholder="未选择任何导入文件" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>{{vm.massage.label||'所属车队'}}：</label>
+          <div ng-show="vm.resultShow" class="ib pr wh35p">
+            <label>{{teamName}}</label>
+          </div>
+          <div ng-show="!vm.resultShow" class="wh35p" tree-select ng-model="teamId" tree-value="teamName" tree-empty=true car-checks="teamIds"></div>
+        </div>
+      </div>
+  </div>
+    <div class="app-common-result" ng-show="vm.resultShow">
+      <p class="grey-color">导入{{vm.res.total}}条，成功添加{{vm.res.success}}条。</p>
+      <p class="grey-color" ng-if="vm.res.errList&&vm.res.errList.length>0">以下{{vm.res.error}}条因导入数据有误，无法添加：</p>
+      <div class="app-list-grid googleScroll" ng-if="vm.res.errList&&vm.res.errList.length>0">
+        <table class="table table-bordered  table-striped">
+          <thead>
+          <tr>
+            <th ng-repeat="th in vm.th track by $index">{{th}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="obj in vm.res.errList" ng-init="firstIndex=$index">
+            <td ng-repeat="td in vm.td" ng-class="td=='passbyPoints'?'passbyPoints':null" ng-init="secondIndex=$index">{{obj[td]}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary wh90" type="submit" ng-disabled="(!teamId)||(!vm.file)||vm.resultShow||vm.requesting">上传</button>
+      <!--<button class="btn btn-primary wh90" ng-click="vm.save()" ng-show="vm.resultShow">保存</button>-->
+      <button ng-click="vm.toCancel()" type="reset" class="btn btn-default wh90" >关闭</button>
+    </div>
+  </form>
+</div>

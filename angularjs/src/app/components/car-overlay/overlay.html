@@ -1,0 +1,56 @@
+<div class="car-overlay overlay-box container" block-ui="carOverlay" id={{elementID}}>
+	<div class="title">
+		<span class="modal-title" id="modal-title">
+    <!--    <span ng-if="car.carStauts == 1"><img src="./assets/images/VehicleMonitorStay.png"></span>-->
+		<span ng-if="car.carStauts != 0"><img src="./assets/images/icon_179.png"></span>
+		<span ng-if="car.carStauts == 0">
+			<img src="./assets/images/VehicleMonitorOffline.png">
+		</span>
+		<span style="color: black">{{car.plateNum}}</span>
+		<span ng-click=close() style="float: right; margin-top: 11px;"><img src="./assets/images/icon_30.png"></span>
+	</div>
+	<div class="content">
+		<div class="row">
+			<div class="col-md-12 mt4">
+				<span>车牌号:</span>
+				<span class=" force-text-wrap">{{car.plateNum || '无'}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>SIM卡号:</span>
+				<span class="force-text-wrap">{{car.terminalId || '无'}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>当前驾驶员:</span>
+				<span class="force-text-wrap">{{car.curDriver || '无'}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>运输状态:</span>
+				<span class="force-text-wrap">{{car.workStatus  || '无'}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>当前速度:</span>
+				<span class="force-text-wrap">{{car.speed || 0}} km/h</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>滚筒状态:</span>
+				<span class="force-text-wrap">{{car.roteStatus || '无'}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>ACC状态:</span>
+				<span class="force-text-wrap">{{car.accStauts}}</span>
+			</div>
+			<div class="col-md-12 mt4">
+				<span>末次位置:</span>
+				<span class="force-text-wrap" we-location lng="car.lng" lat="car.lat"></span>
+			</div>
+			<div class="col-md-12 mt4 mb4">
+				<span>上报时间:</span>
+				<span class="force-text-wrap">{{car.gpstime}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+		<button class="button one" ui-sref="main.safeDetail({ tid: car.terminalId, flag: '1'})">告警地图</button>
+		<button class="button two" ui-sref="main.safeDetail({ tid: car.terminalId, flag: '0'})">查看风险</button>
+	</div>
+</div>

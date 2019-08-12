@@ -1,0 +1,17 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修改姓名</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	<ion-item>
+		<ion-input type="text" placeholder="请输入姓名" [(ngModel)]="name"></ion-input>
+	</ion-item>
+	<div padding>
+		<button class="btn" ion-button color="primary" block (tap)="submit()">提 交</button>
+	</div>
+</ion-content>

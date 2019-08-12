@@ -1,0 +1,137 @@
+<div id="dashboard" class="container" ng-class="$root.isFromThirdPart ? 'bg-white' : ''">
+	<!-- 顶部card -->
+	<div class="row warnList" style="margin-bottom: 10px;">
+		<div class="pdr20" style="width:40%;float:left;">
+			<div class="warnBox">
+				<ul>
+					<li class="bell bell-first">
+						<img src="./assets/images/car-icon.png">&nbsp;本日
+					</li>
+					<li class="data border-right-grey-stick">
+						<p class="top">&nbsp;{{ dashboard.f_card.workCarNumber }} 辆&nbsp;&nbsp;&nbsp;&nbsp;/</p>
+						<p>运行车辆</p>
+					</li>
+					<li class="data border-right-grey-stick">
+						<p class="top">&nbsp;{{ dashboard.f_card.restCarNumber }} 辆&nbsp;&nbsp;&nbsp;&nbsp;/</p>
+						<p>休息车辆</p>
+					</li>
+					<li class="data">
+						<p class="top">&nbsp;{{ dashboard.f_card.carTotalNumber }} 辆</p>
+						<p>车辆总数</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pdr14" style="width:22%;float:left;">
+			<div class="warnBox">
+				<ul>
+					<li class="bell"><img src="./assets/images/mileage-icon.png"></li>
+					<li class="data border-right-grey-stick">
+						<p class="top">&nbsp;{{ dashboard.f_card.carTotalMilage }} KM</p>
+						<p>本日总里程</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pdr14" style="width:18%;float:left;">
+			<div class="warnBox">
+				<ul>
+					<li class="bell"><img src="./assets/images/oil-icon.png"></li>
+					<li class="data border-right-grey-stick">
+						<p class="top">&nbsp;&nbsp;{{ dashboard.f_card.carTotaloil }} L</p>
+						<p>本日总油耗 </p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div  style="width:20%;float:left;">
+			<div class="warnBox">
+				<ul>
+					<li class="bell"><img src="./assets/images/oil-icon.png"></li>
+					<li class="data border-right-grey-stick">
+						<p class="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ dashboard.card.currentRiskNumber }} 次</p>
+						<p>本日风险预警次数</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- 单日企业安全趋势 -->
+		<div class="col-sm-9 pdr14">
+			<div class="panel panel-primary mb10">
+				<div class="panel-heading">
+					<wd-date-picker class="wh200 ib ht24" hide-clear-btn=true ng-model="dashboard.queryDayType" end-date="dashboard.nowTime"></wd-date-picker>
+					<h3 class="panel-title ib ml15">单日企业安全趋势（全车次数）</h3>
+					<a class="heading-link" ui-sref="main.history" ng-if="!$root.isFromThirdPart">查看详情</a>
+				</div>
+				<div class="panel-body" style="height: 350px;">
+					 <div we-echarts option="dashboard.firstChar" class="mlra" c-loading="dashboard.firstCharLoading"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 实时报警车辆 -->
+		<div class="col-sm-3">
+			<div class="panel panel-primary mb10">
+				<div class="panel-heading">
+					<h3 class="panel-title ib">实时车辆报警</h3>
+					<a class="heading-link" ui-sref="main.history" ng-if="!$root.isFromThirdPart">更多</a>
+				</div>
+				<div class="panel-body alarm-content y-scroll-diy" style="height: 350px; padding: 8px 16px 0px;">
+					<div class="col-sm-12 alarm-item" ng-repeat="item in dashboard.realAlarm track by $index">
+						<div class="col-sm-12">
+							<p class="ib ft16">
+							<span style="font-weight: bold; color: #444;">{{ item.carNumber }}</span> ({{ item.carNo }})</p>
+							<p class="ib fr ft14" style="margin-top: 3px;">{{ item.riskTime | date:'HH:mm:ss' }}</p>
+						</div>
+						<div class="col-sm-12 font-size-14">
+							<span class="ft14 force-text-wrap" we-location lat="item.lat/1000000" lng="item.lon/1000000"></span>
+						</div>
+						<div class="col-sm-12" style="margin-bottom: 6px;">
+							<p class="ib red ft14">{{ item.riskName }}</p>
+							<p class="ib fr ft14" ng-if="item.alarmId != null && !$root.isFromThirdPart">
+								<a href="" ng-click="dashboard.toDetail(item)">详情</a>
+							</p>
+						</div>
+					</div>
+					<div class="text-center" style="line-height: 180px; font-size: 15px; opacity: .6;" ng-if="dashboard.realAlarm.length == 0">今天没有风险报警</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 月度企业风险趋势  -->
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-primary mb10">
+				<div class="panel-heading">
+					<wd-date-picker class="wh200 ib ht24"
+							hide-clear-btn=true format="format"
+							min-view="month" min-view-mode="month"
+							start-view="month" max-view-mode="month"
+							ng-model="dashboard.queryMonthType"
+							end-date="dashboard.nowMonth">
+					</wd-date-picker>
+					<h3 class="panel-title ib ml15">月度企业风险趋势（全车次数）</h3>
+				</div>
+				<div class="panel-body">
+					<uib-tabset active="activeJustified">
+						<uib-tab index="0" heading="道路事件走势" ng-click="dashboard.type = 0"></uib-tab>
+						<uib-tab index="1" heading="驾驶状态走势" ng-click="dashboard.type = 1"></uib-tab>
+						<uib-tab index="2" heading="保持车距习惯" ng-click="dashboard.type = 2"></uib-tab>
+					</uib-tabset>
+					<div class="mt16" ng-if="dashboard.type == 0" style="height: 360px;">
+						<div we-echarts option="dashboard.charOne" class="mlra" c-loading="dashboard.secondCharLoading"></div>
+					</div>
+					<div class="mt16" ng-if="dashboard.type == 1" style="height: 360px;">
+						<div we-echarts option="dashboard.charTwo" class="mlra" c-loading="dashboard.secondCharLoading"></div>
+					</div>
+					<div class="mt16" ng-if="dashboard.type == 2" style="height: 360px;">
+						<div we-echarts option="dashboard.charThree" class="mlra" c-loading="dashboard.secondCharLoading"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

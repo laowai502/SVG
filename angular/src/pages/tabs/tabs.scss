@@ -1,0 +1,72 @@
+page-tabs{
+    .main-tabs{
+        .show-tabbar{
+            
+            border-top-width: 0px;
+            
+            .tab-button{
+                
+                padding-top: 3px;
+                padding-bottom: 3px;
+                
+                .tab-button-icon{
+                    min-width: 2.4rem;
+                    height: 2.4rem;
+                    background-size: 2.4rem !important;                    
+                }
+                .tab-button-icon::before{
+                    content: '';
+                }
+                .tab-button-text{
+                    font-size: 1.2rem;
+                    color: #5a5a5a;
+                }
+            }
+            .tab-button[aria-selected="true"]{
+                .tab-button-text{
+                    color: $base-nav-bgcolor;
+                }
+            }
+            .tab-button:first-child{
+                .tab-button-icon{
+                    background: url(../assets/images/home.png) no-repeat;
+                }
+            }
+            .tab-button:first-child[aria-selected="true"]{
+                .tab-button-icon{
+                    background: url(../assets/images/home-active.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(2){
+                .tab-button-icon{
+                    background: url(../assets/images/mes.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(2)[aria-selected="true"]{
+                .tab-button-icon{
+                    background: url(../assets/images/mes-active.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(3){
+                .tab-button-icon{
+                    background: url(../assets/images/history.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(3)[aria-selected="true"]{
+                .tab-button-icon{
+                    background: url(../assets/images/history-active.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(4){
+                .tab-button-icon{
+                    background: url(../assets/images/my.png) no-repeat;
+                }
+            }
+            .tab-button:nth-child(4)[aria-selected="true"]{
+                .tab-button-icon{
+                    background: url(../assets/images/my-active.png) no-repeat;
+                }
+            }
+        }
+    }
+}

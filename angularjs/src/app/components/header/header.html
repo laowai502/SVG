@@ -1,0 +1,40 @@
+<header class="header" ng-class="{'home-header':state == 'home'}" ng-show="$root.state != 'home'" ng-controller="HeaderController">
+	<div class="header-contain">
+		<!--<img src="./assets/images/logo-header.png">-->
+		<span ng-click="infoShow=false;">安全共管平台</span>
+	</div>
+	<div class="header-user">
+		<ul>
+			<!--<ul style="float: left;cursor: pointer;" uib-popover-template="'myTooltipTemplate.html'" popover-placement="bottom">-->
+			<ul style="float: left; cursor: pointer;">
+				<li>
+					<img class="head-img" src="./assets/images/head.png">
+				</li>
+				<li>
+					<p>{{userInfo.userName}}</p>
+				</li>
+			</ul>
+			<li style="margin: 0 20px;"><b>|</b></li>
+			<li>
+				<img class="close-img" ng-click="toLogout()" src="./assets/images/close.png">
+			</li>
+		</ul>
+		<script type="text/ng-template" id="myTooltipTemplate.html">
+			<ul>
+				<li>
+					<span>账号信息</span>
+					<a ui-sref="systems.account" ng-click="menuChoose(5)">账号设置</a>
+				</li>
+				<li>
+					<b class="mr10">·</b>姓名：<span>{{userInfo.userName}}</span>
+				</li>
+				<li>
+					<b class="mr10">·</b>手机号：<span>{{userInfo.phone}}</span>
+				</li>
+				<li>
+					<b class="mr10">·</b>上次登录：<span>{{userInfo.lastTime == null ?  "" : userInfo.lastTime }}</span>
+				</li>
+			</ul>
+		</script>
+	</div>
+</header>

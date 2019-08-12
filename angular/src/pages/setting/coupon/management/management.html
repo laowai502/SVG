@@ -1,0 +1,79 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>{{title}}</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-segment [(ngModel)]="coupon" color="primary" (ionChange)="couponStateChanged($event)">
+		<ion-segment-button *ngFor="let obj of couponState" [value]="obj.id">
+			{{obj.name}}
+		</ion-segment-button>
+	</ion-segment>
+	<div class="coupon-list" [ngSwitch]="coupon">
+		<div *ngSwitchCase="'0'">
+			<ion-row class="other-select">
+				<ion-col col-4>
+					<ion-select [(ngModel)]="queryCouponRun.grantRecord" interface="popover" [placeholder]="recordPlaceholder" (ngModelChange)="changeStateList($event)">
+						<ion-option *ngFor="let obj of records" [value]="obj.id">{{obj.name}}</ion-option>
+					</ion-select>
+				</ion-col>
+				<ion-col col-8>
+					<drop-down [activityDateList]="activityDateList" placeholder="活动创建日期" (changeActivityDate)="changeActivityDate($event)"></drop-down>
+					<!-- <ion-select [(ngModel)]="activityDateRun" interface="popover" placeholder="活动创建日期" (ngModelChange)="changeActivityDate($event)">
+						<ion-option *ngFor="let obj of activityDateList" [value]="obj.id">{{obj.name}}</ion-option>
+					</ion-select> -->
+				</ion-col>
+			</ion-row>
+			<p *ngIf="couponRun.length==0" class="no-data">暂无相关信息</p>
+			<ion-list no-lines padding>
+				<ion-item *ngFor="let obj of couponRun">
+					<ticket [coupons]="obj" (tap)="openDetail(obj.activityId,'0')"></ticket>
+				</ion-item>
+			</ion-list>
+		</div>
+		<div *ngSwitchCase="'1'">
+			<ion-row padding>
+			</ion-row>
+			<p *ngIf="couponUnstart.length==0" class="no-data">暂无相关信息</p>
+			<ion-list no-lines padding>
+				<ion-item *ngFor="let obj of couponUnstart">
+					<ticket [coupons]="obj" (tap)="openDetail(obj.activityId,'1')"></ticket>
+				</ion-item>
+			</ion-list>
+		</div>
+		<div *ngSwitchCase="'2'">
+			<ion-row class="other-select">
+				<ion-col col-4>
+					<ion-select [(ngModel)]="queryCouponEnd.grantRecord" interface="popover" [placeholder]="recordPlaceholder">
+						<ion-option *ngFor="let obj of records" [value]="obj.id">{{obj.name}}</ion-option>
+					</ion-select>
+				</ion-col>
+				<ion-col col-8>
+					<drop-down [activityDateList]="activityDateList" placeholder="活动创建日期" (changeActivityDate)="changeActivityDate($event)"></drop-down>
+					<!-- <ion-select [(ngModel)]="activityDateEnd" interface="popover" placeholder="活动创建日期" (ngModelChange)="changeActivityDate($event)">
+						<ion-option *ngFor="let obj of activityDateList" [value]="obj.id">{{obj.name}}</ion-option>
+					</ion-select> -->
+				</ion-col>
+			</ion-row>
+			<p *ngIf="couponEnd.length==0" class="no-data">暂无相关信息</p>
+			<ion-list no-lines padding>
+				<ion-item *ngFor="let obj of couponEnd">
+					<ticket [coupons]="obj" (tap)="openDetail(obj.activityId,'2')"></ticket>
+				</ion-item>
+			</ion-list>
+		</div>
+		<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+			<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText='上拉加载更多...'>
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+
+	</div>
+</ion-content>

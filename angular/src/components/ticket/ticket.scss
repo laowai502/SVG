@@ -1,0 +1,95 @@
+ticket {
+    .component-ticket{
+        .card-content{
+            .card-header{
+                background-color: $base-fit-bgcolor;
+                text-align: center;
+                position: relative;
+                padding: 1rem 0;
+                overflow: hidden;
+                border-top-left-radius: $border-radius;
+                border-top-right-radius: $border-radius;
+                min-height: 6.5rem;
+                .title, .intro, .outDate{
+                    color: #fff !important;
+                    text-align: center;
+                }
+                .intro{
+                    font-size: 1.2rem !important;
+                    margin-top: 0.5rem !important; 
+                }
+                .outDate{
+                    background-color: #FF7B33;
+                    padding: 0 1.5rem;
+                    position: absolute;
+                    top: 1rem;
+                    right: -1.5rem;
+                    font-size: 0.5rem;
+                    transform: rotate(45deg);
+                    transform-origin: center; 
+                }
+            }
+            .card-content{
+                background-color: #fff;
+                position: relative;
+                border-top: 1.5px dotted $base-fit-bgcolor;
+                border-bottom: 1px solid #fff; 
+                border-bottom-left-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
+                box-shadow: 0 3rem 3rem -4rem #666; 
+                ul{
+                    padding: 1rem;
+                }
+                .up{
+                    display: flex;
+                    justify-content: space-around;
+                    li{
+                        text-align: center;
+                        p{
+                            &:nth-child(1){
+                                color: $base-fit-bgcolor !important;
+                            }
+                            &:nth-child(2){
+                                color: $text-readonly !important;
+                                font-size: 1.2rem !important;
+                                margin-top: 0.5rem !important;
+                            }
+                        }
+                    }
+                }
+                .down{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    li{
+                        p{
+                            color: #666 !important;
+                            font-size: 1.2rem;
+                            margin-top: 0.5rem !important;
+                        }
+                    }
+                    li.arrow-right{
+                       font-size: 1.2rem;  
+                    }
+                }
+            }
+            .card-content::after, .card-content::before{
+                content: '';
+                height: 2rem;
+                width: 2rem;
+                background-color: #f0f0f0;
+                border-radius: 50%;
+                position: absolute;
+                z-index: 2;
+            }
+            .card-content::after{
+                left: -1rem;
+                top: -1rem;
+            }
+            .card-content::before{
+                right: -1rem;
+                top: -1rem;
+            }
+        }
+    }
+}

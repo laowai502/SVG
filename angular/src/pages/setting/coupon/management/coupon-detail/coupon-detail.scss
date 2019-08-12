@@ -1,0 +1,39 @@
+page-coupon-detail {
+    .toolbar-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title{
+            color: #fff;
+        }
+        .subtitle{
+            color: #fff;
+            font-size: 1.2rem;
+        }
+    }
+    .item-block{
+        padding: 0;
+        .item-inner{
+            border-bottom-width: 0 !important;
+            padding: 0 !important;
+            ion-label{
+                margin: 0 !important;
+            }
+        }
+    }
+    .explain{
+        margin-top: 2rem !important;
+        p{
+            font-size: 1.2rem !important;
+            color: #999 !important;
+            &:nth-child(1){
+                font-size: 1.4rem !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+        
+    }
+    .no-data{
+        text-align: center;
+    }
+}

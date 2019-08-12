@@ -1,0 +1,25 @@
+page-coupon {
+    .scroll-content{
+        background-color: #fff;
+        .scan{
+            background-color: $base-nav-bgcolor;
+            padding: 3rem;
+            p{ 
+                color: #fff !important;
+            }
+        }
+        .management{
+            padding: 4rem 3rem 0;
+        }
+        .col{
+            text-align: center;
+            img{
+                width: 25%;
+            }
+            p{ 
+                margin-top: 10px !important;
+            }
+        }
+    }
+    
+}

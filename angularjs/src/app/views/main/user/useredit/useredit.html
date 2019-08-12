@@ -1,0 +1,20 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">账号管理</h3>
+    </div>
+    <div class="modal-body"  style="max-height: 750px;overflow-y: scroll;">
+        <form id="edit_form" name="edit_form" ng-submit="vm.submit($event)">
+            <div class="form-group">
+                <label for="roleId" class="col-sm-3">*角色:</label>
+                <div class="col-sm-5">
+                    <select ng-model="vm.itemsArry" name="roleId" id="roleId" class="form-control" ng-options="item.id as item.name for item in vm.role" required></select>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="form-group" style="text-align: right">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancel()">返回</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container" id="infor">
+    <div class="row">
+    	<div class="col-md-6">
+    		<div class="col-md-12" ng-repeat="obj in infor.checkList track by $index" ng-init="outerIndex = $index">
+    			<div ng-if="obj.childs">
+    				<h5 ng-bind="obj.name"></h5>
+    				<div class="all-checked">    					
+    					<input type="checkbox" ng-model="obj.allChecked" ng-change="infor.checkAll(obj.allChecked, outerIndex)"><p>全选</p>
+    				</div>
+    				<div class="col-md-12 child-items">
+    					<div class="col-md-4" ng-repeat="item in obj.childs track by $index">
+    						<input type="checkbox" ng-model="item.checked" ng-change="infor.checked(item.checked, item.value, true, outerIndex)">
+    						<p ng-bind="item.name"></p>
+    					</div>
+    				</div>
+    			</div>
+    			<div ng-if="!obj.childs" class="no-childs">
+    				<input type="checkbox" ng-model="obj.checked" ng-change="infor.checked(obj.checked, obj.value, false)">
+    				<p ng-bind="obj.name"></p>
+    			</div>
+			</div>
+			<div class="col-md-12">选中项：{{ infor.selectedIds }}</div>
+    	</div>
+    </div>
+    <div class="submit-btn">
+    	<button class="btn btn-primary" ng-click="infor.ok()">submit</button>
+    </div>
+    <div class="row ib" style="height: 200px; width: 200px; margin-top: 18px;">
+    	<we-video-thumbnail video-url="infor.url" next-fn="infor.ok" download-fn="infor.download"></we-video-thumbnail>
+	</div>
+	<div class="row ib" style="height: 200px; width: 200px; margin-top: 18px;">
+		<div id="tree" we-ztree-test
+        	option="infor.tree.setting"
+        	data="infor.tree.nodes"
+        	checked-nodes="infor.treeChecked">
+        </div>
+	</div>
+</div>

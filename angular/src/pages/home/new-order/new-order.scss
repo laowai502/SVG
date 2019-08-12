@@ -1,0 +1,172 @@
+page-new-order {
+    .scroll-content{
+        ion-list{
+            
+            ion-list-header{
+                background-color: #fff;
+                .header{
+                    font-size: 1.4rem;
+                    color: $text-title;
+                }
+                .necessary{
+                    color: $text-readonly;
+                }
+            }
+            .item-block{
+                font-size: 1.2rem;
+                color: $text-color;
+                .item-inner{
+                    .datetime-text{
+                        display: none;
+                    }
+                    ion-label{
+                        margin: 0;
+                    }
+                    ion-label[fixed]{
+                        width: 6rem;
+                        flex: 0 0 6rem;
+                        -webkit-flex: 0 0 6rem;
+                        min-width: 6rem;
+                        max-width: 8rem;
+                    }
+                    .text-input{
+                        margin-left: 0;
+                    }
+                    .select{
+                        right: 2rem;
+                    }
+                    ion-label{
+                        white-space: normal;
+                        .order-title{
+                            border-left: 0.2rem solid  $text-title;
+                            padding-left: 0.5rem;
+                            .necessary{
+                                color: $text-readonly;
+                            }
+                        }
+                        .service-list,.repair-list{
+                            li{
+                                display: inline-block;
+                                list-style: none;
+                                margin: 1rem 0 1rem 1rem;
+                                input{
+                                    display: none;
+                                }
+                                label{
+                                    padding: 0.5rem;
+                                    font-size: 1.2rem;
+                                    border-radius: 5rem;
+                                    background-color: #fff;
+                                }
+                                .default{
+                                    border: 1px solid $border-color;
+                                    color: $border-color;
+                                }
+                                .active{
+                                    border: 1px solid $text-title;
+                                    color: $text-title;
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                        textarea{
+                            background-color: $textarea-bg;
+                            width: 100%;
+                            color: $text-color;
+                        }
+                        .count{
+                            display: flex;
+                            justify-content: flex-end;
+                            color: $text-readonly !important;
+                        }
+                        .maxcount{
+                            display: flex;
+                            justify-content: flex-end;
+                            color: red !important;
+                        }
+                        ion-thumbnail{
+                            display: inline-block;
+                            padding: 2rem 0.5rem;
+                            img{
+                                width: 8rem;
+                                height: 6rem;
+                            }
+                        }
+                        
+                    }
+                    .drop-down{
+                        // position: absolute;
+                        width: 100%;
+                        // z-index: 99;
+                        max-width: 100%;
+                        // .select-icon{
+                        //     position: absolute;
+                        //     right: 2rem;
+                        //     top: -0.3%;
+                        // }
+                        
+                    }
+
+
+                }
+            }
+        }
+        
+    }
+    .car-location{
+        font-size: 2rem;
+    }
+    .positionTip{
+        position: fixed;
+        right: 8%;
+        top: 23rem;
+        color: #fff !important;
+        background-size: 100% 100%;
+        height: 3.8rem;
+        word-wrap: break-word;
+        width: 9rem;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    .submit{
+        background-color: transparent !important;
+        .item-button{
+            height: 4rem;
+            font-size: 1.6rem;
+        }
+        .item-inner{
+            border-bottom-width: 0 !important; 
+        }
+    }
+}
+.last-list{
+    margin-bottom: 0; 
+}
+.select-action-sheet{
+    .action-sheet-group{
+        .action-sheet-title{
+            font-size: 1.6rem;
+        }
+        .action-sheet-button{
+            font-size: 1.4rem;
+        }
+        
+    }
+}
+.action-sheet-title{
+    display: none;
+}
+html .order-alert{
+    .alert-wrapper{
+        .alert-head{
+            padding: 1rem;
+        }
+        .alert-message{
+            padding: 0;
+        }
+    }
+    
+}

@@ -1,0 +1,31 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>附近车辆</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list no-lines class="list">
+		<ion-item>
+		  <ion-select [(ngModel)]="distance" interface="popover" (ngModelChange)="changeDistance()">
+			<ion-option value="5">5km</ion-option>
+			<ion-option value="10">10km</ion-option>
+			<ion-option value="50">50km</ion-option>
+			<ion-option value="100">100km</ion-option>
+		  </ion-select>
+		</ion-item>
+	</ion-list>
+	<div id="map" class="map"></div>
+	<ion-row class="bottom">
+		<ion-item col-4>
+			<img src="assets/images/car-detail.png" alt="">
+		</ion-item>
+		<ion-item col-8 class="bottom-right">
+			<p class="carid">{{carInfo.carNum}}</p>
+			<p>{{carInfo.carModel}}</p>
+		</ion-item>
+	</ion-row>
+</ion-content>

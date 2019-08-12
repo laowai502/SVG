@@ -1,0 +1,58 @@
+select-content {
+    .select-list{
+        background-color: #fff;
+        border-radius: 1rem;
+        li{
+            height: 3rem;
+            line-height: 3rem;
+            padding-left: 16px;
+            border-radius: 1rem;
+            background-color: #fff;
+            padding-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button{
+                font-size: 1.4rem;
+                background-color: transparent;
+                color: #666;
+            }
+            ion-icon{
+                font-size: 2em;
+            }
+        }
+        .select-date-range{
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            align-items: center;
+            ion-datetime{
+                width: 8rem;
+                border: 1px solid #999;
+                padding: 0;
+                margin-right: 0.5rem;
+                .item-cover{
+                    height: inherit;
+                    width: inherit;
+                }
+            }
+            .button{
+                height: 2rem;
+                font-size: 1.4rem;
+                padding: 0 0.5rem;
+                background-color: $base-fit-bgcolor;
+                color: #fff;
+            }
+        }
+    }
+    .select-list::before{
+        content: "";
+        border-radius: 3px;
+        z-index: 10;
+        width: 14px;
+        height: 14px;
+        background-color: white;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}

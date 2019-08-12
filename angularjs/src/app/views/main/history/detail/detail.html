@@ -1,0 +1,51 @@
+<div id="historyDetail" class="row">
+	<div class="mapbar">
+		<div mapbar-map map-id="alarmMap" level="11"></div>
+	</div>
+	<div class="alarm-overlay" id="AlarmOverlay" ng-if="alarmHistoryDetail.showOverlay">
+		<div class="title">
+			<span>{{ alarmHistoryDetail.params.alarmType }}</span>
+			<span class="close-icon" ng-click="alarmHistoryDetail.cancel()">
+				<img width="12px" src="./assets/images/icon_30.png">
+			</span>
+		</div>
+		<div class="content">
+			<div class="row">
+				<div class="col-md-12" ng-if="alarmHistoryDetail.hasFile">
+					<section class="swipe">
+						<swiper>
+							<slides>
+								<slide ng-repeat="item in alarmHistoryDetail.fileUrls">
+									<img ng-if="item.isImg" ng-src="{{ item.videoUrl }}" width="320" height="200" alt="">
+									<video style="padding-bottom: 10px;" ng-if="!item.isImg" ng-src="{{ item.videoUrl }}" width="320" height="200" controls="controls"></video>
+								</slide>
+							</slides>
+							<prev></prev>
+							<next></next>
+							<pagination></pagination>
+						</swiper>
+					</section>
+				</div>
+				<div class="col-md-12 text-row">
+					<span>司机：</span>
+					<span class=" force-text-wrap">{{ alarmHistoryDetail.params.driverName }}</span>
+				</div>
+				<div class="col-md-12 text-row">
+					<span>车速：</span>
+					<span class="force-text-wrap">{{ alarmHistoryDetail.params.carSpeed }} km/h</span>
+				</div>
+				<div class="col-md-12 text-row">
+					<span>时间：</span>
+					<span class="force-text-wrap">{{ alarmHistoryDetail.params.alarmTime }}</span>
+				</div>
+				<div class="col-md-12 text-row">
+					<span>地点：</span>
+					<span class="force-text-wrap" we-location lat="alarmHistoryDetail.params.lat" lng="alarmHistoryDetail.params.lon"></span>
+				</div>
+			</div>
+		</div>
+		<div class="foot">
+			<button class="btn btn-default fr" ng-click="alarmHistoryDetail.cancel()">确定</button>
+		</div>
+	</div>
+</div>

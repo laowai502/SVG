@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>待接收工单</ion-title>
+		<ion-buttons *ngIf="detail.status != '1' && detail.status != '6' && detail.roleCode == '2'" end>
+			<button class="nav-btn-icon" [ngClass]="{'nav-btn-text': (detail.status=='4'||detail.status=='5')}" (click)="deal()">{{dealBtn}}</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<div class="show-btn" *ngIf="showBtn">
+	<div class="triangle"></div>
+	<button (click)="toDealPage('0')">申请修改</button>
+	<button (click)="toDealPage('1')">申请关闭</button>
+</div>
+<ion-content>
+	<ion-grid>
+		<ion-row class="block">
+			<ion-col class="sub">工单信息</ion-col>
+			<ion-col col-12>工单编号： {{order.woCode}}</ion-col>
+			<ion-col col-12>车牌号： {{order.carNum}}</ion-col>
+			<ion-col col-12>预约服务站： {{order.serviceStationName}}</ion-col>
+			<ion-col col-12>预约到站时间： {{order.orderTime}}</ion-col>
+			<ion-col col-12>预约方式： {{order.orderWayName}}</ion-col>
+			<ion-col col-12>工单类型： {{order.woTypeName}}</ion-col>
+			<ion-col col-12>建单时间： {{order.createTime}}</ion-col>
+			<ion-col col-12>当前状态： {{order.status}}</ion-col>
+			<ion-col col-12>用户姓名： {{order.repairName}}</ion-col>
+			<ion-col col-12>用户电话： {{order.repairTel}}</ion-col>
+			<ion-col col-12>车辆位置： {{order.repairAdd}}</ion-col>
+			<ion-col col-12>距离本站： {{order.apartMile}}</ion-col>
+			<ion-col col-12>维修项目： {{order.repairItemName}}</ion-col>
+			<ion-col col-12>保养项目： {{order.maintainItemName}}</ion-col>
+			<ion-col col-12>用户反馈： {{order.userFeedback}}</ion-col>
+		</ion-row>
+		<ion-row class="block">
+			<ion-col class="sub">车辆信息</ion-col>
+			<ion-col col-12>购车日期： {{car.buyTime}}</ion-col>
+			<ion-col col-12>行驶里程： {{car.dirveMile}}</ion-col>
+			<ion-col col-12>底盘号： {{car.carVin}}</ion-col>
+			<ion-col col-12>发动机类型： {{car.engineType}}</ion-col>
+			<ion-col col-12>发动机型号： {{car.engineNum}}</ion-col>
+			<ion-col col-12>公告车型： {{car.carType}}</ion-col>
+			<ion-col col-12>车型描述： {{car.carTypeDesc}}</ion-col>
+			<ion-col col-12>维修记录： <a *ngIf="car.repairRecord == '1'" (click)="toRepairHistory()">查看</a>
+				{{car.repairRecord == '1' ? '' : '无'}}
+			</ion-col>
+		</ion-row>
+		<ion-row class="block" *ngIf="detail.woType">
+			<ion-col class="sub">服务流程</ion-col>
+			<time-line></time-line>
+		</ion-row>
+		<ion-row>
+			<ion-col *ngIf="detail.status != '6'" col-12 style="padding: 5px 2rem; display: inherit">
+				<button *ngIf="detail.roleCode == '1' && detail.status == '1'" ion-button block (click)="refuse()" [ngClass]="{'half-width':detail.status=='1'}">拒绝</button>
+				<button *ngIf="detail.roleCode == '1' && detail.status == '1'" ion-button block (click)="next()" [ngClass]="{'half-width':detail.status=='1'}">确认</button>
+				<button *ngIf="detail.roleCode == '2' && detail.status != '1'" ion-button block (click)="next()">{{nextBtn}}</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

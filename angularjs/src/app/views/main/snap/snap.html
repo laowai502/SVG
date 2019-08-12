@@ -1,0 +1,56 @@
+<div class="block manager">
+	<div class="selector">
+		<div class="field">
+			<label>车牌号</label>
+			<input type="text" class="form-control" ng-model="snap.query.carNumber">
+		</div>
+		<div class="field">
+			<label>驾驶员姓名</label>
+			<input type="text" class="form-control" ng-model="snap.query.driverName">
+		</div>
+		<div class="field hasDateRange">
+			<label>查询时间</label>&#10;
+			<input we-date-range cancel-init="true" readonly type="text" class="form-control" 
+				start="snap.query.startDate" end="snap.query.endDate"
+				picker-options="{{ snap.datePickerRightOptions }}" placeholder="请选择时间范围">
+		</div>
+		<!-- new end -->
+		<div class="text-center action" style="padding-top: 5px;">
+			<button class="btn btn-primary" type="button" ng-click="snap.flip(1)">查询</button>
+			<button class="btn btn-default" type="button" ng-click="snap.reset()">重置</button>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="app-list-grid pd10">
+		<table class="table table-bordered table-striped mb10">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>车牌号</th>
+					<th>驾驶员</th>
+					<th>地点</th>
+					<th>时间</th>
+					<th>变更情况</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="obj in snap.list track by $index">
+					<td>{{ $index + 1}}</td>
+					<td>{{obj.carNumber}}</td>
+					<td>{{obj.driverName}}</td>
+					<td><span we-location lat="obj.lat/1000000" lng="obj.lon/1000000"></span></td>
+					<td>{{obj.photoDate}}</td>
+					<td>变更</td>
+					<td>
+						<a href="" ng-click="snap.showDetail(obj)">查看</a>
+					</td>
+				</tr>
+				<tr ng-if="!snap.list.length || snap.list == null">
+					<td colspan="8">无数据</td>
+				</tr>
+			</tbody>
+		</table>
+		<wd-page-number total="snap.page.total" page-size="snap.page.page_size" page-index="snap.page.page_number" query="snap.flip"></wd-page-number>
+	</div>
+</div>

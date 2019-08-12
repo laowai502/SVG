@@ -1,0 +1,21 @@
+page-break-code {
+    .row{
+        justify-content: center;
+        .button{
+            margin: 0 0 0 1rem;
+            font-size: 1.4rem;
+        }
+    }
+    .tip{
+        color: red !important;
+        font-size: 1.2rem;
+        margin-top: 1rem !important;
+        text-indent: 1rem;
+    }
+    
+}
+page-code{
+    .item-inner{
+        border-bottom-width: 0 !important;
+    }
+}

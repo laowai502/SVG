@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>优惠券</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-row class="scan">
+		<ion-col col-6 (tap)="scanCoupons(2)">
+			<img src="assets/images/grand-scan.png" alt="">
+			<p>兑换</p>
+		</ion-col>
+		<ion-col col-6 (tap)="scanCoupons(1)">
+			<img src="assets/images/exchange-scan.png" alt="">
+			<p>发劵</p>
+		</ion-col>
+	</ion-row>
+	<ion-row class="management">
+		<ion-col col-6 (tap)="exchangeManagement()">
+			<img src="assets/images/exchange.png" alt="">
+			<p>兑换管理</p>
+		</ion-col>
+		<ion-col col-6 (tap)="grandManagement()">
+			<img src="assets/images/grand.png" alt="">
+			<p>发劵管理</p>
+		</ion-col>
+	</ion-row>
+</ion-content>

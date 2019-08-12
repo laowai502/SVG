@@ -1,0 +1,16 @@
+<div class="my-tree-select" uib-dropdown auto-close="outsideClick" is-open="isOpen" on-toggle="default.onToggle()">
+	<p class="PopoverIsOpen userSelect" title="{{motorcade}}" ng-class="{true: 'unabled', false: ''}[myDisabled]" uib-dropdown-toggle ng-disabled="myDisabled">
+		<input type="text" placeholder="{{placeholder}}" ng-model="motorcade" disabled>
+		<span class="fa fa-caret-down"></span>
+	</p>
+	<div class="dropdown-menu googleScroll" role="menu" uib-dropdown-menu>
+		<div class="Searchfor" ng-show="isSearch">
+			<!--搜索框-->
+			<input type="text" class="ml5 form-control" ng-model="keyWord" placeholder="请输入关键字" />
+			<span class="glyphicon glyphicon-search" ng-click="queryChange()"></span>
+		</div>
+		<div we-ztree on-create-success="onCreateTree(tree)" ng-show=" (!isAsyncTree && tree.nodes && tree.nodes.length > 0) || isAsyncTree" id="tree" option="tree.setting" checked-nodes="tree.checkedNodes" ng-model="tree.selected">
+		</div>
+		<div ng-show="!isAsyncTree && (!tree.nodes || tree.nodes.length == 0)" class="text-center">没有找到数据</div>
+	</div>
+</div>

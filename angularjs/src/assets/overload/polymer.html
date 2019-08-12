@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>载重实时监控</title>
+
+
+    <style type="text/css">
+        * {
+            font-size: 1.3rem;
+            list-style: none;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .BMap_cpyCtrl {
+            display: none;
+        }
+
+        .anchorBL {
+            display: none;
+        }
+
+        #carListUl>li {
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        #carListUl>li>div{
+            font-size: 1.4rem;
+            padding: 5px 0;
+            height: 30px;
+            text-align: center;
+            border-right: solid 1px #99FFFF4f;
+        }
+		
+		.td1 {
+			display: inline-block;
+			float: left;
+			width: 26px;
+		}
+		.td2 {
+			display: inline-block;
+			float: left;
+			width: 290px;
+			padding-left: 5px !important;
+			padding-right: 5px !important;
+		}
+		.td3 {
+			display: inline-block;
+			float: left;
+			width: 40px;
+		}
+		.td4 {
+			display: inline-block;
+			float: left;
+			width: 80px;
+		}
+		.td5 {
+			display: inline-block;
+			float: left;
+			width: 80px;
+		}
+
+        #visDiv li {
+            padding: 0.3rem;
+        }
+
+        .lableTimer li {
+            padding: 0.4rem;
+        }
+        .text-over-hidden {
+        	overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+        }
+        .tooltip-inner {
+    	    background-color: #FFF;
+		    color: #000;
+		    padding: 5px 10px;
+		    border: solid 1px #999999;
+		    font-size: 16px;
+		    box-shadow: 0 1px 6px #9e9e9e;
+		    max-width: 320px !important;
+		    min-width: 320px !important;
+        }
+        .tooltip-arrow {
+        	border-top-color: #FFFFFF !important;
+        }
+        
+        .apc {
+			min-width: 350px;
+			height: fit-content;
+			left: 16px;
+        }
+    </style>
+
+
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=fQOBYAhOTulu2sRlf4iSRkzFheEiW0Rz"></script>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer.js"></script>
+    <link rel="stylesheet" href="./app/styles/data.css" />
+
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet">
+    <link href="http://www.jq22.com/jquery/font-awesome.4.6.0.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="./libs/datapiker/daterangepicker-bs3.css" />
+    <script type="text/javascript" src="./libs/datapiker/jquery.min.js"></script>
+    <script type="text/javascript" src="./libs/datapiker/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./libs/datapiker/moment.min.js"></script>
+    <script type="text/javascript" src="./libs/datapiker/daterangepicker.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 1920 * 10 + 'px';
+    </script>
+    <link rel="stylesheet" href="./app/styles/common.css" />
+
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="opacity-div apc technology" style="width: 550px; bottom: 3rem; max-height: 450px;">
+        <h6 class="text-left">近期载荷记录</h6>
+        <div style="padding: 10px 16px;">
+            <ul class="top10-rank" id="carListUl"></ul>
+        </div>
+    </div>
+    <div class="opacity-div right-bottom technology" id="visDiv"
+        style="visibility: visible;position: fixed;height: fit-content;right: 465px;bottom: 342.5px;min-height: fit-content;">
+        <h6 class="text-left">车辆信息<span style="float: right;"></span></h6>
+        <div style="padding: 10px">
+            <ul id="carDetails" class="top10-rank">
+                <li class="row">
+                    <div class="col-sm-4 td">车牌号：</div>
+                    <div class="col-sm-8 td" id="chepai"></div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">时间：</div>
+                    <div class="col-sm-8 td" id="time"></div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">地点：</div>
+                    <div class="col-sm-8 td" id="location"></div>
+                </li>
+
+                <li class="row">
+                    <div class="col-sm-4 td">车型：</div>
+                    <div class="col-sm-8 td" id="wloadNo"></div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">当前载重：</div>
+                    <div class="col-sm-8 td" id="wload">1</div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">载重状态：</div>
+                    <div class="col-sm-8 td" id="zaizhong"></div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">额定载重：</div>
+                    <div class="col-sm-8 td" id="fullLoad">1</div>
+                </li>
+                <li class="row">
+                    <div class="col-sm-4 td">超载数量：</div>
+                    <div class="col-sm-8 td" id="chaozai">1</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./app/js/common.js"></script>
+    <script type="text/javascript" src="./config/config.js"></script>
+    <script type="text/javascript">
+    	
+    	var ajaxDataArr = null;    	
+    	var geoc = new BMap.Geocoder();  
+    	
+        function sasdaf() {
+            var max = 2;
+            var min = 0;
+            var w = max - min;
+            return Math.round(Math.random() * w + min)
+        }
+        function getLocalTime(nS) {
+            return moment(nS).format('MM/DD HH:mm:ss');
+        }
+        
+        function uniqueArr(arr) {
+			var o3 = [];
+			var t = 0;
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] != arr[i - 1]) {
+					o3[t] = arr[i];
+					t++;
+				}
+			}
+			arr.length = 0;
+			for (var j = 0; j < o3.length; j++) {
+				arr[j] = o3[j];
+			}
+			return o3;
+		}
+        function monthFirstTime(){
+            var date = new Date();
+            date.setDate(1);
+            var month = parseInt(date.getMonth()+1);
+            var day = date.getDate();
+            if (month < 10) {
+                month = '0' + month
+            }
+            if (day < 10) {
+                day = '0' + day
+            }
+            return date.getFullYear() + '-' + month + '-' + day + " 00:00:00";
+        }
+        function monthTime(){
+            var date = new Date();
+            var month = parseInt(date.getMonth()+1);
+            var day = date.getDate();
+            var min = date.getMinutes();
+            var hours = date.getHours();
+            var sec = date.getSeconds();
+            if (month < 10) {
+                month = '0' + month
+            }
+            if (day < 10) {
+                day = '0' + day
+            }
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            if (min < 10) {
+                min = '0' + min
+            }
+            if (sec < 10) {
+                sec = '0' + sec
+            }
+            return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + min + ":" + sec;
+        }
+
+        $(document).ready(function () {
+            var lastInfoWindow = null;
+            var carList = null;
+            var carPointMarkList = [];
+            var markerClusterer = null;
+
+            var jiashuju = localStorage.getItem('realData') ?
+                JSON.parse(localStorage.getItem('realData'))
+                :  {  //localStorage的key
+                    tid: '18855181171',        //终端id
+                    time: 1553061569000,     //末次位置时间
+                    lat: 31764996,           //末次位置纬度
+                    lng: 117205503,          //末次位置经度
+                    height: 405,             //海波高度
+                    speed: 0,                //车速 km/h
+                    dir: 3,                  //方向， 0 正北，顺时针360度，7北偏西
+                    tileId: 152589713491,    //
+                    lc01: 512000,            //市code
+                    lc02: 510000,            //省code
+                    wload: 24.7,             //当前载重
+                    wloadType: 0,         //载重状态
+                    wloadNo: "牵引车",       //车型
+                    fullLoad: 50,           //额定载重
+                    exceedFullLoad: 0,       //超载吨数
+                    vin: "LFWSRUPH3HAC21798",         //vin号
+                    carNumber: "皖AA6895",    //车牌号
+                    carId: "100609" ,          //车辆ID
+                    formatTime:  '2019-03-15 11:38:00',  //末次位置时间
+                    location: '安徽省合肥市蜀山区桃花镇杜郢',
+                    loadTypeText: '正常'   //载重状态汉字
+                };
+            var details = function (obj) {
+                $("#chepai").text(jiashuju.carNumber || '');
+                $("#time").text(jiashuju.formatTime || '');
+                $("#location").text(jiashuju.location || '');
+                $("#zaizhong").text(jiashuju.loadTypeText || '');
+                $("#chaozai").text(jiashuju.exceedFullLoad +"吨"|| '');
+                $("#fullLoad").text(jiashuju.fullLoad+"吨" || '');
+                $("#wloadNo").text(jiashuju.wloadNo || '');
+                $("#wload").text(jiashuju.wload +"吨" || '');
+            };
+            
+            var listInit = function (pMap) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: RPRESET_Url + "getWloadTripList",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        "start": monthFirstTime(), 
+                        "end": monthTime(), 
+                        "tids": [jiashuju.tid.toString()], 
+                        "page_size": 10, 
+                        "page_number": 1
+                    }),
+                    success: function (data) {
+                        var arr = data.data.data;
+                        var html = "";
+                        ajaxDataArr = arr;
+                        arr.forEach(function (item, index) {
+                        	if (item.fullLoad != 0) item.fullLoad = item.fullLoad/10;
+							if (item.maxLoad && item.maxLoad != 0) item.maxLoad = item.maxLoad/10;
+							item.maxOverLoad = 0;
+							if (item.maxLoad > 0 && item.fullLoad > 0) {
+								if ((item.maxLoad - item.fullLoad) > 0) {										
+									item.maxOverLoad = item.maxLoad - item.fullLoad;
+									item.maxOverLoad = item.maxOverLoad.toFixed(1);
+								}
+							}
+                            html += `<li class="row clickItem">
+                                        <div class="td1">${index + 1}</div>
+                                        <div class="td2 text-over-hidden">${getLocalTime(item.sTime) + " - " + getLocalTime(item.eTime)}</div>
+                                        <div class="td3">${item.fullLoad || 0}</div>
+                                        <div class="td4">${item.maxOverLoad}</div>
+                                        <div class="td5">${item.maxLoad || 0}</div>
+                                    </li>`
+                        });
+
+                        $("#carListUl").html(`<li class="row">
+                            <div class="td1"></div>
+                            <div class="td2">时间范围</div>
+                            <div class="td3">额载</div>
+                            <div class="td4">超载（吨）</div>
+                            <div class="td5">最大载重</div>
+                        </li>`+ html);
+                              
+                        $("#carListUl").on('click', '.clickItem', function(e) {
+                        	var index = $("ul li").index($(e.currentTarget)),
+                        		param = ajaxDataArr[index-1];
+                        	localStorage.setItem('historyData', JSON.stringify(param));
+                        	window.open('./track.html');
+                        });
+                        
+                        if (ajaxDataArr.length > 0) {
+	                        ajaxDataArr.forEach(function(item) {
+								item.wloadTypeText = '';
+								item.areaText = '';
+								item.sFormatTime = moment(item.sTime).format('YYYY-MM-DD HH:mm:ss');
+								item.eFormatTime = moment(item.eTime).format('YYYY-MM-DD HH:mm:ss');
+								item.maxOverLoad = 0;
+								if (item.eWload != 0) item.eWload = item.eWload/10;
+								if (item.exceedFullLoad != 0) item.exceedFullLoad = item.exceedFullLoad/10;
+
+								if (item.nodes) {
+									var areaArr = [],
+										wloadArr = [],
+										areaAllSame = true, //载重状态是否有变化
+										loadAllSame = true; //途径区域城市是否有变化
+									item.nodes.forEach(function(e) {
+										areaArr.push(getCityByCode(e.lc01));
+										wloadArr.push(getLoadTypeText(e.wtype));
+									});
+									if (areaArr.length > 0) {
+										for (var i=0; i<areaArr.length; i++) {
+											if (areaArr.indexOf(areaArr[i]) != 0) {
+												areaAllSame = false;
+												break;
+											}
+										}
+										if (!areaAllSame) {
+											areaArr = uniqueArr(areaArr);
+										}
+										item.areaText = areaAllSame ? areaArr[0] : areaArr.join(' - ');
+									}
+									if (wloadArr.length > 0) {
+										for (var i=0; i<wloadArr.length; i++) {
+											if (wloadArr.indexOf(wloadArr[i]) != 0) {
+												loadAllSame = false;
+												break;
+											}
+										}
+										item.wloadTypeText = loadAllSame ? wloadArr[0] : wloadArr.join(' - ');
+									}
+								}
+								(function(e) {
+									$.ajax({
+									  	url: RPRESET_Url + 'getCarInfoList',
+									  	type: 'POST',
+									  	data: JSON.stringify({
+					                        tids: [e.tid]
+					                    }),
+									  	success: function(data) {
+									  		if (data) {
+									  			var o = data.data;
+									  			e.vin = o[0].vin;
+									  			e.carNumber = o[0].plate;
+									  			e.carId = o[0].carId;
+									  		}
+									  	},
+									  	dataType: 'json',
+									  	contentType: "application/json;charset=utf-8"
+									});
+									geoc.getLocation(new BMap.Point( gcj02tobd09(e.sLong/1000000, e.sLat/1000000)[0], gcj02tobd09(e.sLong/1000000, e.sLat/1000000)[1] ), function(rs) {
+										e.sLocation = rs.address;
+									});  
+									geoc.getLocation(new BMap.Point( gcj02tobd09(e.eLong/1000000, e.eLat/1000000)[0], gcj02tobd09(e.sLong/1000000, e.sLat/1000000)[1] ), function(rs) {
+										e.eLocation = rs.address;
+									});
+								})(item);
+							});
+                        }
+
+                        $.getJSON("./libs/mocks/polymer.json", "", function (data) {
+                            data.map(function (item, index, arr) {
+								if (item.status !== 3) {
+									item.status = 1
+								}
+                                var point = new BMap.Point(item.stationLon, item.stationLat)
+                                var marker = new BMap.Marker(point)
+
+                                marker.setIcon(new BMap.Icon("./app/img/t-"+item.status+".png",{}))
+                                marker.setRotation(parseInt(item.fangxiang)*45)
+
+                                marker.indexZ = index;
+                                carPointMarkList.push(marker)
+                                if (index === arr.length - 1) {
+                                    markerClusterer = new BMapLib.MarkerClusterer(pMap, { markers: carPointMarkList });
+                                }
+                            });
+                            carList = data;
+                        });
+                    }
+                });
+            };
+            var makerInit = function (pMap) {
+                var point = new BMap.Point(jiashuju.lng / 1000000, jiashuju.lat / 1000000);
+                var marker = new BMap.Marker(point);
+                marker.setIcon(new BMap.Icon(jiashuju.wloadType === 3 ? "./app/img/t-3.png" : "./app/img/t-1.png", {}))
+                details(jiashuju)
+                $("#visDiv").css({ "right": '30px', "bottom": '1rem', visibility: "visible",opacity: '0.9',width: '23%' })
+                marker.setRotation(parseInt(jiashuju.dir)*45)
+                pMap.centerAndZoom(point, 13)
+                pMap.addOverlay(marker)
+                
+            }
+            var listenMouseWheel = function (map) {
+                $('#map').on('mousewheel', debounce(function (e) {
+                    setTimeout(function () {
+                        if (map.getZoom() > 8) {
+                            if (dataMapStyle.styleJson[dataMapStyle.styleJson.length - 1]['visibility'] === 'off') {
+                                dataMapStyle.styleJson[dataMapStyle.styleJson.length - 1]['visibility'] = 'on';
+                                map.setMapStyle(dataMapStyle);
+                            }
+                        } else {
+                            if (dataMapStyle.styleJson[dataMapStyle.styleJson.length - 1]['visibility'] === 'on') {
+                                dataMapStyle.styleJson[dataMapStyle.styleJson.length - 1]['visibility'] = 'off';
+                                map.setMapStyle(dataMapStyle);
+                            }
+                        }
+                    }, 500);
+                }, 300));
+            }
+            var init = function () {
+                // 百度地图API功能
+                var pMap = new BMap.Map("map", {
+                    enableMapClick: false
+                });    // 创建Map实例
+
+                pMap.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+                //common.js - dataMapStyle
+                pMap.setMapStyle(dataMapStyle);
+                listInit(pMap);
+                makerInit(pMap);
+
+                listenMouseWheel(pMap);
+            }
+            init();
+        });
+		
+//		window.onbeforeunload = function() {
+//			if (localStorage.getItem('realData')) {
+//				localStorage.removeItem('realData');
+//			}
+//		};
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+page-order-repair {
+    .scroll-content {
+        background-color: #FFFFFF;
+        .row {
+            padding: 0 1rem;
+            .sub {
+                line-height: 40px;
+                border-bottom: solid 1px #E9E9E9;
+                padding-top: 0 !important;
+                color: $base-nav-bgcolor !important;
+                font-size: 15px !important;
+            }
+            .col {
+                padding: 0;
+                select-photo {
+                    .photo {
+                        height: 6rem;
+                        width: 31%;
+                        display: inline-flex;
+                        justify-content: center;
+                        padding: 0 !important;
+                        margin: 10px 0 0 3%;
+                        .remove {
+                            top: -8px;
+                            right: -8px;
+                        }
+                        img{
+                            width: 100%;
+                            height: inherit;
+                        }
+                    }
+                    .photo:nth-child(3n+1) {
+                        margin-left: 0;
+                    }
+                }
+                .button-ios {
+                    margin-top: 1rem;
+                    height: 3.6rem;
+                }
+            }
+            .main-container{
+                margin-top: 1rem;
+                textarea {
+                    padding: 0;
+                    height: 10rem;
+                }
+                .show-orange {
+                    color: #fda51e;
+                }
+                span {
+                    display: block;
+                    float: right;
+                    color: #666666;
+                }
+            }
+        }
+        .row:first-child {
+            padding-top: 5px;
+        }
+        .row:last-child{
+            padding-top: 1rem;
+        }
+        .mavin{  
+            margin-top: 5px;       
+            .col{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    height: 14px;
+                    margin-right: 3px;
+                }       
+            }
+        }
+        .deal-list{
+            li{
+                width: 24%;
+                display: inline-block;
+                text-align: center;
+                list-style: none;
+                margin: 1.5rem 0 1rem 1%;
+                input{
+                    display: none;
+                }
+                label{
+                    width: 100%;
+                    padding: 5px 8px;
+                    font-size: 1.2rem;
+                    border-radius: 15px;
+                    background-color: #fff;
+                }
+                .default{
+                    border: 1px solid $border-color;
+                    color: $border-color;
+                }
+                .active{
+                    border: 1px solid $text-title;
+                    color: $text-title;
+                }
+            }
+            li:first-child{
+                margin-left: 0;
+            }
+        }
+    }
+}

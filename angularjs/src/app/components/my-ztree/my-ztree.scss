@@ -1,0 +1,26 @@
+.my-tree-select{
+  .Searchfor {
+    position: relative;
+    margin-left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .Searchfor input {
+    padding-right: 30px;
+    margin: 0px;
+    width: 100%;
+  }
+
+  .Searchfor span {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+}
+//.dropdown-menu{
+//width: 240px;
+//}

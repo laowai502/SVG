@@ -1,0 +1,55 @@
+select-photo {
+    .photo{
+        position: relative;
+        padding: 1rem !important;
+        .remove{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-weight: bold;
+            display: block;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            text-align: center;
+            border: 1px solid red;
+            border-radius: 50%;
+            background-color: rgba(246, 240, 237, 0.92);
+            ion-icon{
+                margin: 0;
+                font-size: 2rem;
+            }
+        }
+    }
+    .browse-img-bg{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #333;
+        opacity: 0.5;
+        z-index: 1;
+        
+    }
+    .browse-img{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        .big-img{
+            width: 20rem !important;
+            height: 15rem !important;
+        }
+    }
+    
+}
+.action-sheet-button{
+    font-size: 1.4rem !important;
+}

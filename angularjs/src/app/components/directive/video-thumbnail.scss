@@ -1,0 +1,37 @@
+.we-video-thumbnail {
+    display: inline-block;
+    position: relative;
+    .we-video-overlay {
+        position: absolute;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        background: rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+    .fa {
+        color: #fdfdfd;
+        cursor: pointer;
+        position: absolute;
+        z-index: 12;
+        &:hover {
+            opacity: .5;
+        }
+    }
+    .fa-play-circle {
+        font-size: 16px;
+        top: 22px;
+        left: 22px;
+    }
+    .fa-download {
+        visibility: hidden;
+        font-size: 12px;
+        right: 4px;
+        bottom: 5px;
+    }
+    &:hover {
+        .fa-download {
+            visibility: visible;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+drop-down {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    padding: 9.5px 8px 11px 16px;
+    .select-title{
+       text-align: center;
+        .select-icon{
+            position: relative;
+            display: inline-block;
+            width: 12px;
+            height: 18px;
+            .select-icon-inner{
+                left: 5px;
+                top: 50%;
+                margin-top: -2px;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-top: 5px solid;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                color: #999;
+                pointer-events: none;
+            }
+        }
+        .select-placeholder {
+            color: #999;
+        }
+        .select-text {
+            overflow: hidden;
+            flex: 1;
+            min-width: 16px;
+            font-size: inherit;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

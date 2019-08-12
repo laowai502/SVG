@@ -1,0 +1,54 @@
+page-login {
+    .scroll-content {
+        padding-bottom: 0px !important;
+        background-color: #FFFFFF;
+        .Logo {
+            margin-top: 7rem;
+            .logo-img {
+                text-align: center;
+                background: url(../assets/images/logo.png) no-repeat center;
+                background-size: 10rem;
+                width: 100%;
+                height: 10rem;
+            }
+            .logo-img:after {
+                top: 11.4rem;
+                color: #666666;
+                font-size: 1.8rem;
+                position: relative;
+                content: "重卡汇服务版app";
+            }
+            .list-ios {
+                margin: 8rem 0 2.4rem 0;
+                padding: 0px 7px;
+                .item-ios:first-child {
+                    border-top-width: 0px;
+                }
+                .item-ios {
+                    padding-left: 0rem;
+                    font-size: 1.5rem;
+                    min-height: 3.6rem;
+                    border-color: #e0dfdf;
+                    .item-inner {
+                        border-color: #e0dfdf;
+                        padding-right: 0px;
+                    }
+                    .label-ios {
+                        padding-left: 10px;
+                        margin-right: 0px;
+                    }
+                    .text-input-clear-icon {
+                        right: 0px;
+                    }
+                    .text-input-ios {
+                        font-size: 1.3rem;
+                        margin-bottom: 8px;
+                    }
+                }
+            }
+        }
+        .button-ios {
+            height: 4rem;
+        }
+    }
+}

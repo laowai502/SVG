@@ -1,0 +1,59 @@
+<div class="block manager">
+	<div class="selector">
+		<div class="field">
+			<label>车牌号</label>
+			<input type="text" class="form-control" ng-model="query.carNumber">
+		</div>
+		<div class="field">
+			<label>报警类型</label>
+			<select class="form-control" ng-model="query.alarmType">
+				<option ng-repeat="x in alarmSelect" ng-value="x.value">{{x.name}}</option>
+			</select>
+		</div>
+		<div class="field hasDateRange">
+			<label>显示时间</label>
+			<input we-date-range clearable="true" cancel-init="true" readonly type="text" class="form-control" start="query.queryDateStart" end="query.queryDateEnd" picker-options="{{ datePickerRightOptions }}" placeholder="请选择时间范围">
+		</div>
+		<div class="text-center action" style="padding-top: 5px;">
+			<button class="btn btn-primary" type="button" ng-click="flip(1)">查询</button>
+			<button class="btn btn-default" type="button" ng-click="reset()">重置</button>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="app-list-grid pd10">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>车牌号</th>
+					<th>车号</th>
+					<th>司机名称</th>
+					<th>报警类型</th>
+					<th>风险等级</th>
+					<th>时间</th>
+					<th>地点</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="obj in list track by $index">
+					<td>{{ $index + 1}}</td>
+					<td>{{obj.carNumber}}</td>
+					<td>{{obj.carCode}}</td>
+					<td>{{obj.driverName}}</td>
+					<td>{{obj.alarmType}}</td>
+					<td>{{obj.alarmLevel}}</td>
+					<td>{{obj.alarmTime}}</td>
+					<td><span we-location lng="obj.lon" lat="obj.lat"></span></td>
+					<td>
+						<a ng-if="obj.alarmTypeCode*1<13 || obj.alarmTypeCode*1>16" ng-click="toDetail(obj)">详情</a>
+					</td>
+				</tr>
+				<tr ng-if="list.length==0">
+					<td colspan="9">无数据</td>
+				</tr>
+			</tbody>
+		</table>
+		<wd-page-number total="page.total" page-size="page.page_size" page-index="page.page_number" query="flip"></wd-page-number>
+	</div>
+</div>

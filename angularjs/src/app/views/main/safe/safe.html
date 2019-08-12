@@ -1,0 +1,60 @@
+<div class="block manager">
+	<div class="selector">
+		<div class="field">
+			<label>车牌号</label>
+			<input type="text" class="form-control" ng-model="safe.query.carNumber">
+		</div>
+		<div class="field">
+			<label>司机名称</label>
+			<input type="text" class="form-control" ng-model="safe.query.driverName">
+		</div>
+		<div class="field hasDateRange">
+			<label>查询时间</label>&#10;
+			<input we-date-range type="text" class="form-control" readonly
+				start="safe.query.startDate" end="safe.query.endDate" cancel-init="true"
+				picker-options="{{ safe.datePickerOptions }}">
+		</div>
+		<!-- new end -->
+		<div class="text-center action" style="padding-top: 5px;">
+			<button class="btn btn-primary" type="button" ng-click="safe.flip(1)">查询</button>
+			<button class="btn btn-default" type="button" ng-click="safe.reset()">重置</button>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="app-list-grid pd10">
+		<table class="table table-bordered table-striped mb0">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>车牌号</th>
+					<th>车号</th>
+					<th>司机</th>
+					<th>安全事件次数</th>
+					<th>ADAS事件次数</th>
+					<th>DMS事件次数</th>
+					<th>驾驶行为事件次数</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="obj in safe.list track by $index">
+					<td>{{ $index + 1 }}</td>
+					<td>{{obj.carNumber}}</td>
+					<td>{{obj.carCode}}</td>
+					<td><a ng-repeat="item in obj.driverName" ui-sref="main.driverDetail({ id: item.code })">{{ item.name + ' ' }}</a></td>
+					<td>{{obj.total}}</td>
+					<td>{{obj.adas}}</td>
+					<td>{{obj.dms}}</td>
+					<td>{{obj.driverBehavior}}</td>
+					<td>
+						<a href="" ng-click="safe.go(obj)" title="详情看板">详情看板</a>
+					</td>
+				</tr>
+				<tr ng-if="!safe.list.length || safe.list == null">
+					<td colspan="10">无数据</td>
+				</tr>
+			</tbody>
+		</table>
+		<wd-page-number total="safe.page.total" page-size="safe.page.page_size" page-index="safe.page.page_number" query="safe.flip"></wd-page-number>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<div class="block manager">
+    <div class="selector">
+        <div class="field">
+            <label>驾驶员姓名</label>
+            <input type="text" class="form-control" ng-model="driver.query.driverName">
+        </div>
+        <div class="field">
+            <label>身份证号</label>
+            <input type="text" class="form-control" ng-model="driver.query.IdentityNo">
+        </div>
+        <div class="field">
+            <label>绑定车辆</label>
+            <input type="text" class="form-control" ng-model="driver.query.carNumber">
+        </div>
+
+        <!-- new end -->
+        <div class="text-center action" style="padding-top: 5px;" align="right">
+            <button class="btn btn-primary" type="button" ng-click="driver.flip(1)">查询</button>
+            <button class="btn btn-default" type="button" ng-click="driver.reset()">重置</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="app-list-grid pd10">
+        <table class="table table-bordered table-striped mb10">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>身份证号</th>
+                <th>绑定车辆</th>
+                <th>车辆类型</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="obj in driver.list track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{obj.driverName}}</td>
+                <td>{{obj.certNo}}</td>
+                <td>{{obj.carNumber}}</td>
+                <td>{{obj.carType}}</td>
+                <td>
+                    <a ui-sref="main.driverDetail({id:obj.driverCode})">查看</a>
+                </td>
+            </tr>
+            <tr ng-if="driver.list.length == 0 || driver.list == null">
+                <td colspan="8">无数据</td>
+            </tr>
+            </tbody>
+        </table>
+        <wd-page-number total="driver.page.total" page-size="driver.page.page_size" page-index="driver.page.page_number" query="driver.flip"></wd-page-number>
+    </div>
+</div>

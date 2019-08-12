@@ -1,0 +1,53 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>历史工单</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-row class="search-bar">
+		<ion-col col-7>
+			<ion-searchbar [(ngModel)]="searchQuery" placeholder="底盘号/车牌号" type="text" showCancelButton="true" cancelButtonText=""></ion-searchbar>
+		</ion-col>
+		<ion-col col-3>
+			<button ion-button (click)="initializeItems(1)">搜 索</button>
+		</ion-col>
+	</ion-row>
+	<ion-list no-lines class="list-outer">
+		<ion-item *ngFor="let order of workOrderList" class="list-item" (tap)="toDetail(order)">
+			<ion-thumbnail item-start class="border-right">
+				<img [src]="order.woType | orderType:order.maintainWay">
+			</ion-thumbnail>
+			<ion-item>
+				<h2>{{order.carCode}}({{order.vin}})</h2>
+			</ion-item>
+			<ion-item class="list-middle">
+				<!-- <ion-icon name="ios-clock-outline" color="primary" item-start></ion-icon>
+				<p>{{order.date}}</p> -->
+				<p>当前状态：{{order.woStatus}}</p>
+				<ion-icon name="ios-arrow-forward-outline" color="murk" item-end></ion-icon>
+			</ion-item>
+			<ion-item>
+				<ion-icon name="ios-pin" color="murk" item-start></ion-icon>
+				<p>{{order.repairAdd}}</p>
+			</ion-item>
+			<ion-thumbnail class="item-right">
+				<img [src]="order.orderWay | orderWay">
+			</ion-thumbnail>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="workOrderList.length == 0 || workOrderList == null ">
+		<div class="nodate">
+			<p padding style="text-align:center;">无历史工单</p>
+		</div>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText={{loadeMoreText}}>
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>手动输入车辆底盘号</ion-title>
+		<ion-buttons end>
+			<button class="nav-btn-icon" (click)="showTip()"></button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-row>
+		<ion-col col-12>
+			<div class="inputBoxContainer">
+				<input type="text" maxlength="8" class="realInput" (keydown)="pressKeyboard($event)"
+					   [(ngModel)]="row.vin" (ngModelChange)="inputChange()" />
+				<div class="bogusInput">
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+					<input type="text" maxlength="1" disabled />
+				</div>
+			</div>
+		</ion-col>
+		<ion-col col-12>请输入底盘号（车身VIN号码后八位）</ion-col>
+		<ion-col col-12>
+			<button ion-button block (click)="ok()">确 定</button>
+		</ion-col>
+	</ion-row>
+</ion-content>

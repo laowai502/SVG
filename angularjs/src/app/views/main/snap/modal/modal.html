@@ -1,0 +1,56 @@
+<div class="modal-header">
+	<h5 class="modal-title"><img src="./assets/images/route-line-max.png" class="mt-4">
+		照片记录 {{ vm.info.carNumber }}({{ vm.info.carCode }})
+	</h5>
+	<button type="button" class="close closeButton" ng-click="vm.cancel()">
+		<span><img src="./assets/images/icon_30.png"></span>
+	</button>
+</div>
+<div class="modal-body" style="height: 380px;">
+	<div class="col-sm-12">
+		<!--<div class="wh200 ib mr5 mb0 thumbnail">
+			<img style="height: 190px;" ng-src="{{ vm.info.fileUrl }}" alt="" />
+		</div>-->
+		<div class="col-md-8">
+			<section class="swipe">
+				<swiper>
+					<slides>
+						<slide ng-repeat="item in vm.fileUrls">
+							<img ng-if="item.isImg" ng-src="{{ item.videoUrl }}" width="320" height="200" alt="">
+							<video style="padding-bottom: 10px;" ng-if="!item.isImg" ng-src="{{ item.videoUrl }}" width="320" height="200" controls="controls"></video>
+						</slide>
+					</slides>
+					<prev></prev>
+					<next></next>
+					<pagination></pagination>
+				</swiper>
+			</section>
+		</div>
+		<div class="col-sm-4 wh200 ib mb0 thumbnail">
+			<img style="height: 190px;" ng-src="{{ vm.info.cerNoImg }}" alt="" />
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<label class="col-sm-4 control-label">变更情况</label>
+		<p class="ib" style="line-height: 34px;">变更</p>
+	</div>
+	<div class="col-sm-12">
+		<label class="col-sm-4 control-label">司机</label>
+		<p class="ib" style="line-height: 34px;" ng-bind="vm.info.driverName"></p>
+	</div>
+	<div class="col-sm-12">
+		<label class="col-sm-4 control-label">车速</label>
+		<p class="ib" style="line-height: 34px;">{{ vm.info.speed }} km/h</p>
+	</div>
+	<div class="col-sm-12">
+		<label class="col-sm-4 control-label">时间</label>
+		<p class="ib" style="line-height: 34px;" ng-bind="vm.info.photoDate"></p>
+	</div>
+	<div class="col-sm-12">
+		<label class="col-sm-4 control-label">地点</label>
+		<p class="ib force-text-wrap col-sm-8" style="line-height: 34px;" we-location lat="vm.info.lat/1000000" lng="vm.info.lon/1000000"></p>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary ml15" ng-click="vm.cancel()">确认</button>
+</div>

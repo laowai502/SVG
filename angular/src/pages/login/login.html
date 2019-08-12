@@ -1,0 +1,20 @@
+<ion-content padding>
+	<section class="Logo">
+		<div class="logo-img"></div>
+		<ion-list>
+			<ion-item>
+				<ion-label>账号</ion-label>
+				<ion-input type="text" placeholder="请输入账号" [(ngModel)]="username" clearInput></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>密码</ion-label>
+				<ion-input type="password" placeholder="请输入密码" [(ngModel)]="password" clearInput></ion-input>
+			</ion-item>
+		</ion-list>
+		<ion-row>
+		    <ion-col col-12>
+		    	<button ion-button block (click)="userlogin(username, password)">登录</button>
+		    </ion-col>
+		</ion-row>
+	</section>
+</ion-content>

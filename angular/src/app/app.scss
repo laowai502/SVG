@@ -1,0 +1,221 @@
+// reset ionic css
+
+$base-nav-bgcolor: #4287ff;    //头部导航栏默认颜色
+$base-fit-bgcolor: #4db2ff;
+$base-nav-text-color: #FFFFFF; //头部标题文字颜色
+$base-text-color: #333333;    
+$button-bgcolor: #4287ff;      //按钮背景
+$button-text-color: #FFFFFF;   //按钮文字颜色
+$base-content-bgcolor: #F0F0F0 !important;  //背景颜色
+$text-readonly: #999; //只读模式下的文字颜色
+$text-color: #333;//默认的文字颜色
+$text-fit-color: #666;//默认的文字颜色
+$text-title: #488aff;//标题的文字颜色
+$border-color:#999;//边框颜色
+$border-light-color:#ebebeb;//边框颜色浅
+$border-radius: 0.5rem;//圆角
+$modal-radius: 4px;
+$textarea-bg: beige;//textarea背景色
+
+html,body{
+    
+    font-size: 10px;
+    
+    @media screen and (min-width:321px) and (max-width:375px) {
+        font-size: 11px
+    }
+
+    @media screen and (min-width:376px) and (max-width:414px) {
+        font-size: 12px
+    }
+
+    @media screen and (min-width:415px) and (max-width:639px) {
+        font-size: 15px
+    }
+
+    @media screen and (min-width:640px) and (max-width:719px) {
+        font-size: 20px
+    }
+
+    @media screen and (min-width:720px) and (max-width:749px) {
+        font-size: 22.5px
+    }
+
+    @media screen and (min-width:750px) and (max-width:799px) {
+        font-size: 23.5px
+    }
+
+    @media screen and (min-width:800px) {
+        font-size: 25px
+    }
+    
+    textarea{
+        width: 100%;
+        border-width: 0;
+        padding: 0;
+        resize: none;
+    }
+    p{
+        margin: 0 !important;
+        color: $text-color !important;
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        li{
+            list-style: none;
+        }
+    }
+    
+    .toolbar-ios{
+        height: 44px !important;
+        min-height: 44px !important;
+    }
+    .toolbar-background-ios{
+        background-color: $base-nav-bgcolor;
+        border-bottom-width: 0px !important;
+    }
+    .toolbar-title-ios{
+        color: $base-nav-text-color;
+        font-size: 1.6rem;
+        font-weight: normal;
+    }
+    .back-button-icon-ios{
+        font-size: 2.4rem;
+        margin-left: 0.6rem;
+    }
+    .bar-button-default-ios{
+        color: $base-nav-text-color;
+    }
+    .content-ios{
+        background-color: $base-content-bgcolor;
+    }
+    /*
+     * 角标
+     */
+    .badge{
+        width: 20px;
+        height: 20px;
+        padding-top: 2px;
+        position: absolute;
+        border-radius: 50%;
+        color: #FFFFFF;
+        font-size: 14px;
+        background-color: #ff0000;
+        right: 15px;
+        @media screen and (min-width:321px) and (max-width:375px) {
+            right: 23px;
+        }
+        @media screen and (min-width:376px) and (max-width:414px) {
+            right: 28px;
+        }
+    }
+    .triangle {
+        position: absolute;
+        top: -6px;
+        right: 6px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #FFFFFF;
+    }
+    /*
+     * loading reset
+     */
+    .loading-ios{
+        padding-bottom: 20rem;
+        .backdrop-no-tappable{
+            background: none;
+        }
+        .loading-wrapper{
+            background: none;
+            .spinner-ios {
+               width: 32px;
+               height: 32px;
+            }
+            .loading-content{
+                color: $loading-ios-spinner-color;
+            }
+        }
+    }
+    .service-fail {
+        .alert-wrapper{
+            .alert-head{
+                background: url(../assets/images/modal-bg.png) repeat-x;
+                color: #333333;
+            }
+            .alert-message{
+                color: #666666;
+            }
+            .alert-button{
+                color: #4db2ff;
+            }
+        }
+    }
+    .httpToast{
+        pointer-events: auto;
+        .toast-bottom{
+            left: 50%;
+            right: auto;
+            bottom: 6rem !important;
+            background: none;
+        }
+        .toast-container{
+            left: -50%;
+            position: relative;
+            border-radius: 0.4rem;
+            background: rgba(75, 75, 75, 0.75);
+        }
+        .toast-message{
+            font-size: 13px;
+            padding: 12px 12px;
+        }
+    }
+    
+    .alert-ios{
+        .alert-wrapper{            
+            width: 260px;
+            max-width: 260px;
+            border-radius: $modal-radius;
+            .alert-head{
+                padding-top: 20px;
+                .alert-title{
+                    font-weight: normal;
+                    font-size: 16px;
+                }
+            }
+            .alert-message{
+                padding-top: 15px;
+                padding-bottom: 28px;
+                font-size: 14px;
+            }
+            .alert-button{
+                font-weight: normal;
+                font-size: 16px;
+            }
+        }
+    }
+    
+    .action-sheet-ios{
+        .action-sheet-button{
+            min-height: 4rem;
+            padding: 14px;
+        }
+    }
+    
+    .select-popover{
+        .popover-content{
+            width: 50%;
+            .item{
+                font-size: 1.4rem;
+                min-height: 3rem;
+                .item-inner{
+                    border-bottom-width: 0px;
+                    .label-ios{
+                        margin: 0;
+                        color: #666666;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,139 @@
+<section id="dataBox" class="container">
+	<div class="row" style="margin-top: 8px;">
+		<!-- 左侧面板 -->
+		<div class="col-sm-9 pdr14">
+			<div class="col-sm-4 pdr14">
+				<div class="card">
+					<h5>百公里高危风险次数</h5>
+					<div class="col-sm-12">						
+						<p class="ib">本日  <span>{{ databox.card.kilometresCnt }}</span> 次</p>
+						<div class="fr">							
+							<i class="fa" style="font-size: 16px;" 
+								ng-class="{true: 'fa-long-arrow-up', false: 'fa-long-arrow-down'}[databox.card.kilometresCntTrend >= 0]"
+								aria-hidden="true"></i>
+							<p class="ib ml5" ng-class="{true: 'red', false: 'blue'}[databox.card.kilometresCntTrend >= 0]"> {{ databox.card.ads_one + '%' }}</p>
+						</div>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">昨天</p>
+						<div class="col-sm-8 ib">
+							<uib-progressbar value="databox.card.y1" type="{{ databox.card.y1Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterdayKilometresCnt }}</p>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">前天</p>
+						<div class="col-sm-8 ib">							
+							<uib-progressbar value="databox.card.y2" type="{{ databox.card.y2Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterday2KilometresCnt }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 pdr14">
+				<div class="card">
+					<h5>高危风险总次数</h5>
+					<div class="col-sm-12">						
+						<p class="ib">本日  <span>{{ databox.card.hichRiskTotal }}</span> 次</p>
+						<div class="fr">							
+							<i class="fa" style="font-size: 16px;" 
+								ng-class="{true: 'fa-long-arrow-up', false: 'fa-long-arrow-down'}[databox.card.hichRiskTotalTrend >= 0]" 
+								aria-hidden="true"></i>
+							<p class="ib ml5" ng-class="{true: 'red', false: 'blue'}[databox.card.hichRiskTotalTrend >= 0]"> {{ databox.card.ads_two + '%' }}</p>
+						</div>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">昨天</p>
+						<div class="col-sm-8 ib">
+							<uib-progressbar value="databox.card.y3" type="{{ databox.card.y3Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterdayhichRiskTotal }}</p>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">前天</p>
+						<div class="col-sm-8 ib">							
+							<uib-progressbar value="databox.card.y4" type="{{ databox.card.y4Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterday2hichRiskTotal }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card">
+					<h5>高危风险占比</h5>
+					<div class="col-sm-12">						
+						<p class="ib">本日  <span>{{ databox.card.hichRiskRate }}</span> %</p>
+						<div class="fr">							
+							<i class="fa" style="font-size: 16px;" 
+								ng-class="{true: 'fa-long-arrow-up', false: 'fa-long-arrow-down'}[databox.card.hichRiskRateTrend >= 0]" 
+								aria-hidden="true"></i>
+							<p class="ib ml5" ng-class="{true: 'red', false: 'blue'}[databox.card.hichRiskRateTrend >= 0]"> {{ databox.card.ads_three + '%' }}</p>
+						</div>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">昨天</p>
+						<div class="col-sm-8 ib">
+							<uib-progressbar value="databox.card.y5" type="{{ databox.card.y5Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterdayhichRiskRate }}%</p>
+					</div>
+					<div class="col-sm-12 progress-wrap">
+						<p class="ib fl mr20">前天</p>
+						<div class="col-sm-8 ib">							
+							<uib-progressbar value="databox.card.y6" type="{{ databox.card.y6Color }}"></uib-progressbar>
+						</div>
+						<p class="ib fr">{{ databox.card.yesterday2hichRiskRate }}%</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<wd-date-picker class="wh200 ib ht24" hide-clear-btn=true ng-model="databox.queryDate" end-date="databox.nowTime"></wd-date-picker>
+						<h3 class="panel-title ib ml15">车辆风险次数统计(单车次数）</h3>
+						<a class="heading-link" ui-sref="main.safe">查看全部</a>
+					</div>
+					<div class="panel-body" style="height: 300px;">
+						<div we-echarts option="databox.leftFirstChar" class="mlra" c-loading="databox.leftFirstCharloading"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">车辆安全排名及上月对比</h3>
+					</div>
+					<div class="panel-body">
+						<uib-tabset active="activeJustified">
+							<uib-tab index="0" heading="前十名" ng-click="databox.changeRank('0')"></uib-tab>
+							<uib-tab index="1" heading="后十名" ng-click="databox.changeRank('1')"></uib-tab>
+						</uib-tabset>
+						<div class="mt16" style="height: 300px;">
+							<div we-echarts option="databox.leftSecondChar" class="mlra" c-loading="databox.leftSecondCharloading"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 7天安全事件对比 -->
+		<div class="col-sm-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">7天安全事件对比</h3>
+					<p>{{ databox.vsDate + ' vs ' + databox.vsDateAfter }}</p>
+				</div>
+				<div class="panel-body">
+					<div style="height: 300px;">
+						<div we-echarts option="databox.dmsChar" class="mlra" c-loading="databox.rightCharsloading"></div>
+					</div>
+					<div style="height: 260px;">
+						<div we-echarts option="databox.adasChar" class="mlra" c-loading="databox.rightCharsloading"></div>
+					</div>
+					<div style="height: 257px;">
+						<div we-echarts option="databox.behaviorChar" class="mlra" c-loading="databox.rightCharsloading"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

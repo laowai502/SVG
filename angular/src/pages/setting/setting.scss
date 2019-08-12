@@ -1,0 +1,64 @@
+page-setting {
+    ion-grid{
+        padding: 0;
+        background-color: #fff;
+        margin-bottom: 1rem;
+    }
+    ion-item{
+        background-color: transparent; 
+    }
+    .item-inner{
+        border-bottom-width: 0 !important; 
+    }
+    .item-block{
+        min-height: 0 !important;
+    }
+    .company-img{
+        height: 100%;
+        width: 100%;
+    }
+   
+    .item > ion-icon, .item-inner > ion-icon{
+        font-size: 2rem !important;
+        min-height: 2rem;
+    }
+    .show-data{
+        font-size: 1.2rem !important;
+    }
+    .item-ios [item-left], .item-ios [item-start] {
+        margin: 0;
+    }
+    .right-data {
+        .item-block{
+            padding: 0 !important;
+        }
+        ion-label{
+            margin: 0.5rem;
+        }
+    }
+    img{
+        height: 100%;
+        width: 100%;
+    }
+    .person,.coupon,.update,.clean,.log-out{
+        width: 1.5rem;
+        height: 1.5rem;
+        background-size: 1.5rem 1.5rem;
+        margin-right: 1rem !important; 
+    }
+    .coupon{
+        background-image: url('../assets/images/coupon.png');
+    }
+    .update{
+        background-image: url('../assets/images/update.png');
+    }
+    .person{
+        background-image: url('../assets/images/person.png');
+    }
+    .clean{
+        background-image: url('../assets/images/clean.png');
+    }
+    .log-out{
+        background-image: url('../assets/images/log-out.png');
+    }
+}

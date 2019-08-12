@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>确认接受</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list no-lines>
+		<ion-item>
+			<ion-label fixed>工单类型：</ion-label>
+			<ion-select *ngIf="!row.type" class="drop-down" interface="popover" placeholder="请选择工单类型" [(ngModel)]="row.woType" (ngModelChange)="changeOrderType()">
+				<ion-option value="2">外出救援</ion-option>
+				<ion-option value="1">进出站</ion-option>
+			</ion-select>
+			<ion-input *ngIf="row.type" type="text" readonly [(ngModel)]="typeText"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="showPosition">
+			<ion-label fixed>车辆位置：</ion-label>
+			<ion-input type="text" placeholder="请点击选择车辆位置" readonly (tap)="openCity()" [(ngModel)]="pos.addr"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>指派人员：</ion-label>
+			<ion-select class="drop-down" interface="popover" placeholder="请选择指派人员" [(ngModel)]="row.assignId">
+				<ion-option *ngFor="let assign of assigners" [value]="assign.serviceUserName">{{assign.serviceUserName}}</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>故障描述：</ion-label>
+			<ion-textarea maxlength="100" [(ngModel)]="row.faultDescription" placeholder="请输入故障描述"></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<ion-row>
+		<ion-col col-12>			
+			<button ion-button block (click)="commit()">提 交</button>
+		</ion-col>
+	</ion-row>
+</ion-content>

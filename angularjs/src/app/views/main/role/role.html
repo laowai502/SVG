@@ -1,0 +1,62 @@
+<div class="block manager mainRole">
+    <div class="selector">
+        <div class="field">
+            <div class="ib">
+                <label>角色名称</label>
+                <input type="text" class="form-control" ng-model="role.inputText"/>
+            </div>
+        </div>
+        <div class="action" style="padding-top: 5px;">
+            <button class="btn btn-primary" ng-click="role.page.pageIndex=1;role.getList()">查询</button>
+            <button class="btn btn-primary" ng-click="role.add('',0)" >新增</button>
+            <button class="btn btn-primary" ng-click="role.formoreobj();role.change()">高级筛选</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="selector" ng-show="role.moreobject">
+        <div class="field" style="width: 440px;">
+            <label>创建时间</label>
+            <wd-date-picker date="role.roleDateStart" ng-model="role.roleDateStart" end-date="role.nowTime" ng-change="role.pageIndex=1;role.changeDate()" style="height: 30px">
+            </wd-date-picker>
+            <span style="text-align: center;">至</span>
+            <wd-date-picker date="role.roleDateEnd" ng-model="role.roleDateEnd"  end-date="role.nowTime" ng-change="role.pageIndex=1;role.changeDate()" style="height: 30px">
+            </wd-date-picker>
+        </div>
+        <div class="field">
+            <label>创建人</label>
+            <select class="form-control" ng-model="role.creator" name="creatorList" id="creatorList" ng-change="role.pageIndex=1;role.changeDate()">
+                <option value="" selected="selected">全部</option>
+                <option ng-repeat="obj in role.CREATOR" value="{{obj.id}}">{{obj.name}}</option>
+            </select>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="app-list-grid pd10">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>角色名称</th>
+                <th>创建人</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="obj in role.list">
+                <td>{{obj.name}}</td>
+                <td>{{obj.creatorName}}</td>
+                <td>{{obj.createTime}}</td>
+                <td>
+                    <a ng-click="role.add(obj,1)">编辑</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a ng-click="role.delete(obj.id,obj.name)">删除</a>
+                </td>
+            </tr>
+            <tr ng-if="role.list.length==0">
+                <td colspan="8">无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <wd-page-number total="role.page.total" page-size="role.page.page_size" page-index="role.page.page_number" query="role.flip"></wd-page-number>
+</div>

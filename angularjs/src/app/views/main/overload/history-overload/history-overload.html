@@ -1,0 +1,96 @@
+<div id="carInfor" class="app-list container-fluid">
+	<div class="app-list-search row">
+		<div class="col-xs-2">
+			<label for="plates">车牌号</label>
+			<input id="plates" type="text" ng-model="historyOverload.query.plates" autocomplete="off" placeholder="请输入车牌号">
+		</div>
+		<!--<div class="col-xs-2">
+			<label for="vins">vin号</label>
+			<input id="vins" type="text" ng-model="historyOverload.query.vins" autocomplete="off" placeholder="请输入vin号">
+		</div>-->
+		<div class="col-xs-2">
+			<label for="carType">车型</label>
+			<select id="carType" ng-model="historyOverload.query.carType">
+				<option value="" selected="selected">全部</option>
+				<option ng-repeat="x in historyOverload.filter.carTypeArr" ng-value='x'>{{ x}}</option>
+			</select>
+		</div>
+		<div class="col-xs-2">
+			<label for="loadType">时间范围</label>
+			<input we-date-range type="text" class="form-control" readonly
+				start="historyOverload.query.start" end="historyOverload.query.end" cancel-init="true"
+				picker-options="{{ historyOverload.datePickerOptions }}">
+		</div>
+		<div class="col-xs-1">
+			<label for="loadType">载重状态</label>
+			<select id="loadType" ng-model="historyOverload.query.loadType">
+				<option value="" selected="selected">全部</option>
+				<option ng-repeat="x in historyOverload.filter.loadTypeArr" ng-value='x.id'>{{ x.name }}</option>
+			</select>
+		</div>
+		<div class="col-xs-2">
+			<div class="col-xs-6">
+				<label for="province">省</label>
+				<select id="province" ng-model="historyOverload.query.province" ng-change="historyOverload.changeProvince(historyOverload.query.province)">
+					<option value="" selected="selected">请选择省份</option>
+					<option ng-repeat="x in historyOverload.filter.provinceArr" ng-value='x.code'>{{ x.name }}</option>
+				</select>
+			</div>
+			<div class="col-xs-6">
+				<label for="province">市</label>
+				<select id="province" ng-model="historyOverload.query.city">
+					<option value="" selected="selected">请选择城市</option>
+					<option ng-repeat="x in historyOverload.filter.cityArr" ng-value='x.code'>{{ x.name }}</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<button class="btn btn-primary" type="button" ng-click="historyOverload.getList()">搜索</button>
+		</div>
+	</div>
+
+	<div class="app-list-grid" style="padding: 10px;">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th width="90px">车牌号</th>
+					<th>车型</th>
+					<th>行驶时长</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>开始地点</th>
+					<th>结束地点</th>
+					<th>载重状态</th>
+					<th width="115px">额载（T）</th>
+					<th width="115px">最大载重（T）</th>
+					<th>途径区域</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="obj in historyOverload.list track by $index">
+					<td>{{ obj.carNumber }}</td>
+					<td>{{ obj.wloadNo }}</td>
+					<td>{{ obj.dur }}</td>
+					<!--<td>{{ obj.sTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+					<td>{{ obj.eTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>-->
+					<td>{{ obj.sFormatTime }}</td>
+					<td>{{ obj.eFormatTime }}</td>
+					<td>{{ obj.sLocation }}</td>
+					<td>{{ obj.eLocation }}</td>
+					<td>{{ obj.wloadTypeText }}</td>
+					<td>{{ obj.fullLoad }}</td>
+					<td>{{ obj.maxLoad }}</td>
+					<td>{{ obj.areaText }}</td>
+					<td>
+						<a href="" ng-click="historyOverload.toTrack(obj)">详情</a>
+					</td>
+				</tr>
+				<tr ng-if="!historyOverload.list.length ||historyOverload.list==null">
+					<td colspan="13">无数据</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<wd-page-number total="historyOverload.total" page-size="historyOverload.page.page_size" page-index="historyOverload.page.page_number" query="historyOverload.flip"></wd-page-number>
+</div>

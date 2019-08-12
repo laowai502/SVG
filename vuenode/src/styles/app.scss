@@ -1,0 +1,98 @@
+/* 列表表单页面样式 */
+.view-container {
+    .filter-header {
+        .el-form {
+            .search-btn-group {
+                .el-form-item {
+                    button {
+                        width: 100px;
+                        @media screen and (min-width: 768px) and (max-width: 1366px) {
+                            width: 90px;  
+                        }
+                    }
+                }
+            }
+            .el-form-item {
+                margin-bottom: 15px;
+                input[type="text"] {
+                    width: 180px;                    
+                    @media screen and (min-width: 768px) and (max-width: 1366px) {
+                        width: 150px;  
+                    } 
+                }         
+            }
+        }
+    }
+    .el-row{
+        .order-layout{
+           
+                .el-card__body{
+                    padding: 0;
+                }
+            
+        }
+    }
+}
+
+/* 统计类页面样式 */
+.anaysics-container {
+    background-color: #F7F9FA;
+    padding: 0 !important;
+    .anaysics-toolbar-container {
+        padding: 15px 5px 10px 15px;
+        .anaysics-toolbar {
+            padding-right: 10px;
+            margin-bottom: 10px;
+            .toolbar-input {
+                display: inline-block;
+                width: 260px;
+                .el-input__inner {
+                    height: 32px;
+                    font-size: 12px;
+//                  border: 1px solid #E9F0F7;
+                }
+            }
+            .toolbar-date {
+                display: inline-block;
+                width: 260px;
+                float: right;
+                .el-date-editor {
+                    width: 260px;
+                    height: 32px;
+                }
+            }
+            .icon-div {
+                cursor: pointer;
+                width: 36px;
+                height: 32px;
+                float: right;
+                margin-left: 7px;
+                border: 1px solid #dcdfe6;
+                border-radius: 3px;
+                background: #FFFFFF;
+                text-align: center;
+                color: #99A9BF;
+                &:hover {
+                    color: #559FF0;
+                }
+            }
+            i.fa {
+                font-size: 15px;
+                margin-top: 8px;
+            }
+        }
+        .char-area {
+            cursor: move;
+            background: #FFF;
+            box-shadow: 0 2px 11px 0 rgba(190, 202, 218, .17);
+            border: 2px #FFF solid;
+            border-radius: 3px;
+            padding: 14px 20px;
+            height: 100%;
+            position: relative;
+            &:hover {
+                border: 2px solid #3AD1C5;
+            }
+        }
+    }
+}

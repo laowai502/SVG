@@ -1,0 +1,16 @@
+.vue-treeselect {
+    max-width: 220px;
+    .vue-treeselect__placeholder {
+        padding-top: 3px;
+    }
+    .vue-treeselect__menu-container {
+        .vue-treeselect__menu {        
+            font-size: 14px;
+        }
+    }
+}
+
+
+#nprogress .bar {
+    background: #2DCA93 !important;
+}

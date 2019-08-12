@@ -1,0 +1,47 @@
+.srankDetail {
+    .selector{
+        padding-bottom: 15px;
+    }
+    .app-list{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .compare{
+        padding: 20px ;
+        border-bottom: 1px solid #999;
+    }
+    .srank-text{
+        width: 100px;
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 16px;
+    }
+    img{
+        margin: 0 10px;
+    }
+    #topLeftChar{
+        top: -25px;
+    }
+    .no-data{
+        text-align: center;
+        font-size: 16px;
+    }
+    tr{
+        height:48px;
+    }
+    img{
+        vertical-align:sub;
+    }
+    .title{
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .warnBox{
+        height:330px;
+        background: #fff;
+        border: solid 1px #63a8eb;
+        border-radius: 5px;
+    }
+}

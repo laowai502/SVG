@@ -1,0 +1,51 @@
+.mainRole{
+  .rule-title {
+    font-size: 20px;
+    color: #666;
+  }
+  .rule-div{
+    display: inline;
+    float: left;
+    line-height: 30px;
+  }
+
+  .search-div{
+    display: inline;
+    float: right;
+  }
+  .wd-date .mp-date-input{width:100%!important;}
+  .overhidx .modal-dialog{width:700px;}
+
+  .form-control{
+    border: 1px solid #63a8eb;
+  }
+}
+.roldadd{
+  .csrpntr{
+    cursor: pointer;
+  }
+  input[type="checkbox"]{
+    width: auto!important;
+    height: auto!important;
+    vertical-align: text-top;
+  }
+  .roleLable{
+    margin-left: 80px;
+    width: 100px;
+    text-align: right;
+    float: left;
+  }
+  .form-group span{
+    font-size: 14px;
+  }
+  @media (max-width: 1920px) {
+    .modal-body{
+      max-height: 700px;
+    }
+  }
+  @media (max-width: 1366px) {
+    .modal-body{
+      max-height: 500px;
+    }
+  }
+}

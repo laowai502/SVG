@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{pageAttr.type == '1' ? '申请关闭' : '申请修改'}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col *ngIf="pageAttr.type == '1'" class="first-row" col-12>
+				<ion-select interface="popover" [(ngModel)]="row.closeReasonType" placeholder="请选择关闭类型">
+					<ion-option *ngFor="let obj of baseData" [value]="obj.value">{{obj.name}}</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col class="second-row" col-12>
+				<textarea maxlength="100" [(ngModel)]="reason" (ngModelChange)="textChange()"
+						  [placeholder]="pageAttr.type == '1' ? '请输入关闭原因' : '请输入修改原因'"></textarea>
+				<span [ngClass]="{'show-orange': (amount==100)}">{{amount}}/100</span>
+			</ion-col>
+			<ion-col class="third-row" col-12>
+				<button ion-button block (click)="commit()">提 交</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

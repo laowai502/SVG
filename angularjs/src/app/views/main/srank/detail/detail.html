@@ -1,0 +1,68 @@
+<div class="app-content manager srankDetail">
+    <div class="app-content-back selector pb10" style="text-align: left">
+        <span class="fs16 mr10">{{carVin}}({{carNum}})</span>
+        <span class="fs16 mr10">{{driver}}</span>
+        <div class="ib">
+            <label>查询选择</label>
+            <select class="form-control" style="width: 100px!important" ng-init="selectedName = queryRange[type]" ng-model="selectedName"  ng-options="x.type for x in queryRange" ng-change="changePro(selectedName)"> </select>
+            <wd-date-picker min-view-mode="minViewSrank" max-view-mode="minViewSrank" min-view="minViewSrank" start-view="minViewSrank" format="formatSrank" format="yyyy-mm" type="text" class="ht30" end-date="nowTime" placeholder="请选择时间范围" ng-model="detailTime" readonly ></wd-date-picker>
+            <div class="ib ml20 no-data" ng-if="standard">
+                <img />车辆行驶里程过少，未达到安全评分里程标准
+            </div>
+        </div>
+    </div>
+    <div class="app-list container-fluid">
+        <div class="col-sm-5 pdr20">
+            <div class="warnBox">
+                <div class="compare">
+                    <div>
+                        <span class="srank-text" style="font-weight: 700">分数</span><span class="srank-text">{{preCompareInfo.mainGrade}} 分</span>
+                        <img src="assets/images/up.png" ng-if="preCompareInfo.gradeIcon=='up'"/>
+                        <img src="assets/images/down.png" ng-if="preCompareInfo.gradeIcon=='down'"/>
+                        <span class="srank-text">{{preCompareInfo.grade}} 分</span>
+                    </div>
+                    <div>
+                        <span class="srank-text" style="font-weight: 700">排名</span><span class="srank-text">{{preCompareInfo.rank}} 名</span>
+                        <img src="assets/images/up.png" ng-if="preCompareInfo.rankIcon=='up'"/>
+                        <img src="assets/images/down.png" ng-if="preCompareInfo.rankIcon=='down'"/>
+                        <span class="srank-text">{{preCompareInfo.rankCompare}} 名</span>
+                    </div>
+                </div>
+                <div style="height: 230px;">
+                    <div class="no-data" ng-if="showLeft==true" style="margin-top: 15%">新加入车辆，暂无 上月/昨日 对比数据</div>
+                    <div ng-if="showLeft==false" we-echarts id="topLeftChar" option="preCompareChar" class="mlra" c-loading="preCompareloading" style="height: 230px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7" style="height: 330px;">
+            <div class="warnBox">
+                <div class="no-data" ng-if="showRight==true " style="margin-top: 15%">新加入车辆，暂无 上月/昨日 对比数据</div>
+                <div ng-if="showRight==false" we-echarts option="safeChar" class="mlra" c-loading="safeCharloading" style="height: 330px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 pdr20  panel panel-primary">
+        <div class="col-sm-6">
+            <div class="title">主动评分事件</div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>百公里次数</th>
+                    <th>分数占比</th>
+                    <th>单项得分</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="obj in list track by $index">
+                    <td>{{obj.mailCompare}}</td>
+                    <td>{{obj.grade}}</td>
+                    <td>{{obj.single}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6" style="height: 350px;">
+            <div we-echarts option="ThreeDChart" class="mlra" c-loading="singleGradeloading"></div>
+        </div>
+    </div>
+</div>

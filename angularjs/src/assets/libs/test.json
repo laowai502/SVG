@@ -1,0 +1,253 @@
+[
+    {
+        "isParent": 1,
+        "name": "全国",
+        "id": -1,
+        "provinceId": -2
+    },
+    {
+        "isParent": 1,
+        "name": "北京",
+        "checked": 0,
+        "id": "110000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 0,
+        "name": "重庆云河汽车销售有限公司（删除）",
+        "checked": 0,
+        "id": 100204,
+        "provinceId": 110000
+    },
+    {
+        "isParent": 0,
+        "name": "宁夏昊旭汽车销售服务有限公司(已冻结)",
+        "checked": 0,
+        "id": 100278,
+        "provinceId": 110000
+    },
+    {
+        "isParent": 1,
+        "name": "天津",
+        "checked": 0,
+        "id": "120000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "河北",
+        "checked": 0,
+        "id": "130000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "山西",
+        "checked": 0,
+        "id": "140000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "内蒙古",
+        "checked": 0,
+        "id": "150000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "辽宁",
+        "checked": 0,
+        "id": "210000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "吉林",
+        "checked": 0,
+        "id": "220000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "黑龙江",
+        "checked": 0,
+        "id": "230000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "上海",
+        "checked": 0,
+        "id": "310000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "江苏",
+        "checked": 0,
+        "id": "320000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "浙江",
+        "checked": 0,
+        "id": "330000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "安徽",
+        "checked": 0,
+        "id": "340000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "福建",
+        "checked": 0,
+        "id": "350000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "江西",
+        "checked": 0,
+        "id": "360000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "山东",
+        "checked": 0,
+        "id": "370000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "河南",
+        "checked": 0,
+        "id": "410000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "湖北",
+        "checked": 0,
+        "id": "420000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "湖南",
+        "checked": 0,
+        "id": "430000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "广东",
+        "checked": 0,
+        "id": "440000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "广西",
+        "checked": 0,
+        "id": "450000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "海南",
+        "checked": 0,
+        "id": "460000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "重庆",
+        "checked": 0,
+        "id": "500000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "四川",
+        "checked": 0,
+        "id": "510000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "贵州",
+        "checked": 0,
+        "id": "520000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "云南",
+        "checked": 0,
+        "id": "530000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "西藏",
+        "checked": 0,
+        "id": "540000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "陕西",
+        "checked": 0,
+        "id": "610000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "甘肃",
+        "checked": 0,
+        "id": "620000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "青海",
+        "checked": 0,
+        "id": "630000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "宁夏",
+        "checked": 0,
+        "id": "640000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "新疆",
+        "checked": 0,
+        "id": "650000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "香港",
+        "checked": 0,
+        "id": "810000",
+        "provinceId": -1
+    },
+    {
+        "isParent": 1,
+        "name": "澳门",
+        "checked": 0,
+        "id": "820000",
+        "provinceId": -1
+    }
+]

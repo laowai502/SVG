@@ -1,0 +1,80 @@
+page-history {
+    margin: 0 auto;
+    // .search-bar{
+    //     position: absolute;
+    //     z-index: 999;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     background-color: #fff;
+    // }
+    .scroll-content{
+        padding: 0 1rem;
+    }
+    .row{
+        align-items: center;
+        justify-content:space-between;
+        padding: 0 0.7rem;
+    }
+    .searchbar{
+        background-color: #fff;
+        height: 3.8rem;
+        width: 20rem;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        .searchbar-search-icon{
+            top: 0.7rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            background-size: 1.6rem;
+        }
+    }
+    // .list-outer{
+    //     position: relative;
+    //     top: 5rem;
+    //     overflow-y: auto;
+    // }
+    .list-item{
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: $border-radius;
+        p{
+            font-size: 1.2rem;
+        }
+        h2{
+            font-size: 1.6rem;
+        }
+    }
+    .item-block{
+        min-height: 1.2rem !important;
+        margin-top: 0.5rem;
+    }
+    .label{
+        margin: 0 !important;
+    }
+    ion-label{
+        padding: 0.1rem;
+    }
+    .item{
+        ion-icon{
+            font-size: 2rem;
+            margin: 0 0.3rem 0 0 !important;
+            min-height: 0;
+        }
+    }
+    .item-right{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .button{
+        height: 3.7rem;
+    }
+    .item > ion-icon:first-child, .item-inner > ion-icon:first-child{
+        min-width: 0 !important;
+    }
+    .border-right{
+        border-right: 1px solid #C8C7CC;
+        padding: 0 1.6rem 0 0;
+    }
+}

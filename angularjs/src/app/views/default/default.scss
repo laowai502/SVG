@@ -1,0 +1,62 @@
+.frame-content.default-route {
+    padding: 0;
+    margin-top: 125px;
+    .form-group {
+        overflow: hidden;
+    }
+    .contain {
+        .main {
+            float: left;
+            margin: 3px;
+            border: 1px #f1f1f1 solid;
+            border-radius: 10px;
+            background: #fff;
+        }
+    }
+    .gridList {
+        .gridBox {
+            width: 390px;
+            margin: 20px auto;
+            border-radius: 5px;
+            background: #fff;
+            min-height: 185px;
+            .header {
+                line-height: 50px;
+                text-indent: 10px;
+                font-size: 14px;
+            }
+            .table {
+                thead {
+                    font-size: 14px;
+                    background: none;
+                    border-top: 1px solid #ddd;
+                }
+                margin:0;
+            }
+            [wd-page-number] {
+                padding: 15px;
+                nav {
+                    margin: 0;
+                }
+            }
+        }
+        .grid {
+            height: 425px!important;
+            margin: 0 auto
+        }
+        .pagination {
+            margin: 0 auto;
+        }
+        .pagination-sm>li>a,
+        .pagination-sm>li>span {
+            padding: 0;
+            width: 30px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+    .border-right-grey-stick {
+        border-right: 1px solid #E8E8E8
+    }
+}

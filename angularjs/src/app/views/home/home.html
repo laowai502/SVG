@@ -1,0 +1,46 @@
+<div class="whp100 login">
+    <div class="homeTop">
+        <div class="homeLeft">
+            <div class="homeBody">
+                  <!--<img src="./assets/images/logoImg.png">-->
+                  <p>安全共管平台</p>
+            </div>
+            <div class="bodyFooter">
+                <form novalidate class="form form-horizontal" ng-submit="home.doLogin($event)">
+                    <div class="form-group">
+                        <div class="homeInput">
+                             <img src="./assets/images/account.png">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名/手机号" autocomplete="off" ng-model="home.loginName" ng-change="home.changeUser()" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="homeInput">
+                             <img src="./assets/images/password.png">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="请填入登录密码" autocomplete="off" ng-model="home.loginPwd" ng-focus="home.showEye = true" ng-change="home.clearErrorMsg()" required />
+                            <a ng-show="home.showEye" class="password-eye" ng-click="home.pswType()" title="{{home.isPsw ? '隐藏密码' : '显示密码'}}"><span style="width: 15px;" ng-class="{true: 'glyphicon glyphicon-eye-open', false: 'glyphicon glyphicon-eye-close'}[home.isPsw]"></span></a>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="home.verifyImg">
+                        <div class="homeInput">
+                            <img src="./assets/images/code.png">
+                            <input class="form-control" style="float: left;" placeholder="请输入图片中的验证码" ng-change="home.clearErrorMsg()" autocomplete="off" type="text" id="verify" name="verify" ng-model="home.verify" required/>
+                            <img class="verify-image"  ng-src="{{ home.verifyImg }}" ng-click="home.changePic()" />
+                        </div>
+                    </div>
+                    <div class="form-group text-left-important">
+                        <div class="piaochecked" ng-style="home.remeberCheck?home.piaochecked:home.nochecked">
+                            <input class="radioclass" id="forget" name="forget" type="checkbox" ng-model="home.remeberCheck">
+                        </div>
+                        <label class="control-label" for="forget">记住密码</label>
+                    </div>
+                    <div class="form-group loginBtn">
+                        <button type="submit" class="homeLogin btn">登&nbsp;录</button>
+                        <!--<div class="setBtn">
+                              <a class="forgetCode" ng-click="home.toForget()">忘记密码？</a><b>|</b><a class="register" ng-click="home.toRegister()">注册账号</a>
+                        </div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

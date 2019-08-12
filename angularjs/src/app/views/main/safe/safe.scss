@@ -1,0 +1,192 @@
+#safeDetail {
+    height: auto;
+    min-height: 100%;
+    background: #FFFFFF;
+    
+    .card-list {
+        margin-top: 10px;
+        .card-wrap {
+            padding-right: 12px;
+            &:last-child {
+                padding-right: 0px;
+            }
+        }        
+        .card {
+//          padding: 16px;
+            background: #fff;
+            margin: 0px auto 15px;
+            border-radius: 2px;
+            border: solid 1px #63a8eb;
+            height: 75px;
+            .card-inner-icon {
+                float: left;
+                position: absolute;
+                top: 0;
+                width: 0;
+                padding: 10px 40px 0 16px;
+                @media screen and (max-width: 1366px) {
+                    padding-right: 16px;
+                    padding-top: 18px;
+                }           
+                .fa {
+                    color: #1e63a7;
+                    font-size: 50px;
+                    @media screen and (max-width: 1366px) {
+                        font-size: 40px;
+                    }
+                }
+            }
+            .card-inner-text {
+                width: 100%;
+                padding-top: 16px;
+                padding-right: 20px;
+                padding-left: 65px;
+                float: left;
+                .count {
+                    font-size: 16px;
+                    margin-bottom: 3px;
+                }
+            }
+        }
+        .red {
+            color: #FF0000;
+        }
+        .blue {
+            color: #63a8eb;
+        }
+    }
+    
+    .event-content {
+        .row {
+            .item-block {
+                width: 20%;
+                display: block;
+                float: left;
+                text-align: center;
+                padding: 10px;
+                border: solid 1px #999999;
+                border-right-width: 0px;
+            }
+            &:first-child {
+                .item-block { //测试提的bug
+                    &:nth-child(1) {
+                        border-right-width: 1px;
+                    }
+                    &:nth-child(2) {
+                        border-left-width: 0px;
+                    }
+                    &:nth-child(5) {
+                        border-right-width: 1px;
+                    }
+                    &:nth-child(6) {
+                        border-right-width: 1px;
+                        border-top-width: 0px;
+                    }
+                }
+            }
+            &:nth-child(2) {
+                .item-block {
+                    &:nth-child(2) { //测试提的bug-边框偏移
+                        border-right-width: 1px;
+                    }
+                    &:nth-child(3) {
+                        border-left-width: 0px;
+                    }
+                    
+                    &:nth-child(5),
+                    &:nth-child(7) {
+                        border-right-width: 1px;
+                    }
+                    
+                    &:nth-child(6),
+                    &:nth-child(7),
+                    &:nth-child(8) {
+                        border-top-width: 0px;
+                    }
+                }
+            }
+            &:nth-child(3) {
+                .item-block {
+                    width: 25%; 
+                    &:nth-child(4) {
+                        border-right-width: 1px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .mapbar{
+        overflow: hidden;
+        margin-top: 10px;
+        height: calc(100vh - 255px);
+        width: calc(100% - 300px);
+        @media screen and (max-width: 1366px) {
+            width: calc(100% - 220px);
+        }
+        [mapbar-map] {
+            border: solid 1px #63a8eb;
+            height: 100%;
+            width: 100%
+        }
+    }
+    .right-form {
+        width: 290px;
+        padding-left: 10px;
+        @media screen and (max-width: 1366px) {
+            width: 215px;
+        }
+        height: calc(100vh - 255px);
+        .date-query {
+            padding: 0px 10px;
+            border: solid 1px #63a8eb;
+            .form-group {
+                label {
+                    font-weight: normal;
+                }
+            }
+        }
+        .alarm-setting {
+            margin-top: 12px;
+            padding: 0px 10px;
+            border: solid 1px #63a8eb;
+            input[type="checkbox"] {
+                cursor: pointer;
+                vertical-align: top;
+            }
+            p {
+                text-align: center;
+                line-height: 22px;
+            }
+            .alarm-setting-title {
+                padding: 4px 10px;
+                border: solid 1px #999999;
+                p {
+                    width: 200px;
+                    @media screen and (max-width: 1366px) {
+                        width: 140px;
+                    }
+                }
+            }
+            .alarm-setting-list {
+                width: 258px;
+                padding: 5px 0px 10px;
+                @media screen and (max-width: 1366px) {
+                    width: 183px;
+                }
+                .alarm-setting-item {
+                    padding: 5px 0px 0px 12px;
+                    @media screen and (max-width: 1366px) {
+                        padding-left: 6px;
+                    }
+                    &:nth-child(2n) {
+                        padding-left: 0px;
+                    }
+                    p {
+                        padding-left: 2px;
+                    }
+                }
+            }
+        }
+    }
+}

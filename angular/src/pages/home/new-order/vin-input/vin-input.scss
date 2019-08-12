@@ -1,0 +1,137 @@
+page-vin-input {
+    .toolbar-ios {
+        .toolbar-title-ios{
+            font-size: 1.5rem;
+        }
+        .bar-buttons-ios {
+            .nav-btn-icon {
+                margin-right: 5px;
+                margin-top: 3px;
+                background: url(../assets/images/title_help.png) no-repeat;
+                background-size: 30px;
+                min-width: 30px;
+                min-height: 30px;
+            }
+            .nav-btn-icon:active {
+                opacity: .8;
+            }
+        }
+    }
+    
+    .scroll-content {
+        padding: 0px !important;
+        background-color: #FFFFFF;
+        .row{
+            .col{
+                padding: 0;
+            }
+            .col:first-child{
+                padding: 0 2rem;
+                .inputBoxContainer {
+                    height: 4.4rem;
+                    margin: 2.5rem 0 2rem;
+                    position: relative;
+                    .bogusInput {
+                        width: 100%;
+                        height: 100%;
+                        background-color: #E0E0E0;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: 0;
+                        input {
+                            color: $text-color;
+                            margin-top: 1.2rem;
+                            width: 12.5%;
+                            height: 2rem;
+                            float: left;
+                            background-color: #E0E0E0;
+                            text-align: center;
+                            font-size: 1.6rem;
+                            border: none;
+                            border-right: #C3C3C3 1px solid;
+                        }
+                        input:last-child {
+                            border: none;
+                        }
+                    }
+                    .realInput {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        opacity: 0;
+                    }
+                }
+            }
+            .col:nth-child(2){
+                color: $text-color;
+                display: flex;
+                justify-content: center;
+            }
+            .col:nth-child(3){
+                padding: 1.5rem 2rem;
+                .button-ios{
+                    height: 3.6rem;
+                }
+            }
+        }
+    }
+}
+
+.help-modal {       
+    ion-backdrop{
+        z-index: 0;
+        visibility: visible;
+    }
+    help-place{  
+        width: 90%;
+        height: 85%;
+        left: 5%;
+        top: 10%;      
+        ion-content{
+            padding: 0px !important;
+            border-radius: 10px;
+            .scroll-content {
+                border-radius: 10px;
+                padding: 0px !important;
+                background-color: #FFFFFF;
+                .row{
+                    padding: 1rem 0;
+                    .col{
+                        color: $text-readonly;
+                        font-size: 1.3rem;
+                        text-align: center;
+                        padding: 0;
+                    }
+                    .col:first-child{
+                        background: url(../assets/images/help_type_vin.png) no-repeat center;
+                    }
+                    .col:nth-child(5){
+                        background: url(../assets/images/help_type_vin2.png) no-repeat center;
+                    }
+                    .col:first-child,.col:nth-child(5){
+                        background-size: 90%;
+                        height: 10rem;
+                        @media screen and (min-width:321px) and (max-width:375px) {
+                            height: 13rem;
+                        }
+                        @media screen and (min-width:376px) and (max-width:414px) {
+                            height: 15rem;
+                        }
+                    }
+                    .col:nth-child(2),.col:nth-child(6){
+                        padding: 1rem 0 0.6rem;
+                        font-size: 1.5rem;
+                        color: $text-color;
+                    }
+                    .col:nth-child(4),.col:nth-child(8){
+                        padding: 2px 0 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

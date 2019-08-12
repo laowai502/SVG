@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>载重预警大屏</title>
+	<!--<meta name="renderer" content="webkit">-->
+	<meta name="renderer" content="ie-comp">
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-material-design/4.0.2/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="libs/radialindicator/radialindicator.css" />
+	<link rel="stylesheet" href="app/styles/common.css" />
+    <link rel="stylesheet" href="app/styles/animate/animate.css" />
+    <link rel="stylesheet" href="app/styles/data.css" />
+    <style type="text/css">
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+    	document.documentElement.style.fontSize = document.documentElement.clientWidth / 1920 * 10 + 'px';
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-material-design/4.0.2/bootstrap-material-design.umd.min.js"></script>
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=fQOBYAhOTulu2sRlf4iSRkzFheEiW0Rz"></script>
+	<script src="http://mapv.baidu.com/build/mapv.min.js"></script>
+</head>
+<body>
+	<div class="head-title text-center">当日超载车辆 837 辆 / 当日运营车辆 1622 辆</div>
+	<div class="opacity-div left-top technology">
+		<h6 class="text-left">车辆载重状态统计<span style="float: right; color: #05f3ff;">1622辆</span></h6>
+		<div class="load-count">
+			<!--<div class="load-count-item">	
+				<div>					
+					<div class="prg-cont rad-prg" id="noLoadCard"></div>
+					<p class="text-center" id="noLoadText" style="color: #05f3ff;"></p>
+				</div>
+			</div>
+			<div class="load-count-item">
+				<div>
+					<div class="prg-cont rad-prg" id="halfLoadCard"></div>
+					<p class="text-center" id="halfLoadText" style="color: #05f3ff;"></p>
+				</div>
+			</div>-->
+			<div class="load-count-item">	
+				<div>
+					<div class="prg-cont rad-prg" id="fullLoadCard"></div>
+					<p class="text-center" id="fullLoadText" style="color: #05f3ff;"></p>
+				</div>
+			</div>
+			<div class="load-count-item">				
+				<div>
+					<div class="prg-cont rad-prg" id="overLoadCard"></div>
+					<p class="text-center" id="overLoadText" style="color: #05f3ff;"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="opacity-div left-bottom technology">
+		<h6 class="text-left">超载城市排名</h6>
+		<div style="padding: 10px 16px;">
+			<ul class="top10-rank">
+				<li class="row">
+					<div class="td col-sm-2">1</div>
+					<div class="col-sm-3 td">南京市</div>
+					<div class="col-sm-3 td">332 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 37%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">37%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">2</div>
+					<div class="col-sm-3 td">连云港市</div>
+					<div class="col-sm-3 td">189 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 21%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">21%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">3</div>
+					<div class="col-sm-3 td">常州市</div>
+					<div class="col-sm-3 td">108 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 12%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">12%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">4</div>
+					<div class="col-sm-3 td">徐州市</div>
+					<div class="col-sm-3 td">72 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 8%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">8%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">5</div>
+					<div class="col-sm-3 td">无锡市</div>
+					<div class="col-sm-3 td">54 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 6%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">6%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">6</div>
+					<div class="col-sm-3 td">扬州市</div>
+					<div class="col-sm-3 td">54 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 6%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">6%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">7</div>
+					<div class="col-sm-3 td">盐城市</div>
+					<div class="col-sm-3 td">36 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 4%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">4%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">8</div>
+					<div class="col-sm-3 td">镇江市</div>
+					<div class="col-sm-3 td">27 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 14%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">3%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">9</div>
+					<div class="col-sm-3 td">苏州市</div>
+					<div class="col-sm-3 td">18 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 2%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">2%</p>
+					</div>
+				</li>
+				<li class="row">
+					<div class="td col-sm-2">10</div>
+					<div class="col-sm-3 td">泰州市</div>
+					<div class="col-sm-3 td">9 辆</div>
+					<div class="col-sm-4 td">
+						<div class="ib progress md-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 1%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+						<p class="ib">1%</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="opacity-div right-top technology">
+		<h6 class="text-left">车型超载统计<span style="float: right; color: #05f3ff;">837辆</span></h6>
+		<div class="car-type-wrap">
+			<ul class="car-type-list list-group">
+				<li class="list-group-item">
+					<p class="fl name ib">牵引车</p>
+					<p class="fr count ib">684 辆</p>
+				</li>
+				<li class="list-group-item">
+					<p class="fl name ib">自卸车</p>
+					<p class="fr count ib">49 辆</p>
+				</li>
+				<li class="list-group-item">
+					<p class="fl name ib">载货车</p>
+					<p class="fr count ib">104 辆</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="opacity-div right-bottom technology">
+		<h6 class="text-left">24小时趋势</h6>
+		 <div id="main" style="width: 100%; height: 260px"></div>
+	</div>
+	
+    <div id="map"></div>
+    
+    <!--<div class="ring-point-marker">
+		<div class="ring-point-inner1"></div>
+		<div class="ring-point-inner2"></div>
+		<div class="ring-point-inner3"></div>
+	</div>-->
+    <!--<canvas id="canvas"></canvas>-->
+    
+    <script src="libs/radialindicator/radialIndicator.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="libs/echarts_3.0.0/echarts.common.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app/js/common.js"></script>
+    <script src="app/js/data.js"></script>
+</body>
+</html>

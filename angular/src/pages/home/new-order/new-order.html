@@ -1,0 +1,106 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>新建工单</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="new-order">
+	<ion-list no-lines>
+		<ion-list-header>
+			<span class="header">基本信息</span>
+			<span class="necessary">（必填）</span>
+		</ion-list-header>
+		<ion-item>
+			<ion-label fixed>工单类型：</ion-label>
+			<ion-select class="drop-down" interface="action-sheet" cancelText="取消" placeholder="请选择工单类型" [(ngModel)]="query.woType" (ngModelChange)="changeOrderType()">
+				<ion-option  *ngFor="let order of orderTypeList" [value]="order.id">{{order.itemName}}</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>报修人：</ion-label>
+			<ion-input type="text" placeholder="请填写预约人姓名" [(ngModel)]="query.repairName" maxlength="10"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>手机：</ion-label>
+			<ion-input type="number" pattern="[0-9]*" placeholder="请填写预约人手机号" [(ngModel)]="query.repairTel"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>预约时间：</ion-label>
+			<ion-input 
+				type="text" 
+				placeholder="请选择时间"
+				readonly
+				[value]="orderTime">
+			</ion-input>
+			<ion-datetime 
+				displayFormat="YYYY-MM-DD" 
+				pickerFormat="YYYY MM DD" 
+				[min]="minDate"
+				max="2020"
+				cancelText="取消"
+				doneText="确定" 
+				[(ngModel)]="orderTime">
+			</ion-datetime>
+		</ion-item>
+		<ion-item *ngIf="query.woType == 2" (tap)="openCity()">
+			<ion-label fixed>车辆位置：</ion-label>
+			<ion-input class="selectPonsition" type="text" placeholder="请点击选择车辆位置" readonly [(ngModel)]="query.repairAdd"></ion-input>
+			<ion-icon name="ios-pin" color="primary" item-end class="car-location" ></ion-icon>
+		</ion-item>
+		<p *ngIf="showTip" class="positionTip" style="background-image:url('assets/images/tip-red.png')">请与司机确认故障地点</p>
+	</ion-list>
+	<ion-list no-lines>
+		<ion-list-header>
+			<span class="header">预约项目</span>
+			<span class="necessary">（最少选择一项）</span>
+		</ion-list-header>
+		<ion-item>
+			<div class="order-title">保养服务<span class="necessary">（只能选择一项）</span></div>
+			<ul class="service-list">
+				<li *ngFor="let service of maintainList; index as i" class="service" (tap)="changeService(i,service)">
+					<label [for]="service.id" class="default">{{service.itemName}}</label>
+					<input type="checkbox" [id]="service.id">
+				</li>
+			</ul>
+		</ion-item>
+		<ion-item>
+			<div class="order-title">维修项目<span class="necessary">（多选）</span></div>
+			<ul class="repair-list">
+				<li *ngFor="let repair of repairList; index as i" class="repair" (tap)="changeRepair(i,repair)">
+					<label [for]="repair.id" class="default">{{repair.itemName}}</label>
+					<input type="checkbox" [id]="repair.id">
+				</li>
+			</ul>
+		</ion-item>
+		
+	</ion-list>
+	<ion-list no-lines>
+		<ion-list-header>
+			<span class="header">故障描述</span>
+			<span class="necessary">（选填）</span>
+		</ion-list-header>
+		<ion-item>
+			<textarea name="" id="" cols="30" rows="10" placeholder="请填写故障描述"  [(ngModel)]="query.userFeedback" maxlength="100"></textarea>
+			<p class="count" [ngClass]="{'maxcount': query.userFeedback.length == 100}">{{query.userFeedback.length}}/100</p>
+			<select-photo max="3" selector="page-new-order"></select-photo>
+		</ion-item>
+	</ion-list>
+	<ion-list no-lines class="last-list">
+			<ion-list-header>
+					<span class="header">指派人员</span>
+					<span class="necessary">（必填）</span>
+				</ion-list-header>
+			<ion-item>
+				<p *ngIf="assigners.length==0">{{serviceName}}</p>
+				<ion-select class="drop-down" interface="alert" [selectOptions]="{title: '指派人员',cssClass: 'order-alert'}" cancelText="取消" okText="确定" placeholder="请选择指派人员" [(ngModel)]="query.assignPersion" *ngIf="assigners.length!=0">
+					<ion-option *ngFor="let assign of assigners" [value]="assign.serviceUserName">{{assign.serviceUserName}}</ion-option>
+				</ion-select>
+			</ion-item>
+	</ion-list>
+	<ion-item class="submit">
+		<button class="btn" ion-button color="primary" block (tap)="submit()">提 交</button>
+	</ion-item>
+</ion-content>

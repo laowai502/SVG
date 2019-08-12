@@ -1,0 +1,6 @@
+<div class="vali-box" ng-if="showIsRequired(model)" ng-class="{true: 'valid-border', false: 'invalid-border'}[model.$valid]">
+	<span ng-if="isRequired || model.$invalid" class="glyphicon" ng-class="{true: 'valid-icon glyphicon-ok-sign', false: 'invalid-icon glyphicon-remove-sign font-red'}[model.$valid]"></span>
+	<span class="vali-box-text" ng-show="model.$dirty || model.$invalid || submitted">
+		<span ng-repeat="x in errType" class="font-red" ng-show="showErrorText(x)">{{ errText[$index] }}</span>
+	</span>
+</div>

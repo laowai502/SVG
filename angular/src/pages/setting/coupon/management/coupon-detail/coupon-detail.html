@@ -1,0 +1,20 @@
+<ion-header>
+
+	<ion-navbar>
+		<span class="title">优惠券详情</span>
+		<span class="subtitle" *ngIf="couponData.length != 0" (tap)="toRecord()">{{subTitle}}</span>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+	<ion-item *ngFor="let obj of couponData">
+		<ticket [coupons]="obj" [beforePage]="'detail'"></ticket>
+	</ion-item>
+	<div class="explain" *ngIf="couponData.length != 0">
+		<p>说明：</p>
+		<p>*共享限额：指所有参加活动的网点共享的总限额，限额用完为止。</p>
+		<p *ngIf="flag">*优惠券只可在活动有效期内发放，超过有效期未发完的限额将作废。</p>
+	</div>
+	<p *ngIf="couponData.length == 0" class="no-data">暂无相关信息</p>
+</ion-content>

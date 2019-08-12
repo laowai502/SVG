@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>检查中</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-row>
+		<ion-col col-12>
+			<select-photo max="8" type="0" selector="page-order-check"></select-photo>
+		</ion-col>
+		<ion-col col-12 class="sub">备注说明</ion-col>
+		<ion-col col-12>
+			<textarea maxlength="100" placeholder="请填写备注说明" 
+					  [(ngModel)]="row.notes" (ngModelChange)="textChange()"></textarea>
+			<span [ngClass]="{'show-orange': (amount==100)}">{{amount}}/100</span>
+		</ion-col>
+	</ion-row>
+	<ion-row>		
+		<ion-col col-12>
+			<button class="btn" ion-button block (tap)="submit()">提 交</button>
+		</ion-col>
+	</ion-row>
+</ion-content>

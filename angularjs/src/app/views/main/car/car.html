@@ -1,0 +1,23 @@
+<div id="monitorCar">
+    <div id="left">
+        <form class="form-inline" ng-submit="monitorcar.getTeamCarList()">
+            <div class="form-group">
+                <input id="queryType" type="text" ng-model="monitorcar.queryModel.searchText" placeholder="请输入车牌号或车号" autocomplete="off">
+                <button id="search-btn" type="submit"><img src="./assets/images/icon_83.png"></button>
+            </div>
+        </form>
+        <div id="carTree">
+            <div id="tree" we-ztree
+            	option="monitorcar.tree.setting"
+            	data="monitorcar.tree.nodes">
+            </div>
+        </div>
+        <div ng-show="monitorcar.tree.nodes.length == 0" class="text-center">没有找到数据</div>
+    </div>
+    <div class="content-border-bgColor" id="right">
+        <div id="mapContainer">
+            <div mapbar-map map-id="map" level="7"></div>
+        </div>
+        <we-car-overlay overlay-bridge="monitorcar.treeOverlayBridge" operate-flag="monitorcar.operateFlag"></we-car-overlay>
+    </div>
+</div>

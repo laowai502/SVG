@@ -1,0 +1,50 @@
+#dataBox {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 16px;
+    z-index: 9999;
+    .card {
+        background: #fff;
+        margin: 0px auto 15px;
+        padding: 0px 12px;
+        border-radius: 5px;
+        border: solid 1px #63a8eb;
+        height: 110px;
+        .progress-wrap {
+            line-height: 22px;         
+            .progress {
+                margin-top: 8px;
+                height: 8px;
+                margin-bottom: 0px;
+                .progress-bar-info {
+                    background: #999999;
+                }
+            }
+        }
+        .fa-long-arrow-up {
+            color: #FF0000;
+        }
+        .fa-long-arrow-down {
+            color: #1e63a7;
+        }
+        .red {
+            color: #FF0000;
+        }
+        .blue {
+            color: #1e63a7
+        }
+    }
+    .heading-link {
+        color: #FFFFFF;
+        float: right;
+        font-size: 16px;
+    }
+    .panel {
+        margin-bottom: 10px;
+        .panel-heading {
+            padding: 8px 15px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<div class="crumbs">
+	<div>
+		<i class="fa fa-home"></i>当前位置：
+		<span ng-if="crumb.first_title" ng-repeat="crumb in crumbs">{{crumb.first_title}} <i ng-if="$index < crumbs[1].father_title.length" class="fa fa-angle-right"></i></span>
+		<span ng-if="crumb.father_title" ng-repeat="crumb in crumbs">{{crumb.father_title}} <i ng-if="$index < crumbs.length - 1" class="fa fa-angle-right"></i></span>
+		<span ng-repeat="crumb in crumbs">{{crumb.title}} <i ng-if="$index < crumbs.length - 1" class="fa fa-angle-right"></i></span>
+	</div>
+	<!--<div class="team" ng-show="$root.state != 'home'&&$root.motorSelect">
+		<label class="title">当前车队</label>
+		<div class="current-tree-select" uib-dropdown>
+			<div class="dropdown-toggle" uib-dropdown-toggle>
+				<input type="text" placeholder="请选择车队" ng-model="motorcade" disabled>
+				<span class="fa fa-caret-down"></span>
+			</div>
+			<div class="dropdown-menu googleScroll" role="menu" style="width:190px;right: 0;left:10px;" uib-dropdown-menu>
+				<div current-base-ztree on-create-success="onCreateTree(tree)" ng-show="$root.teamArray.length!= 0" id="tree" option="tree.setting" data="tree.data">
+				</div>
+				<div ng-show="$root.teamArray.length== 0" class="text-center">没有车队数据</div>
+			</div>
+		</div>
+	</div>-->
+</div>

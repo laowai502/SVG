@@ -1,0 +1,36 @@
+
+<ion-content>
+	<div id="cityMap" class="cityMap"></div>
+	<ion-row>
+		<div col-3 class="city-drop" (tap)="openCityList()">
+			<span [title]="city">{{city | cut:true:3:'...'}}</span>
+			<ion-icon name="md-arrow-dropdown" *ngIf="showList"></ion-icon>
+			<ion-icon name="md-arrow-dropup" *ngIf="!showList"></ion-icon>
+		</div>
+		<ion-searchbar class="location-search" placeholder="请输入查询地点" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)" col-7>
+		</ion-searchbar>
+		<span class="cancel" col-2 (tap)="closeModal()">取消</span>
+	</ion-row>
+	<div color="primary" *ngIf="!showList" class="arrow"></div>
+	<div class="city-list" *ngIf="!showList">
+		<ul class="province">
+			<li [class]="changeClass(province)" *ngFor="let province of provinces; index as i" (tap)="getCityList(province.regionCode,i)">{{province.regionName}}</li>
+		</ul>
+		<ul class="city">
+			<li *ngFor="let city of cities" (tap)="changeCity(city)">{{city.regionName}}</li>
+		</ul>
+	</div>
+	<div class="result-list" *ngIf="showResult">
+		<ion-list no-lines>
+			<ion-item *ngFor="let result of searchResult; index as i" (tap)="closeModal(result)">
+				<ion-icon name="ios-pin" color="murk" item-start></ion-icon>
+				<h2>{{result.title}}</h2>
+				<p class="address">{{result.address}}</p>
+			</ion-item>
+			<div class="no-result" *ngIf="searchResult.length == 0">
+				<ion-icon name="ios-sad-outline" color="murk"></ion-icon>
+				<p>暂无结果，换个词试试吧~~</p>
+			</div>
+		</ion-list>
+	</div>
+</ion-content>

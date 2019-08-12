@@ -1,0 +1,70 @@
+#behavior {
+  width: 100%;
+  .warnList,.safe-wind-times {
+    .warnBox {
+      background: #fff;
+      margin: 0px auto;
+      border-radius: 5px;
+      border: solid 1px #63a8eb;
+      height: 90px;
+      ul {
+        li {
+          float: left;
+        }
+        .bell {
+          font-size: 16px;
+          line-height: 90px;
+          margin-left: 20px;
+        }
+        .bell-first {
+          margin-left: 30px;
+          margin-right: 30px;
+          @media screen and (max-width: 1366px) {
+            margin-left: 20px;
+            margin-right: 10px;
+          }
+        }
+        .data {
+          margin-top: 15px;
+          margin-left: 15px;
+          p {
+            margin-top: 8px;
+            font-size: 12px;
+            i {
+              font-size: 12px;
+            }
+          }
+          .top {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  .heading-link {
+    color: #FFFFFF;
+    float: right;
+    font-size: 16px;
+  }
+  .alarm-content {
+    .alarm-item {
+      border-bottom: dashed 1px #63a8eb;
+      margin-bottom: 3px;
+      .col-sm-12 {
+        padding: 3px 6px;
+        .red {
+          color: #FF0000;
+        }
+        .ft14 {
+          font-size: 14px;
+        }
+        .ft16 {
+          font-size: 16px;
+        }
+      }
+      &:last-child {
+        border-bottom-width: 0px;
+      }
+    }
+  }
+}

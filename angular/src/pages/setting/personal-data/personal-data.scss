@@ -1,0 +1,9 @@
+page-personal-data {
+    .item-inner{
+        border-bottom-width: 0 !important; 
+    }
+    .change{
+        text-align: center;
+        color: $text-readonly !important;
+    }
+}

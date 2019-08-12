@@ -1,0 +1,83 @@
+<div id="trackDetail">
+	<div class="fl content-border-bgColor" id="left" block-ui="treeBlocker">
+		<div class="zTree">
+			<div id="traceTree" we-ztree option="trace.tree.setting" data="trace.tree.nodes" default-click="trace.defaultClick"></div>
+		</div>
+		<div ng-show="trace.tree.nodes.length == 0" class="text-center">没有找到数据</div>
+		<form class="form-inline" ng-submit="trace.fetchTrace($event)">
+			<div class="form-group">
+				<input id="queryType" type="text" ng-model="trace.traceQuery.carNumbar" ng-keyup="trace.isClickOrKeyup=false" autocomplete="off" maxlength="7" placeholder="请输入车牌号查找">
+			</div>
+			<div class="form-group timeRange">
+				<div>
+					<input wd-date-picker format="yyyy-mm-dd" hide-clear-btn="true" picker-position="top-right" ng-model="trace.traceQuery.beginDate" end-Date="trace.nowTime" />
+				</div>
+				<span class="wh30">-</span>
+				<div>
+					<input wd-date-picker format="yyyy-mm-dd" hide-clear-btn="true" picker-position="top-right" ng-model="trace.traceQuery.endDate" end-Date="trace.nowTime" />
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-default" type="submit" style="margin-left: 30%; width:35%; background-color:#FF9C00; color:white" ng-disabled="stopchange">查询</button>
+			</div>
+			<table class="table table-bordered tlc">
+				<thead>
+					<tr>
+						<th class="tlc">项目</th>
+						<th class="tlc">数据</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>里程</td>
+						<td>{{trace.summaryData.mileageTotal}}</td>
+					</tr>
+					<tr>
+						<td>驾驶时长</td>
+						<td>{{trace.summaryData.timeTotal}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<div class="car-detail-track content-border-bgColor" block-ui="traceBlocker">
+		<div class="mapbar">
+			<div mapbar-map map-id="traceMap" level="11"></div>
+		</div>
+		<div class="speedList">
+			<div class="speed" ng-repeat="speed in trace.speedRange">
+				<i ng-style="{'background' : trace.speedColors[$index]}"></i>
+				<span ng-if="speed < 59">0-</span><span ng-if="speed > 59">{{trace.speedRange[$index-1]}}-</span> <span>{{speed}}km/h</span>
+			</div>
+			<div class="speed">
+				<i ng-style="{'background' : trace.speedColors[trace.speedRange.length]}"></i>
+				<span>>{{trace.speedRange[trace.speedRange.length-1]}}km/h</span>
+			</div>
+		</div>
+		<div class="contrl">
+			<div class="life">
+				<slider ng-disabled="isTrackPlaying||!trace.tracePoints||trace.tracePoints.length==0" ng-model="trackSlider.value" on-stop-slide="onChangeTrackSlider($event,value)" max="trackSlider.max" min="trackSlider.min" tooltip="hide"></slider>
+			</div>
+			<div class="ctrlBtn">
+				<div>
+					<p>{{trace.summaryData.timeTotal}}h/{{trace.summaryData.mileageTotal}}Km</p>
+				</div>
+				<div>
+					<p>{{trace.traceQuery.beginDate}}</p>
+				</div>
+				<div class="speedBtn">
+					<span ng-click="DownSpeed()" ng-disabled="intervalSpeedSlider.value<=intervalSpeedSlider.ticks[0]"><img src="./assets/images/01.png" class="ml10"></span>
+					<span class="ml10 mr10" ng-if="!isTrackPlaying" ng-click="startPlayTrack()"><img src="./assets/images/04.png"></span>
+					<span class="ml10 mr10" ng-if="isTrackPlaying" ng-click="stopPlayingTrack()"><img src="./assets/images/02.png"></span>
+					<span ng-click="UpSpeed()" ng-disabled="intervalSpeedSlider.value>intervalSpeedSlider.ticks[1]"><img src="./assets/images/03.png"></span></span>
+				</div>
+				<div>
+					<p>{{trace.traceQuery.endDate}}</p>
+				</div>
+				<div class="speedVal">
+					<p>×{{intervalSpeedSlider.value}}.0</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

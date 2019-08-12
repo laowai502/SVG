@@ -1,0 +1,120 @@
+//to reset element-ui default css
+.el-upload {
+    input[type="file"] {
+        display: none !important;
+    }
+}
+
+.el-button {
+    &.operat-btn {
+        width: 80px
+    }
+}
+
+.el-upload__input {
+    display: none;
+}
+
+.el-row {
+    width: 100%;
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+    border-radius: 3px;
+//  transform: none;
+    left: 0;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 8px;
+    margin-top: 20vh !important;
+    @media screen and (min-width: 800px) and (max-width: 1366px) and (max-height: 650px){ 
+        margin-top: 8vh !important;
+    }  
+    .el-dialog__header {
+        padding: 15px 20px 10px;
+        .el-dialog__title {
+            font-size: 15px;
+        }
+    }
+    .el-dialog__body {
+        padding: 0px 20px;
+    }
+    .el-dialog__footer {
+        padding-bottom: 10px;
+        .el-button {
+            width: 80px;
+            padding: 10px 20px;
+        }
+    }
+}
+
+//element ui upload
+.upload-container {
+    .el-upload {
+        width: 100%;
+        .el-upload-dragger {
+            width: 100%;
+            height: 200px;
+        }
+    }
+}
+
+//全局loading
+.el-loading-mask.is-fullscreen {
+    background: rgba(255,255,255,0);
+    cursor: wait;
+}
+
+.el-table {
+    tr {
+        td.is-center {
+            .el-radio {
+                padding-left: 12x !important;
+            }
+        }
+    }
+}
+
+.el-form {
+    .el-form-item {
+        .el-form-item__error {
+            margin-top: 2px;
+        } 
+    }
+}
+
+//.el-menu-item.is-active {
+//  background: #2DCA93;
+//}
+
+.el-date-range-picker {
+    .el-picker-panel__body-wrapper {
+        .el-picker-panel__sidebar {
+            box-shadow: -2px 2px 6px 0px rgba(0,0,0,0.1);
+            padding-left: 10px;
+            width: 160px;
+            overflow-x: hidden;
+            margin-left: -50px;
+            button.el-picker-panel__shortcut {
+                display: inline-block;
+                margin: 4px 3px;
+                width: 63px;
+                text-align: center;
+                padding: 2px 7px;
+                font-size: 13px;
+                color: #559FF0;
+                background: #f5f5f5;
+                border-radius: 2px;
+                border: 1px solid #f5f5f5;
+                &:nth-last-child(1),&:nth-last-child(2),&:nth-last-child(3) {
+                    width: 134px;
+                }
+                &:hover {
+                    color: #FFF;
+                    background: #559FF0;
+                }
+            }
+        }
+    }
+}

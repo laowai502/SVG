@@ -1,0 +1,58 @@
+{
+    "message": "OK", 
+    "resultCode": 200, 
+    "data": {
+        "total": 10, 
+        "page_total": 3, 
+        "list": [
+            {
+                "carCode": "", 
+                "vin": "HAD01384", 
+                "createTime": "2017-09-27 15:44:30", 
+                "orderWay": 1, 
+                "repairAdd": "四川省德阳市什邡市 ", 
+                "woCode": "1201709271544290010", 
+                "woType": "2", 
+                "maintainWay": "3", 
+                "woStatus": "已完成", 
+                "assignId": null
+            }, 
+            {
+                "carCode": "", 
+                "vin": "HAD01661", 
+                "createTime": "2017-09-27 15:44:09", 
+                "orderWay": 1, 
+                "repairAdd": "陕西省西安市周至县终南镇", 
+                "woCode": "1201709271544080009", 
+                "woType": "2", 
+                "maintainWay": "3", 
+                "woStatus": "已完成", 
+                "assignId": null
+            }, 
+            {
+                "carCode": "辽A12345", 
+                "vin": "vkin1", 
+                "createTime": "2017-09-26 19:00:00", 
+                "orderWay": 1, 
+                "repairAdd": "888", 
+                "woCode": "1201709061949280006", 
+                "woType": "1", 
+                "maintainWay": "3", 
+                "woStatus": "已完成", 
+                "assignId": null
+            }, 
+            {
+                "carCode": "", 
+                "vin": "00000000", 
+                "createTime": "2017-09-25 17:28:28", 
+                "orderWay": 2, 
+                "repairAdd": "维修地址11", 
+                "woCode": "2201709251728270001", 
+                "woType": "1", 
+                "maintainWay": "3", 
+                "woStatus": "已完成", 
+                "assignId": null
+            }
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+page-management {
+    .scroll-content{
+        .segment{
+            padding: 0 1rem;
+            background-color: #fff;
+            .segment-button{
+                color: $text-color;
+                border-color: transparent; 
+                border-bottom-color:$border-color;
+                height: inherit;
+                padding: 0.5rem 0;
+                font-size: 1.4rem;
+            }
+            .segment-button.segment-activated{
+                color: $text-title;
+                border-bottom-color: $text-title;
+                background-color: transparent;
+            }
+            .segment-button:first-of-type, .segment-button:last-of-type {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                margin-right: 0;
+            }
+        }
+        .other-select{
+            background-color: #fff;
+            margin-bottom: 2rem;
+            min-height: 5rem;
+            .col{
+                .select{
+                    max-width: 100%;
+                    justify-content: center;
+                    .select-text{
+                        flex: inherit;
+                        -webkit-flex: inherit;
+                        -webkit-box-flex: inherit;
+                    }
+                }
+            }
+        }
+        .coupon-list{
+            margin-top: 0;
+            .list{
+                .item-block,.item{
+                    padding-left:0;
+                    margin-bottom: 1rem;
+                    background-color: transparent;
+                    border-radius: $border-radius;
+                    box-shadow: 0 3rem 3rem -4rem #666; 
+                    .item-inner{
+                        padding-right: 0;
+                        ion-label{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            .no-data{
+                text-align: center;
+                font-size: 1.2rem !important;
+                color: #999 !important;
+            }
+        }
+    }
+}
+

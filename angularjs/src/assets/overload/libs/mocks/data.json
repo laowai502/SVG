@@ -1,0 +1,17 @@
+{
+	"message": "OK",
+	"resultCode": 200,
+	"data": {
+		"card": {
+			"noLoad": 60,
+			"noLoadPercent": 5,
+			"halfLoad": 100,
+			"halfLoadPercent": 8,
+			"fullLoad": 765,
+			"fullLoadPercent": 47.16,
+			"overLoad": 875,
+			"overLoadPercent": 52.84,
+			"total": 1622
+		}
+	}
+}

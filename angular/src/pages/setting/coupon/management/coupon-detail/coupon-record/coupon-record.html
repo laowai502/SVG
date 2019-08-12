@@ -1,0 +1,43 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>{{title}}</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<p *ngIf="recordList.length==0" class="no-data">暂无相关信息</p>
+	<p *ngIf="recordList.length!=0" class="total">
+		<span data-ng-bind="flag?'兑换合计':'发放合计'"></span>：
+		<span class="total-count" data-ng-bind="flag?recordData.exchangeQuantity:recordData.sendQuantity"></span>&nbsp;&nbsp;
+		<span>{{recordList[0].unit}}</span>
+	</p>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-list no-lines>
+		<ion-row *ngFor="let obj of recordList">
+			<ion-label col-10>
+				<p data-ng-bind="flag?obj.exchangeTime:obj.sendTime"></p>
+				<p>VIN：{{obj.vin}}</p>
+				<p *ngIf="!flag">
+					<span class="name">{{obj.userName}}</span>
+					<span class="tel">{{obj.phone}}</span>
+				</p>
+			</ion-label>
+			<ion-label col-2>
+				<p class="middle">
+					<span class="count" data-ng-bind="flag?obj.exchangeQuantity:obj.singleQuantity"></span>
+					<span>{{obj.unit}}</span>
+				</p>
+			</ion-label>
+		</ion-row>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText='上拉加载更多...'>
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

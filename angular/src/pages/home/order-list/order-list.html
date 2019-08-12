@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{title}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-list no-lines class="list-outer">
+		<ion-row *ngFor="let order of list">
+			<ion-item (click)="toDetail(order)" class="list-item">
+				<ion-thumbnail item-start class="border-right">
+					<img [src]="order.woType | orderType:order.maintainWay">
+				</ion-thumbnail>
+				<ion-item>
+					<h2>{{order.carCode}}({{order.vin}})</h2>
+				</ion-item>
+				<ion-item class="list-middle">
+					<p>{{order.woStatus | orderStatus: order.createTime}}</p>
+					<ion-icon name="ios-arrow-forward-outline" color="murk" item-end></ion-icon>
+				</ion-item>
+				<ion-item>
+					<ion-icon name="ios-pin" color="murk" item-start></ion-icon>
+					<p>{{order.repairAdd}}</p>
+				</ion-item>
+				<ion-thumbnail class="item-right">
+					<img [src]="order.orderWay | orderWay">
+				</ion-thumbnail>
+			</ion-item>
+			<ion-row class="order-button">
+				<button inline-block (click)="continue(order.woCode)" *ngIf="roleCode == '2' && pageAttr.status != '1'">{{btnName}}</button>
+				<button inline-block (click)="continue(order.woCode)" *ngIf="roleCode == '1' && pageAttr.status == '1'">拒绝</button>
+				<button inline-block (click)="confirm(order.woCode, order.woType)" *ngIf="roleCode == '1' && pageAttr.status == '1'">确认</button>
+			</ion-row>
+		</ion-row>
+	</ion-list>
+	<ion-list *ngIf="list.length == 0">
+		<div class="nodate">
+			<p padding style="text-align:center;">无历史工单</p>
+		</div>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText={{loadMoreText}}></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>维修中</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-row>
+		<ion-col col-12 class="sub">备注说明</ion-col>
+		<ion-col col-12>
+			<ul class="deal-list">
+				<li *ngFor="let obj of baseData; index as i" class="deal-type" (tap)="changeDealType(i, obj.value)">
+					<label [for]="obj.value" class="default">{{obj.name}}</label>
+					<input type="checkbox" [id]="obj.value" />
+				</li>
+			</ul>
+		</ion-col>
+	</ion-row>
+	<ion-row *ngIf="showMavin" class="mavin">
+		<ion-col col-4><img src="assets/images/repair-tel.png" alt="" />发动机组</ion-col>
+		<ion-col col-4><img src="assets/images/repair-tel.png" alt="" />底盘组</ion-col>
+		<ion-col col-4><img src="assets/images/repair-tel.png" alt="" />电器组</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col col-12 class="main-container">
+			<textarea maxlength="100" placeholder="请描述处理过程" 
+					  [(ngModel)]="row.opProcess" (ngModelChange)="textChange()"></textarea>
+			<span [ngClass]="{'show-orange': (amount==100)}">{{amount}}/100</span>
+		</ion-col>
+		<ion-col col-12>
+			<select-photo max="8" type="0" selector="page-order-repair"></select-photo>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col col-12>
+			<button class="btn" ion-button block (tap)="beforeCommit(0)">增加维修项</button>
+			<button class="btn" ion-button block (tap)="beforeCommit(1)">维修结束</button>
+			<button *ngIf="row.pageAttr == '2'" class="btn" ion-button block (tap)="outSecond()">二次外出</button>
+		</ion-col>
+	</ion-row>
+</ion-content>

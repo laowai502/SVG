@@ -1,0 +1,572 @@
+#trackDetail {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px;
+    .content-border-bgColor{
+        height:100%;
+        .form-inline{
+            width: 310px;
+            //border-bottom: 1px #ccc solid;
+        }
+        .form-group{
+            width:100%;
+            input{
+                width:100%;
+            }
+            button[type='submit']{
+                padding:2px 5px;
+            }
+        }
+        .timeRange{
+            margin-left: 10px;
+            div{
+                display: inline-block;
+                width:138px;
+                input{
+                    padding: 0 16px 0 2px;
+                }
+                .mp-date-time-pick .mp-date-btn{
+                    right:2px;
+                }
+            }
+        }
+    }
+    .mapbar{
+        border-top:none;
+        overflow: hidden;
+        height: calc(100% - 70px);
+        [mapbar-map] {
+            border: solid 1px #ccc;
+            height:100%;
+            width:100%
+        }
+    }
+    .zTree{
+        width: 100%;
+        max-height: calc(100% - 300px);
+        overflow: auto;
+    }
+    .zTree{
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+        li a {
+            height: 25px !important;
+            line-height: 25px !important;
+            &.curSelectedNode {
+                background-color: unset;
+                opacity: 1;
+                border: none;
+                color: #63a8eb;
+            }
+        }
+        li span.button.car_ico_docu {
+            width: 16px;
+        }
+        li span.button.car_ico_open,span.button.car_ico_close {
+            width: 20px;
+            height: 18px;
+            margin: -5px 10px 0 0 !important;
+        }
+    }
+    .car-detail-track{
+        margin-left:319px;
+        position:relative;
+        .speedList{
+            height: 160px;
+            width: 150px;
+            position: absolute;
+            color: #fefefe;
+//          text-shadow: #fff 0 1px 0;
+            z-index: 100;
+            bottom: 105px;
+            right: 14px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px 0 15px;
+            border-radius: 5px;
+            .speed{
+                line-height: 30px;
+                font-size: 14px;
+                i{
+                    display: inline-block;
+                    width: 13px;
+                    height: 13px;
+                    border-radius:10px;
+                    margin-right: 10px;
+                    margin-top: 3px;
+                    vertical-align: text-top;
+                }
+            }
+            .speedbotton{
+                border-top: 2px solid white;
+            }
+            .buttom{
+                width: 45%;
+                border: 0;
+                font-size: 15px;
+                color:yellow;
+                background:rgba(0,0,0,0);
+            }
+            .buttoms{
+                width: 45%;
+                border: 0;
+                font-size: 15px;
+                color:white;
+                background: rgba(0,0,0,0);
+            }
+
+        }
+        .contrl{
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            background: #fff;
+            bottom: 0;
+            height: 70px;
+            .life{
+                width:calc(100% - 20px);
+            }
+            .ctrlBtn{
+                width: 96%;
+                margin: 0 auto;
+                margin-top: 8px;
+                div{
+                    width:22.5%;
+                    float:left;
+                    p{
+                        border: 1px #92caff solid;
+                        border-radius: 2px;
+                        padding: 0 1%;
+                        margin: 0 5%;
+                        text-align: center;
+                        height: 30px;
+                        background-color: #f8f8f8;
+                        line-height: 30px;
+                    }
+                }
+                .speedBtn{
+                    text-align: center;
+                    button{
+                        margin:0 3%;
+                    }
+                }
+                .speedVal{
+                    width:10%;
+                    p{
+                        background-color: #92CBFF;
+                        color: white;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    .slider-selection{
+        background: #5897D8;
+        border-radius: 0px;
+    }
+    .slider-track-high{
+        background: #92CBFF;
+        border-radius: 0px;
+    }
+    .slider-handle{
+        background-color: #497cb1;
+        height: 10px;
+        margin-top: 0px;
+        margin-left: 0px;
+        border-radius: 0px;
+    }
+    .header {
+        height: 145px;
+        img.car-cover {
+            height: 120px;
+        }
+        .name {
+            font-size: 18px;
+        }
+    }
+    ul.nav-tabs {
+        height: 39px;
+        li.active {
+            a {
+                color: $color-tab;
+            }
+        }
+        a {
+            color: $color-placeholder;
+        }
+    }
+    div[active] {
+        overflow-y: auto;
+        div.tab-content {
+            height: calc(100% - 39px);
+            border-width: 0px 1px 1px;
+            border-style: solid;
+            border-color: $color-border;
+            &:after {
+                display: block;
+                clear: both;
+                content: "";
+                line-height: 0;
+                visibility: hidden;
+            }
+            div.tab-pane {
+                height: calc(100%);
+                padding-top: 20px;
+                .term {
+                    height: 100%;
+                }
+                .term button {
+                    width: 110px;
+                    border-radius: $border-radius;
+                    background-color: #3A7CB5;
+                    font-size: 14px;
+                    padding: 6px;
+                }
+                .diagnos {
+                    text-indent: 20px;
+                    margin: 20px;
+                    .termheader {
+                        padding: 11px 0px;
+                        background-color: #e9f3f5;
+                        color: #666666;
+                        text-align: center;
+                    }
+                    .datepick {
+                        margin-top: 10px
+                    }
+                }
+                .diagnos-header-bgColor {
+                    background-color: #fafafa
+                }
+                .diagnos-text {
+                    color: #3598db
+                }
+                .diagnos label {
+                    width: 85px;
+                    line-height: 34px;
+                }
+                .diagnos input {
+                    width: 68%;
+                    border-radius: $border-radius;
+                    margin-left: 5px;
+                }
+                .diagnos select {
+                    width: 68%;
+                    border-radius: $border-radius;
+                    margin-left: 5px;
+                }
+                .diagnos>div>div {
+                    padding-left: 15px;
+                }
+                .diagnos-span {
+                    font: 14px/34px "microsoft yahei";
+                    cursor: pointer;
+                    margin-right: 55px;
+                }
+                .diagnos-span:hover {
+                    background-color: #4e4e4e;
+                }
+                .term2 {
+                    padding-top: 10px;
+                    font: 14px/15px "microsoft yahei";
+                }
+                .dashboard {
+                    width: 100%;
+                    white-space: nowrap;
+                    text-indent: 0px;
+                    text-align: center;
+                    margin: 15px auto;
+                }
+                .dashboard>tbody>tr>td {
+                    width: 5%;
+                    padding: 4px 0px;
+                }
+                .dashboard>tbody>tr>td>span {
+                    display: inline-block;
+                    padding: 3px 0px;
+                    .on {
+                        color: #f56d3d
+                    }
+                }
+                .dashboard>tbody>tr>td>span>b {
+                    font-size: 16px;
+                    text-align: center;
+                    color: #999999;
+                    display: inline-block;
+                }
+                .dashboard>tbody>tr>td>.oilMeter_top {
+                    width: 124px;
+                    height: 79px;
+                    margin: 24px auto;
+                    font-size: 24px;
+                    text-align: center;
+                    position: relative;
+                }
+                .dashboard>tbody>tr>td>.speedMileage_top {
+                    width: 187px;
+                    height: 174px;
+                    margin: 24px auto;
+                    font-size: 24px;
+                    text-align: center;
+                    position: relative;
+                }
+                .dashboard>tbody>tr>td>.rotateSpeed_top {
+                    width: 189px;
+                    height: 152px;
+                    margin: 24px auto;
+                    font-size: 24px;
+                    text-align: center;
+                    position: relative;
+                }
+                .dashboard>tbody>tr>td>.temperatureMeter_top {
+                    width: 126px;
+                    height: 72px;
+                    margin: 24px auto;
+                    font-size: 24px;
+                    text-align: center;
+                    position: relative;
+                }
+                .dashboard>tbody>tr>td>div>.meter-img {
+                    margin: 24px auto;
+                    font-size: 24px;
+                    text-align: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    -webkit-transition: background-color ease-in-out 800ms 0ms;
+                    -moz-transition: background-color ease-in-out 800ms 0ms;
+                    -ms-transition: background-color ease-in-out 800ms 0ms;
+                    -o-transition: background-color ease-in-out 800ms 0ms;
+                    transition: background-color ease-in-out 800ms 0ms;
+                }
+                .dashboard>tbody>tr>td>div>.dial-img-speedMileage {
+                    width: 200px;
+                    height: 200px;
+                    position: absolute;
+                    top: 98%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .dashboard>tbody>tr>td>div>.speedMileageVal {
+                    margin: auto;
+                    display: inline-block;
+                    text-align: center;
+                    text-indent: 0px;
+                    position: absolute;
+                    bottom: 0px;
+                    font-size: 14px;
+                    left: -25px;
+                    top: 155px;
+                    width: 200px;
+                    text-align: center;
+                    color: #3598db;
+                }
+                .dashboard>tbody>tr>td>div>.roationMileageVal {
+                    margin: auto;
+                    display: inline-block;
+                    text-align: center;
+                    text-indent: 0px;
+                    position: absolute;
+                    bottom: 0px;
+                    font-size: 14px;
+                    left: -10px;
+                    top: 160px;
+                    width: 200px;
+                    text-align: center;
+                    color: #3598db;
+                }
+                .dashboard>tbody>tr>td>div>.temperatureMeterVal {
+                    margin: auto;
+                    display: inline-block;
+                    text-align: center;
+                    text-indent: 0px;
+                    position: absolute;
+                    bottom: 0px;
+                    font-size: 14px;
+                    left: -35px;
+                    width: 200px;
+                    top: 101px;
+                    color: #3598db;
+                }
+                .dashboard>tbody>tr>td>div>.dial-img-oilMeter {
+                    width: 200px;
+                    height: 200px;
+                    position: absolute;
+                    top: 180%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .dashboard>tbody>tr>td>div>.dial-img-rotateSpeed {
+                    width: 200px;
+                    height: 200px;
+                    position: absolute;
+                    top: 113%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .dashboard>tbody>tr>td>div>div>.dial-img {
+                    -webkit-transition: ease-in-out 800ms;
+                    -moz-transition: ease-in-out 800ms;
+                    -ms-transition: ease-in-out 800ms;
+                    -o-transition: ease-in-out 800ms;
+                    transition: ease-in-out 800ms;
+                    transform-origin: 48% 84%;
+                }
+                .broadwise {
+                    width: 100%;
+                    background-color: #f1f1f1;
+                    border-spacing: 1px;
+                    border-collapse: separate;
+                }
+                .broadwise>tbody>tr>th {
+                    width: 180px;
+                    height: 30px;
+                    text-align: center;
+                    white-space: normal;
+                    background-color: #fafafa;
+                    font-weight: normal;
+                    text-indent: 0px;
+                }
+                .broadwise>tbody>tr>td {
+                    min-width: 70px;
+                    height: 30px;
+                    padding: 0px 7px;
+                    text-align: center;
+                    white-space: nowrap;
+                    text-indent: 0px;
+                    background-color: #ffffff;
+                }
+            }
+        }
+    }
+    .track-control.glyphicon {
+        font-size: 18px;
+    }
+    .progress {
+        margin-bottom: 0 !important;
+        height: 10px !important;
+    }
+    .fields {
+        span {
+            line-height: 24px;
+        }
+        .title {
+            color: #3598DB;
+        }
+    }
+    .form {
+        padding: 0px 20px 20px;
+        max-width: 500px;
+        textarea {
+            width: 100%;
+        }
+        select {
+            width: 100%;
+        }
+        .form-group {
+            white-space: nowrap;
+            label {
+                font-weight: normal;
+                text-align: left;
+                min-width: 50px;
+            }
+            input[type='number'],
+            input[type='text'],
+            input[type='password'],
+            select {
+                width: $search-input-long-width;
+            }
+        }
+        .radio-inline,
+        .checkbox-inline {
+            input[type="radio"],
+            input[type="checkbox"] {
+                margin-top: 1px;
+            }
+        }
+    }
+    .map-tool-bar {
+        position: absolute;
+        top: 0;
+        right: 65px;
+        z-index: 30;
+        background: $color-white;
+        border-bottom: solid 1px $color-border;
+        border-left: solid 1px $color-border;
+        padding: 12px;
+    }
+    .station-control-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1000;
+        width: 65px;
+        height: 55px;
+        background: $color-white;
+        border-bottom: solid 1px $color-border;
+        padding: 0;
+        text-align: center;
+        .diver {
+            width: 1px;
+            border-left: solid 1px $color-border;
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            height: 30px;
+        }
+    }
+
+    .car-detail-monitor{
+        .station-control-container{
+            border-left:solid 1px $color-border;
+        }
+    }
+    .btn-default{
+        margin-left: 5px;
+        border: none;
+    }
+    /*#queryType,#queryTypeTip {
+        width: 80%;
+        height: 40px;
+        color: #999999;
+        font-size: 12px;
+        font-family: MicrosoftYaHei;
+        border:0!important;
+    }
+    #queryTypeTip{
+        padding-right: 0px;
+        width: 18%;
+    }*/
+    button#search-btn{
+        background: none !important;
+        border:none !important;
+        position: absolute;
+        right: 20px;
+        top: 5px;
+    }
+    #queryType {
+        width:93%;
+        margin-left:2%;
+        height: 34px;
+        color: #999999;
+        font-size: 12px;
+        font-family: MicrosoftYaHei;
+        border:1px solid #ddd;
+    }
+    #left {
+        width: 310px;
+        float: left;
+        height: 100%;
+        border: 1px solid #ddd;
+       
+    }
+    .bottomborder{
+        width: 100%;
+        border-bottom:1px #ddd solid;
+    }
+    
+    
+}

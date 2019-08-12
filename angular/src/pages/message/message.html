@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>横项日历DEMO</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<section class="mile-calendar-content">
+		<div class="mile-calendar-header">
+			<ion-icon tappable ios="ios-arrow-back" md="ios-arrow-back" (click)="lastMonth()"></ion-icon>
+			<span style="padding-top: 2px;">{{nowDate}}</span>
+			<ion-icon tappable ios="ios-arrow-forward" md="ios-arrow-forward" (click)="nextMonth()"></ion-icon>
+			<span tappable class="cal-today" (click)="toToday()">今天</span>
+		</div>
+		<div class="mile-calendar-day">
+			<ion-slides initialSlide="{{dijizhou-1}}">
+				<ion-slide *ngFor="let obj of calData; let idx = index">
+					<div class="mile-calendar-week">
+						<li *ngFor="let obj of week">{{obj}}</li>
+					</div>
+					<div class="day">
+						<li *ngFor="let o of obj; let i = index" [ngClass]="{'cannot': (calData[0][i]>8&&idx==0)||(idx==4&&calData[idx][i]<8)||(idx==5&&calData[idx][i]<8)}">
+							<span tappable (click)="showDetail($event)" class="dayspan" [ngClass]="{'now-today': (idx==dijizhou-1&&o==today)}">{{o}}</span>
+						</li>
+					</div>
+				</ion-slide>
+			</ion-slides>
+		</div>
+	</section>
+</ion-content>

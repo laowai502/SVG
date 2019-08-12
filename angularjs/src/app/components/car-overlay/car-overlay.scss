@@ -1,0 +1,49 @@
+.car-overlay {
+    visibility: hidden;
+    position: absolute;
+    z-index: 10005;
+    transition: left, top 0.2s;
+    border-radius: 3px;
+    color: #666;
+    .content {
+        width:350px;
+        padding:5px 20px;
+    }
+    .foot {
+        padding:5px 0px !important;
+        background: #fff;
+        .btn {
+            background: none !important;
+            color: #476ab4;
+            .glyphicon {
+                font-size: 20px;
+            }
+        }
+    }
+    .button{
+        border: 0;
+        width: 49%;
+        font-size: 12px;
+        line-height: 30px;
+        border-right:1px #ddd solid;
+        //margin-top:5px;
+        &:last-child{
+            border-right:0
+        }
+        &.one {
+            background: url(../assets/images/icon_27.png) #fff no-repeat 30px center;
+            &:hover {
+                background: url(../assets/images/icon_81.png) #fff no-repeat 30px center;
+            }
+        }
+        &.two{
+            background: url(../assets/images/icon_33.png) #fff no-repeat 40px center;
+            &:hover{
+                background:url(../assets/images/icon_86.png) #fff no-repeat 40px center;
+            }
+        }
+    }
+    .button:hover{
+        color: #ff9c00
+    }
+}
